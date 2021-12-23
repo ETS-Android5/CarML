@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()) {
             case(R.id.price_prediction_button): {
                 Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);
+                startActivity(price_prediction);
                 break;
             }
             default: {

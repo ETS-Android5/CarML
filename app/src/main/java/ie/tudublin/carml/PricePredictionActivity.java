@@ -15,7 +15,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.price_prediction_activity);
 
-        back_arrow.findViewById(R.id.back_arrow);
+        back_arrow = findViewById(R.id.back_arrow);
         back_arrow.setOnClickListener(this);
     }
 
