@@ -39,11 +39,12 @@
     <!-- Parent view for input form -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="550dp">
+        android:layout_height="match_parent">
         <!-- View to hold the input form-->
         <RelativeLayout
+            android:id="@+id/input_form"
             android:layout_width="300dp"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rectangle"
             android:layout_marginTop="@dimen/margin30">
@@ -157,6 +158,15 @@
 
         </RelativeLayout>
 
+        <ImageButton
+            android:id="@+id/submit_button"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:background="@drawable/submit"
+            android:layout_below="@id/input_form"
+            android:layout_marginStart="@dimen/margin30"
+            android:layout_marginTop="@dimen/margin10"
+            android:contentDescription="@string/submit"/>
     </RelativeLayout>
 
 

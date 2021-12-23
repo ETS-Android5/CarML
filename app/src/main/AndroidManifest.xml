@@ -23,6 +23,10 @@
             android:name=".PricePredictionActivity"
             android:screenOrientation="fullSensor">
         </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
     </application>
 
 </manifest>
