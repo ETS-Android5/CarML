@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CarML</string>
+    <string name="price_prediction_buttonCD">Price Prediction. Tap to begin predicting a price.
+    </string>
 </resources>
