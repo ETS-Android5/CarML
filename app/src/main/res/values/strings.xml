@@ -4,4 +4,9 @@
     </string>
     <string name="noCD"> </string>
     <string name="back_arrowCD">Tap to go back.</string>
+    <string name="manufacturer">Manufacturer:</string>
+    <string name="model">Model:</string>
+    <string name="year">Year:</string>
+    <string name="engine_size">Engine Size (Litres):</string>
+    <string name="fuel_type">Fuel Type:</string>
 </resources>
