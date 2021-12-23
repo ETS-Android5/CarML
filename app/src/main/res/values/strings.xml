@@ -2,4 +2,6 @@
     <string name="app_name">CarML</string>
     <string name="price_prediction_buttonCD">Price Prediction. Tap to begin predicting a price.
     </string>
+    <string name="noCD"> </string>
+    <string name="back_arrowCD">Tap to go back.</string>
 </resources>

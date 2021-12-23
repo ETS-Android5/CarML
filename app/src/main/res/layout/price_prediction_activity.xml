@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/tarmac"
+    tools:context=".PricePredictionActivity"
+    android:background="@drawable/tarmac_wallpaper"
     android:orientation="vertical">
 
     <!-- View for banner -->
@@ -15,26 +15,25 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/carml_banner"
             android:layout_width="match_parent"
             android:layout_height="@dimen/banner_height"
-            android:background="@drawable/carml"
+            android:background="@drawable/price_prediction_banner"
             android:contentDescription="@string/noCD"/>
     </RelativeLayout>
 
-    <!-- View for Price Prediction Button -->
+    <!-- View for back arrow -->
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin10"
+        android:layout_marginTop="@dimen/margin10">
 
         <ImageButton
-            android:id="@+id/price_prediction_button"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/price_prediction"
-            android:contentDescription="@string/price_prediction_buttonCD"/>
+            android:id="@+id/back_arrow"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:background="@drawable/back_arrow"
+            android:contentDescription="@string/back_arrowCD"/>
     </RelativeLayout>
 
 
