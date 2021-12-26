@@ -58,16 +58,28 @@
                 android:text="@string/manufacturer"
                 android:textSize="@dimen/heading_size"/>
 
-            <EditText
+<!--            <EditText-->
+<!--                android:id="@+id/manufacturer"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:minWidth="240dp"-->
+<!--                android:layout_below="@id/manufacturer_label"-->
+<!--                android:layout_marginStart="@dimen/margin30"-->
+<!--                android:autofillHints="Manufacturer"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:textColor="@color/white"/>-->
+
+            <Spinner
                 android:id="@+id/manufacturer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="240dp"
                 android:layout_below="@id/manufacturer_label"
                 android:layout_marginStart="@dimen/margin30"
-                android:autofillHints="Manufacturer"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/white"/>
+                android:layout_marginTop="@dimen/margin10"
+                android:minWidth="240dp"
+                android:outlineSpotShadowColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                android:tooltipText="Select One"/>
 
             <TextView
                 android:id="@+id/model_label"

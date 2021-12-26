@@ -40,4 +40,12 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
             }
         }
     }
+
+    public void prepSpinners() {
+
+    }
+
+    public void readColumn() {
+
+    }
 }
