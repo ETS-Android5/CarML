@@ -9,7 +9,7 @@
     android:background="@drawable/tarmac"
     android:orientation="vertical">
 
-    <!-- View for banner -->
+    <!-- Layout for banner -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,7 +22,7 @@
             android:contentDescription="@string/noCD"/>
     </RelativeLayout>
 
-    <!-- View for Price Prediction Button -->
+    <!-- Layout for Price Prediction Button -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

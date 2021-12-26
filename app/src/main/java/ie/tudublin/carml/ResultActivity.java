@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton back_arrow;
+    ImageButton done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
         back_arrow = findViewById(R.id.back_arrow);
         back_arrow.setOnClickListener(this);
+        done = findViewById(R.id.done_button);
+        done.setOnClickListener(this);
     }
 
     @Override
@@ -25,6 +28,9 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             case(R.id.back_arrow): {
                 finish();
                 break;
+            }
+            case(R.id.done_button): {
+                finish();
             }
             default: {
                 break;

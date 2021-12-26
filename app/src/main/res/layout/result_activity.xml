@@ -9,7 +9,7 @@
     android:background="@drawable/tarmac_wallpaper"
     android:orientation="vertical">
 
-    <!-- View for banner -->
+    <!-- Layout for banner -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -21,7 +21,7 @@
             android:contentDescription="@string/noCD"/>
     </RelativeLayout>
 
-    <!-- View for back arrow -->
+    <!-- Layout for back arrow -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +35,116 @@
             android:background="@drawable/back_arrow"
             android:contentDescription="@string/back_arrowCD"/>
     </RelativeLayout>
+
+    <!-- Parent layout for the result -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Layout for the result -->
+        <RelativeLayout
+            android:id="@+id/result"
+            android:layout_width="300dp"
+            android:layout_height="550dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin30"
+            android:background="@drawable/rectangle">
+
+            <ImageView
+                android:id="@+id/result_image"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin20"
+                android:src="@drawable/car_wireframe" />
+
+            <TextView
+                android:id="@+id/manufacturer_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_image"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/manufacturer"/>
+
+            <TextView
+                android:id="@+id/result_manufacturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/manufacturer_label"
+                android:layout_below="@id/result_image"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(manufacturer)" />
+
+            <TextView
+                android:id="@+id/model_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/manufacturer_label"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/model" />
+
+            <TextView
+                android:id="@+id/result_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/model_label"
+                android:layout_below="@id/result_manufacturer"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(model)" />
+
+            <TextView
+                android:id="@+id/year_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/model_label"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/year" />
+
+            <TextView
+                android:id="@+id/result_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/year_label"
+                android:layout_below="@id/result_model"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(year)" />
+
+            <TextView
+                android:id="@+id/fuel_type_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/year_label"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/fuel_type" />
+
+            <TextView
+                android:id="@+id/result_fuel_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/fuel_type_label"
+                android:layout_below="@id/result_year"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(fuel type)" />
+
+            <ImageButton
+                android:id="@+id/done_button"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/fuel_type_label"
+                android:layout_marginTop="@dimen/margin30"
+                android:background="@drawable/done"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

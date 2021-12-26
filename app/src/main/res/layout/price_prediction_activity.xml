@@ -36,11 +36,11 @@
             android:contentDescription="@string/back_arrowCD"/>
     </RelativeLayout>
 
-    <!-- Parent view for input form -->
+    <!-- Parent layout for input form -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!-- View to hold the input form-->
+        <!-- Layout to hold the input form-->
         <RelativeLayout
             android:id="@+id/input_form"
             android:layout_width="300dp"
@@ -110,35 +110,14 @@
                 android:autofillHints="Manufacturer"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/white"
-                android:inputType="number"/>
-
-            <TextView
-                android:id="@+id/engine_size_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/year"
-                android:layout_marginTop="@dimen/margin10"
-                android:layout_marginStart="@dimen/margin30"
-                android:text="@string/engine_size"
-                android:textSize="@dimen/heading_size"/>
-
-            <EditText
-                android:id="@+id/engine_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="240dp"
-                android:layout_below="@id/engine_size_label"
-                android:layout_marginStart="@dimen/margin30"
-                android:autofillHints="Manufacturer"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/white"
-                android:inputType="numberDecimal"/>
+                android:inputType="number"
+                android:maxLength="4"/>
 
             <TextView
                 android:id="@+id/fuel_type_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/engine_size"
+                android:layout_below="@id/year"
                 android:layout_marginTop="@dimen/margin10"
                 android:layout_marginStart="@dimen/margin30"
                 android:text="@string/fuel_type"
