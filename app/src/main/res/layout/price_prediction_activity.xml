@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -78,8 +77,7 @@
                 android:layout_marginTop="@dimen/margin10"
                 android:minWidth="240dp"
                 android:outlineSpotShadowColor="@color/white"
-                android:outlineAmbientShadowColor="@color/white"
-                android:tooltipText="Select One"/>
+                android:outlineAmbientShadowColor="@color/white"/>
 
             <TextView
                 android:id="@+id/model_label"
@@ -91,16 +89,28 @@
                 android:text="@string/model"
                 android:textSize="@dimen/heading_size"/>
 
-            <EditText
+<!--            <EditText-->
+<!--                android:id="@+id/model"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:minWidth="240dp"-->
+<!--                android:layout_below="@id/model_label"-->
+<!--                android:layout_marginStart="@dimen/margin30"-->
+<!--                android:autofillHints="Manufacturer"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:textColor="@color/white"/>-->
+
+            <Spinner
                 android:id="@+id/model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="240dp"
                 android:layout_below="@id/model_label"
                 android:layout_marginStart="@dimen/margin30"
-                android:autofillHints="Manufacturer"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/white"/>
+                android:layout_marginTop="@dimen/margin10"
+                android:minWidth="240dp"
+                android:outlineSpotShadowColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                android:tooltipText="Select One"/>
 
             <TextView
                 android:id="@+id/year_label"
@@ -112,40 +122,48 @@
                 android:text="@string/year"
                 android:textSize="@dimen/heading_size"/>
 
-            <EditText
+<!--            <EditText-->
+<!--                android:id="@+id/year"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:minWidth="240dp"-->
+<!--                android:layout_below="@id/year_label"-->
+<!--                android:layout_marginStart="@dimen/margin30"-->
+<!--                android:autofillHints="Manufacturer"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="4"/>-->
+
+            <NumberPicker
                 android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="240dp"
                 android:layout_below="@id/year_label"
                 android:layout_marginStart="@dimen/margin30"
-                android:autofillHints="Manufacturer"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/white"
-                android:inputType="number"
-                android:maxLength="4"/>
+                />
 
-            <TextView
-                android:id="@+id/fuel_type_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/year"
-                android:layout_marginTop="@dimen/margin10"
-                android:layout_marginStart="@dimen/margin30"
-                android:text="@string/fuel_type"
-                android:textSize="@dimen/heading_size"/>
+<!--            <TextView-->
+<!--                android:id="@+id/fuel_type_label"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/year"-->
+<!--                android:layout_marginTop="@dimen/margin10"-->
+<!--                android:layout_marginStart="@dimen/margin30"-->
+<!--                android:text="@string/fuel_type"-->
+<!--                android:textSize="@dimen/heading_size"/>-->
 
-            <EditText
-                android:id="@+id/fuel_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="240dp"
-                android:layout_below="@id/fuel_type_label"
-                android:layout_marginStart="@dimen/margin30"
-                android:autofillHints="Manufacturer"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/white"
-                android:inputType="textCapWords"/>
+<!--            <EditText-->
+<!--                android:id="@+id/fuel_type"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:minWidth="240dp"-->
+<!--                android:layout_below="@id/fuel_type_label"-->
+<!--                android:layout_marginStart="@dimen/margin30"-->
+<!--                android:autofillHints="Manufacturer"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:inputType="textCapWords"/>-->
 
         </RelativeLayout>
 
