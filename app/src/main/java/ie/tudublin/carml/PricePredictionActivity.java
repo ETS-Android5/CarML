@@ -2,9 +2,12 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 
@@ -62,6 +65,10 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.submit_button): {
+                String man = manufacturerDD.getSelectedItem().toString();
+                String mod = modelDD.getSelectedItem().toString();
+                String year_val = String.valueOf(year.getValue());
+                Log.d("Spinner", man + "," + mod + "," + year_val);
                 Intent result = new Intent(PricePredictionActivity.this, ResultActivity.class);
                 startActivity(result);
                 break;
@@ -96,17 +103,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 // Split each row on the commas
                 String[] splits = row.split(",");
 
-                // Add in the first ones
-//                if (ma == 0) {
-//                    manufacturers.add(splits[0]);
-//                    ma++;
-//                }
-//
-//                if (mo == 0) {
-//                    models.add(splits[1]);
-//                    mo++;
-//                }
-
                 if (ma > 0) {
                     if (!manufacturers.get(ma-1).equals(splits[0])) {
                         manufacturers.add(splits[0]);
@@ -126,9 +122,5 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         catch (IOException ioe) {
             ioe.printStackTrace();
         }
-    }
-
-    public void readColumn() {
-
     }
 }
