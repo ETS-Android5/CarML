@@ -65,11 +65,12 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.submit_button): {
-                String man = manufacturerDD.getSelectedItem().toString();
-                String mod = modelDD.getSelectedItem().toString();
-                String year_val = String.valueOf(year.getValue());
-                Log.d("Spinner", man + "," + mod + "," + year_val);
+                String user_car =   manufacturerDD.getSelectedItem().toString() + "," +
+                                    modelDD.getSelectedItem().toString() + "," +
+                                    String.valueOf(year.getValue());
+                Log.d("Spinner",  user_car);
                 Intent result = new Intent(PricePredictionActivity.this, ResultActivity.class);
+                result.putExtra("user_car", user_car);
                 startActivity(result);
                 break;
             }
