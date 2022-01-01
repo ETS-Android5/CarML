@@ -10,4 +10,5 @@
     <string name="engine_size">Engine Size (Litres):</string>
     <string name="fuel_type">Fuel Type:</string>
     <string name="submit">Submit</string>
+    <string name="price">Price:</string>
 </resources>

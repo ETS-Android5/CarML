@@ -134,12 +134,31 @@
                 android:layout_marginTop="@dimen/margin10"
                 android:text="(fuel type)" />
 
+            <TextView
+                android:id="@+id/price_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fuel_type_label"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/price" />
+
+            <TextView
+                android:id="@+id/result_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/price_label"
+                android:layout_below="@id/result_fuel_type"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(price)" />
+
             <ImageButton
                 android:id="@+id/done_button"
                 android:layout_width="150dp"
                 android:layout_height="75dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/fuel_type_label"
+                android:layout_below="@id/price_label"
                 android:layout_marginTop="@dimen/margin30"
                 android:background="@drawable/done"/>
         </RelativeLayout>
