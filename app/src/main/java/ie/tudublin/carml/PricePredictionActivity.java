@@ -86,7 +86,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         models.add("Select One");
 
         // Get InputStream for data
-        InputStream inStream = getResources().openRawResource(R.raw.kaggle_data_clean);
+        InputStream inStream = getResources().openRawResource(R.raw.sorted_data);
         // Create Buffered Reader for stream
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(inStream, StandardCharsets.UTF_8));
@@ -118,7 +118,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                     }
                 }
             }
-
         }
         catch (IOException ioe) {
             ioe.printStackTrace();
