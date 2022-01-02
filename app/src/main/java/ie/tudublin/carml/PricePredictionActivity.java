@@ -27,10 +27,11 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     ImageButton submit;
     Spinner manufacturerDD;
     Spinner modelDD;
-    NumberPicker year;
+    Spinner yearDD;
     // Create ArrayLists that hold Manufacturer and Model
     private List<String> manufacturers = new ArrayList<>();
     private List<String> models = new ArrayList<>();
+    private List<String> years = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +42,25 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         back_arrow.setOnClickListener(this);
         submit = findViewById(R.id.submit_button);
         submit.setOnClickListener(this);
-        year = findViewById(R.id.year);
-        year.setMinValue(1990);
-        year.setMaxValue(2017);
         prepSpinners();
         manufacturerDD = findViewById(R.id.manufacturer);
         modelDD = findViewById(R.id.model);
+        yearDD = findViewById(R.id.year);
+
         ArrayAdapter<String> manAdapter =
                 new ArrayAdapter<>(this, R.layout.spinner_item, manufacturers);
         manAdapter.setDropDownViewResource(R.layout.spinner_item);
         manufacturerDD.setAdapter(manAdapter);
+
         ArrayAdapter<String> modAdapter =
                 new ArrayAdapter<>(this, R.layout.spinner_item, models);
         modAdapter.setDropDownViewResource(R.layout.spinner_item);
         modelDD.setAdapter(modAdapter);
+
+        ArrayAdapter<String> yearAdapter =
+                new ArrayAdapter<>(this, R.layout.spinner_item, years);
+        modAdapter.setDropDownViewResource(R.layout.spinner_item);
+        yearDD.setAdapter(yearAdapter);
     }
 
     @Override
@@ -67,7 +73,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
             case(R.id.submit_button): {
                 String user_car =   manufacturerDD.getSelectedItem().toString() + "," +
                                     modelDD.getSelectedItem().toString() + "," +
-                                    String.valueOf(year.getValue());
+                                    yearDD.getSelectedItem().toString();
                 Log.d("Spinner",  user_car);
                 Intent result = new Intent(PricePredictionActivity.this, ResultActivity.class);
                 result.putExtra("user_car", user_car);
@@ -84,6 +90,12 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         // Add in the first value for the dropdown menus
         manufacturers.add("Select One");
         models.add("Select One");
+        years.add("Select One");
+
+        // Add in values for years
+        for (int i = 1990; i <= 2017; i++) {
+            years.add(String.valueOf(i));
+        }
 
         // Get InputStream for data
         InputStream inStream = getResources().openRawResource(R.raw.sorted_data);

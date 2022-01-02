@@ -101,13 +101,25 @@
                 android:text="@string/year"
                 android:textSize="@dimen/heading_size"/>
 
-            <NumberPicker
+<!--            <NumberPicker-->
+<!--                android:id="@+id/year"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/year_label"-->
+<!--                android:layout_marginStart="@dimen/margin30"-->
+<!--                />-->
+
+            <Spinner
                 android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/year_label"
                 android:layout_marginStart="@dimen/margin30"
-                />
+                android:layout_marginTop="@dimen/margin10"
+                android:minWidth="240dp"
+                android:outlineSpotShadowColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                android:tooltipText="Select One"/>
 
             <ImageButton
                 android:id="@+id/submit_button"
