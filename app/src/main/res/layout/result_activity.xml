@@ -37,7 +37,8 @@
     </RelativeLayout>
 
     <!-- Parent layout for the result -->
-    <RelativeLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -45,9 +46,8 @@
         <RelativeLayout
             android:id="@+id/result"
             android:layout_width="300dp"
-            android:layout_height="550dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin30"
+            android:layout_height="500dp"
+            android:layout_gravity="center"
             android:background="@drawable/rectangle">
 
             <ImageView
@@ -135,10 +135,105 @@
                 android:text="(fuel type)" />
 
             <TextView
+                android:id="@+id/horsepower_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_fuel_type"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/horsepower" />
+
+            <TextView
+                android:id="@+id/result_horsepower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/horsepower_label"
+                android:layout_below="@id/result_fuel_type"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(horsepower)" />
+
+            <TextView
+                android:id="@+id/transmission_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_horsepower"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/transmission" />
+
+            <TextView
+                android:id="@+id/result_transmission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/transmission_label"
+                android:layout_below="@id/result_horsepower"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(transmission)" />
+
+            <TextView
+                android:id="@+id/drivetrain_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_transmission"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/drivetrain" />
+
+            <TextView
+                android:id="@+id/result_drivetrain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/drivetrain_label"
+                android:layout_below="@id/result_transmission"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(drive train)" />
+
+            <TextView
+                android:id="@+id/num_doors_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_drivetrain"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/no_of_doors" />
+
+            <TextView
+                android:id="@+id/result_num_doors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/num_doors_label"
+                android:layout_below="@id/result_drivetrain"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(no. of doors)" />
+
+            <TextView
+                android:id="@+id/body_type_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_num_doors"
+                android:layout_marginStart="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="@string/body_type" />
+
+            <TextView
+                android:id="@+id/result_body_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/body_type_label"
+                android:layout_below="@id/result_num_doors"
+                android:layout_marginStart="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="(body type)" />
+
+            <TextView
                 android:id="@+id/price_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fuel_type_label"
+                android:layout_below="@id/result_body_type"
                 android:layout_marginStart="@dimen/margin20"
                 android:layout_marginTop="@dimen/margin10"
                 android:text="@string/price" />
@@ -148,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/price_label"
-                android:layout_below="@id/result_fuel_type"
+                android:layout_below="@id/result_body_type"
                 android:layout_marginStart="@dimen/margin5"
                 android:layout_marginTop="@dimen/margin10"
                 android:text="(price)" />
@@ -162,7 +257,7 @@
                 android:layout_marginTop="@dimen/margin30"
                 android:background="@drawable/done"/>
         </RelativeLayout>
-    </RelativeLayout>
+    </ScrollView>
 
 
 

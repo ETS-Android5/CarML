@@ -11,4 +11,9 @@
     <string name="fuel_type">Fuel Type:</string>
     <string name="submit">Submit</string>
     <string name="price">Price:</string>
+    <string name="horsepower">Horsepower:</string>
+    <string name="transmission">Transmission:</string>
+    <string name="drivetrain">Drivetrain:</string>
+    <string name="no_of_doors">No. of Doors:</string>
+    <string name="body_type">Body Type:</string>
 </resources>
