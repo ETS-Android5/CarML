@@ -2,21 +2,17 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import weka.classifiers.Classifier;
-import weka.classifiers.trees.RandomForest;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
-import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +21,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
@@ -139,7 +134,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         String[] query_split = query.split(",");
         String man = query_split[0];
         String mod = query_split[1];
-        String year = query_split[2];
 
         // Get InputStream for String data
         InputStream sInStream = getResources().openRawResource(R.raw.descriptive_data);

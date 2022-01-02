@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -106,7 +103,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         // i is used to check if the previous item in the list is the same as the current
         int ma = 1;
         int mo = 1;
-        String row = "f";
+        String row;
         // Read each row and parse the correct parts into the correct lists
         try {
             // Skip over the column headers
