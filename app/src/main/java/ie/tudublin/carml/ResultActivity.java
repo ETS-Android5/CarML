@@ -17,8 +17,14 @@ import weka.core.Instances;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -69,11 +75,13 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         model.setText(user_car_split[1]);
         year.setText(user_car_split[2]);
         double prediction = predict(user_car);
-        price.setText(String.valueOf(prediction));
+        Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
+        price.setText(String.format(currentLocale,"%.0f", prediction));
 
     }
 
     public double predict(String query) {
+        // query is manufacturer,model,year
         String[] query_split = query.split(",");
         int numAttributes = 4;
         int numInstances = 1;
@@ -82,23 +90,21 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         Attribute year = new Attribute("Year");
         Attribute price = new Attribute("MSRP");
 
-        FastVector fvAttributes = new FastVector(numAttributes);
-        fvAttributes.add(manufacturer);
-        fvAttributes.add(model);
-        fvAttributes.add(year);
-        fvAttributes.add(price);
+        ArrayList<Attribute> attributes= new ArrayList<>();
+        attributes.add(manufacturer);
+        attributes.add(model);
+        attributes.add(year);
+        attributes.add(price);
 
-        Instances instances = new Instances("Rel", fvAttributes, numInstances);
+        Instances instances = new Instances("Rel", attributes, numInstances);
         instances.setClassIndex(numAttributes - 1);
 
-//        Instance user_query = new DenseInstance(numAttributes);
-//        user_query.setValue(manufacturer, Float.parseFloat(query_split[0]));
-//        user_query.setValue(model, Float.parseFloat(query_split[1]));
-//        user_query.setValue(year, Float.parseFloat(query_split[2]));
+        double[] encodedVals = getEncodedVals(query_split[0], query_split[1]);
+
         Instance user_query = new DenseInstance(numAttributes);
-        user_query.setValue(manufacturer, 0);
-        user_query.setValue(model, 0);
-        user_query.setValue(year, 2001);
+        user_query.setValue(manufacturer, encodedVals[0]);
+        user_query.setValue(model, encodedVals[1]);
+        user_query.setValue(year, Double.parseDouble(query_split[2]));
 
         instances.add(user_query);
 
@@ -111,5 +117,50 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         return 0;
+    }
+
+    public double[] getEncodedVals(String man, String mod) {
+        double[] result = {0,0};
+
+        // Get InputStream for String data
+        InputStream sInStream = getResources().openRawResource(R.raw.sorted_data);
+        // Create Buffered Reader for String data stream
+        BufferedReader sReader = new BufferedReader(
+                new InputStreamReader(sInStream, StandardCharsets.UTF_8));
+
+        // Get InputStream for encoded data
+        InputStream eInStream = getResources().openRawResource(R.raw.model_data);
+        // Create Buffered Reader for encoded data stream
+        BufferedReader eReader = new BufferedReader(
+                new InputStreamReader(eInStream, StandardCharsets.UTF_8));
+
+        String row;
+        // Read each row and check if it is the same as the user's query
+        try {
+            // Skip over the column headers
+            sReader.readLine();
+            eReader.readLine();
+            while((row = sReader.readLine()) != null)
+            {
+                // Split each row on the commas
+                String[] splits = row.split(",");
+                // If the manufacturer and model are the same
+                if(splits[0].equals(man) && splits[1].equals(mod)) {
+                    String eRow = eReader.readLine();
+                    String[] eSplits = eRow.split(",");
+                    result[0] = Double.parseDouble(eSplits[0]);
+                    result[1] = Double.parseDouble(eSplits[1]);
+                    break;
+                }
+                else {
+                    eReader.readLine();
+                }
+            }
+        }
+        catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        return result;
     }
 }
