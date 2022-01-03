@@ -19,4 +19,5 @@
     <string name="unknown">Unknown</string>
     <string name="result_imageCD">An image of the car you entered</string>
     <string name="done_buttonCD">Done. Tap to return to the previous screen.</string>
+    <string name="dropdownCD">Tap to expand dropdown menu.</string>
 </resources>

@@ -68,70 +68,127 @@
                     android:text="@string/manufacturer"
                     android:textSize="@dimen/heading_size"/>
 
-                <Spinner
-                    android:id="@+id/manufacturer"
-                    android:layout_width="wrap_content"
+                <!-- Layout for Manufacturer Spinner -->
+                <RelativeLayout
+                    android:id="@+id/manufacturer_layout"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/manufacturer_label"
                     android:layout_marginStart="@dimen/margin30"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:popupBackground="@color/grey"
-                    android:spinnerMode="dropdown"
-                    android:dropDownWidth="wrap_content"
-                    android:tooltipText="Select One"/>
+                    android:background="@drawable/spinner_background"
+                    android:layout_below="@id/manufacturer_label">
+
+                    <Spinner
+                        android:id="@+id/manufacturer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:spinnerMode="dropdown"
+                        android:dropDownWidth="match_parent"
+                        android:popupBackground="@color/grey"
+                        android:tooltipText="Select One"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/margin10"
+                        android:src="@drawable/spinner_end"
+                        android:background="@color/grey"
+                        android:contentDescription="@string/dropdownCD"/>
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/model_label"
                     style="@style/HeaderText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/manufacturer"
+                    android:layout_below="@id/manufacturer_layout"
                     android:layout_marginTop="@dimen/margin10"
                     android:layout_marginStart="@dimen/margin30"
                     android:text="@string/model"
                     android:textSize="@dimen/heading_size"/>
 
-                <Spinner
-                    android:id="@+id/model"
-                    android:layout_width="wrap_content"
+                <!-- Layout for Model Spinner -->
+                <RelativeLayout
+                    android:id="@+id/model_layout"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/model_label"
                     android:layout_marginStart="@dimen/margin30"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:popupBackground="@color/grey"
-                    android:spinnerMode="dropdown"
-                    android:dropDownWidth="wrap_content"
-                    android:tooltipText="Select One"/>
+                    android:background="@drawable/spinner_background"
+                    android:layout_below="@id/model_label">
+
+                    <Spinner
+                        android:id="@+id/model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:spinnerMode="dropdown"
+                        android:dropDownWidth="match_parent"
+                        android:popupBackground="@color/grey"
+                        android:tooltipText="Select One"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/margin10"
+                        android:src="@drawable/spinner_end"
+                        android:background="@color/grey"
+                        android:contentDescription="@string/dropdownCD"/>
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/year_label"
                     style="@style/HeaderText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/model"
+                    android:layout_below="@id/model_layout"
                     android:layout_marginTop="@dimen/margin10"
                     android:layout_marginStart="@dimen/margin30"
                     android:text="@string/year"
                     android:textSize="@dimen/heading_size"/>
 
-                <Spinner
-                    android:id="@+id/year"
-                    android:layout_width="wrap_content"
+                <!-- Layout for year Spinner -->
+                <RelativeLayout
+                    android:id="@+id/year_layout"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/year_label"
                     android:layout_marginStart="@dimen/margin30"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:popupBackground="@color/grey"
-                    android:spinnerMode="dropdown"
-                    android:dropDownWidth="wrap_content"
-                    android:tooltipText="Select One"/>
+                    android:background="@drawable/spinner_background"
+                    android:layout_below="@id/year_label">
+
+                    <Spinner
+                        android:id="@+id/year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:spinnerMode="dropdown"
+                        android:dropDownWidth="match_parent"
+                        android:popupBackground="@color/grey"
+                        android:tooltipText="Select One"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/margin5"
+                        android:src="@drawable/spinner_end"
+                        android:background="@color/grey"
+                        android:contentDescription="@string/dropdownCD"/>
+                </RelativeLayout>
 
                 <ImageButton
                     android:id="@+id/submit_button"
                     android:layout_width="150dp"
                     android:layout_height="75dp"
                     android:background="@drawable/submit"
-                    android:layout_below="@id/year"
+                    android:layout_below="@id/year_layout"
                     android:layout_marginStart="@dimen/margin30"
                     android:layout_marginTop="@dimen/margin10"
                     android:contentDescription="@string/submit"/>

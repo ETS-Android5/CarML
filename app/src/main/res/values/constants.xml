@@ -6,5 +6,6 @@
     <dimen name="margin20">20dp</dimen>
     <dimen name="margin30">30dp</dimen>
     <dimen name="heading_size">26sp</dimen>
-    <dimen name="land_text_size">40sp</dimen>
+    <dimen name="land_text_size">32sp</dimen>
+    <dimen name="land_head_size">36sp</dimen>
 </resources>
