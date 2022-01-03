@@ -60,70 +60,70 @@
 
                 <TextView
                     android:id="@+id/manufacturer_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin30"
                     android:layout_marginStart="@dimen/margin30"
-                    android:text="@string/manufacturer"
-                    android:textSize="@dimen/heading_size"/>
+                    android:text="@string/manufacturer" />
 
                 <Spinner
                     android:id="@+id/manufacturer"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/manufacturer_label"
                     android:layout_marginStart="@dimen/margin30"
                     android:layout_marginTop="@dimen/margin10"
-                    android:popupBackground="@color/grey"
                     android:spinnerMode="dropdown"
                     android:dropDownWidth="wrap_content"
+                    android:popupBackground="@color/grey"
                     android:tooltipText="Select One"/>
 
                 <TextView
                     android:id="@+id/model_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/manufacturer"
                     android:layout_marginTop="@dimen/margin10"
                     android:layout_marginStart="@dimen/margin30"
-                    android:text="@string/model"
-                    android:textSize="@dimen/heading_size"/>
+                    android:text="@string/model" />
 
                 <Spinner
                     android:id="@+id/model"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/model_label"
                     android:layout_marginStart="@dimen/margin30"
                     android:layout_marginTop="@dimen/margin10"
-                    android:popupBackground="@color/grey"
                     android:spinnerMode="dropdown"
                     android:dropDownWidth="wrap_content"
+                    android:popupBackground="@color/grey"
                     android:tooltipText="Select One"/>
 
                 <TextView
                     android:id="@+id/year_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/model"
                     android:layout_marginTop="@dimen/margin10"
                     android:layout_marginStart="@dimen/margin30"
-                    android:text="@string/year"
-                    android:textSize="@dimen/heading_size"/>
+                    android:text="@string/year" />
 
                 <Spinner
                     android:id="@+id/year"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/year_label"
                     android:layout_marginStart="@dimen/margin30"
                     android:layout_marginTop="@dimen/margin10"
-                    android:popupBackground="@color/grey"
                     android:spinnerMode="dropdown"
                     android:dropDownWidth="wrap_content"
+                    android:popupBackground="@color/grey"
                     android:tooltipText="Select One"/>
 
                 <ImageButton

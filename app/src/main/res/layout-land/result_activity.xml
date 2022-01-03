@@ -62,7 +62,7 @@
                 <ImageView
                     android:id="@+id/result_image"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/margin20"
                     android:layout_marginBottom="@dimen/margin20"
@@ -72,7 +72,7 @@
 
                 <TextView
                     android:id="@+id/manufacturer_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_image"
@@ -82,6 +82,7 @@
 
                 <TextView
                     android:id="@+id/result_manufacturer"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/manufacturer_label"
@@ -92,7 +93,7 @@
 
                 <TextView
                     android:id="@+id/model_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_manufacturer"
@@ -102,6 +103,7 @@
 
                 <TextView
                     android:id="@+id/result_model"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/model_label"
@@ -112,7 +114,7 @@
 
                 <TextView
                     android:id="@+id/year_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_model"
@@ -122,6 +124,7 @@
 
                 <TextView
                     android:id="@+id/result_year"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/year_label"
@@ -132,7 +135,7 @@
 
                 <TextView
                     android:id="@+id/fuel_type_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_year"
@@ -142,6 +145,7 @@
 
                 <TextView
                     android:id="@+id/result_fuel_type"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/fuel_type_label"
@@ -152,7 +156,7 @@
 
                 <TextView
                     android:id="@+id/horsepower_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_fuel_type"
@@ -162,6 +166,7 @@
 
                 <TextView
                     android:id="@+id/result_horsepower"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/horsepower_label"
@@ -172,7 +177,7 @@
 
                 <TextView
                     android:id="@+id/transmission_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_horsepower"
@@ -182,6 +187,7 @@
 
                 <TextView
                     android:id="@+id/result_transmission"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/transmission_label"
@@ -192,7 +198,7 @@
 
                 <TextView
                     android:id="@+id/drivetrain_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_transmission"
@@ -202,6 +208,7 @@
 
                 <TextView
                     android:id="@+id/result_drivetrain"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/drivetrain_label"
@@ -212,7 +219,7 @@
 
                 <TextView
                     android:id="@+id/num_doors_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_drivetrain"
@@ -222,6 +229,7 @@
 
                 <TextView
                     android:id="@+id/result_num_doors"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/num_doors_label"
@@ -232,7 +240,7 @@
 
                 <TextView
                     android:id="@+id/body_type_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_num_doors"
@@ -242,6 +250,7 @@
 
                 <TextView
                     android:id="@+id/result_body_type"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/body_type_label"
@@ -252,7 +261,7 @@
 
                 <TextView
                     android:id="@+id/price_label"
-                    style="@style/HeaderText"
+                    style="@style/LandHeadText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_body_type"
@@ -262,6 +271,7 @@
 
                 <TextView
                     android:id="@+id/result_price"
+                    style="@style/LandRegText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/price_label"
@@ -275,7 +285,7 @@
                     android:layout_width="150dp"
                     android:layout_height="75dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/result_price"
+                    android:layout_below="@id/price_label"
                     android:layout_marginTop="@dimen/margin30"
                     android:background="@drawable/done"
                     android:contentDescription="@string/done_buttonCD"/>

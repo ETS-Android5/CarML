@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="banner_height">60dp</dimen>
+    <dimen name="banner_height">100dp</dimen>
     <dimen name="margin5">5dp</dimen>
     <dimen name="margin10">10dp</dimen>
     <dimen name="margin20">20dp</dimen>
     <dimen name="margin30">30dp</dimen>
     <dimen name="heading_size">26sp</dimen>
+    <dimen name="land_text_size">40sp</dimen>
 </resources>

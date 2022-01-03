@@ -2,7 +2,6 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -26,9 +25,9 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     Spinner modelDD;
     Spinner yearDD;
     // Create ArrayLists that hold Manufacturer and Model
-    private List<String> manufacturers = new ArrayList<>();
-    private List<String> models = new ArrayList<>();
-    private List<String> years = new ArrayList<>();
+    private final List<String> manufacturers = new ArrayList<>();
+    private final List<String> models = new ArrayList<>();
+    private final List<String> years = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +67,9 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.submit_button): {
-                String user_car =   manufacturerDD.getSelectedItem().toString() + "," +
-                                    modelDD.getSelectedItem().toString() + "," +
-                                    yearDD.getSelectedItem().toString();
-                Log.d("Spinner",  user_car);
+                String user_car =   manufacturerDD.getSelectedItem() + "," +
+                                    modelDD.getSelectedItem() + "," +
+                                    yearDD.getSelectedItem();
                 Intent result = new Intent(PricePredictionActivity.this, ResultActivity.class);
                 result.putExtra("user_car", user_car);
                 startActivity(result);
@@ -87,7 +85,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         // Add in the first value for the dropdown menus
         manufacturers.add("Select One");
         models.add("Select One");
-        years.add("Select One");
 
         // Add in values for years
         for (int i = 1990; i <= 2017; i++) {
@@ -95,7 +92,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         }
 
         // Get InputStream for data
-        InputStream inStream = getResources().openRawResource(R.raw.sorted_data);
+        InputStream inStream = getResources().openRawResource(R.raw.descriptive_data);
         // Create Buffered Reader for stream
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(inStream, StandardCharsets.UTF_8));

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,34 +8,46 @@
     android:background="@drawable/tarmac"
     android:orientation="vertical">
 
-    <!-- Layout for banner -->
-    <RelativeLayout
+    <!-- Main View -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/carml_banner"
+        <!-- Main RelativeLayout -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/banner_height"
-            android:background="@drawable/carml"
-            android:contentDescription="@string/noCD"/>
-    </RelativeLayout>
+            android:layout_height="wrap_content">
 
-    <!-- Layout for Price Prediction Button -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <!-- Layout for banner -->
+            <RelativeLayout
+                android:id="@+id/banner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/price_prediction_button"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/price_prediction"
-            android:contentDescription="@string/price_prediction_buttonCD"/>
-    </RelativeLayout>
+                <ImageView
+                    android:id="@+id/carml_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/banner_height"
+                    android:background="@drawable/carml"
+                    android:contentDescription="@string/noCD"/>
+            </RelativeLayout>
 
+            <!-- Layout for Price Prediction Button -->
+            <RelativeLayout
+                android:id="@+id/price_prediction_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/banner_layout"
+                android:layout_marginTop="100dp">
 
-
+                <ImageButton
+                    android:id="@+id/price_prediction_button"
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/price_prediction"
+                    android:contentDescription="@string/price_prediction_buttonCD"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

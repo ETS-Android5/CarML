@@ -18,4 +18,5 @@
     <string name="body_type">Body Type:</string>
     <string name="unknown">Unknown</string>
     <string name="result_imageCD">An image of the car you entered</string>
+    <string name="done_buttonCD">Done. Tap to return to the previous screen.</string>
 </resources>

@@ -5,6 +5,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/grey"
-    android:textSize="18sp"
+    android:textSize="@dimen/land_text_size"
     android:textColor="@color/white"
     android:padding="@dimen/margin5"/>
