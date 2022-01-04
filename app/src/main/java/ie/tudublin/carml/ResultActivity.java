@@ -128,6 +128,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         return 0;
     }
 
+    // Get the encoded values so they can be passed to the model
     public double[] getEncodedVals(String query) {
         // query is manufacturer,model,year
         double[] result = {0,0};
@@ -153,11 +154,12 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             // Skip over the column headers
             sReader.readLine();
             eReader.readLine();
+            // While there is a row to read
             while((row = sReader.readLine()) != null)
             {
                 // Split each row on the commas
                 String[] splits = row.split(",");
-                // If the manufacturer and model are the same
+                // If the manufacturer and model match the query
                 if(splits[0].equals(man) && splits[1].equals(mod)) {
                     String eRow = eReader.readLine();
                     String[] eSplits = eRow.split(",");
@@ -179,6 +181,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         return result;
     }
 
+    // Display the details of the car to the correct views
     public void displayCarDetails(String[] details) {
         // details is Engine Fuel Type,Engine HP,Transmission Type,
         // Driven_Wheels,Number of Doors,Vehicle Style,MSRP

@@ -9,7 +9,7 @@
     <string name="year">Year:</string>
     <string name="engine_size">Engine Size (Litres):</string>
     <string name="fuel_type">Fuel Type:</string>
-    <string name="submit">Submit</string>
+    <string name="submit">Tap to submit and go to result.</string>
     <string name="price">Price:</string>
     <string name="horsepower">Horsepower:</string>
     <string name="transmission">Transmission:</string>

@@ -96,7 +96,7 @@
                         android:layout_marginEnd="@dimen/margin5"
                         android:src="@drawable/spinner_end"
                         android:background="@color/grey"
-                        android:contentDescription="@string/dropdownCD"/>
+                        android:contentDescription="@string/noCD"/>
                 </RelativeLayout>
 
                 <TextView
@@ -138,7 +138,7 @@
                         android:layout_marginEnd="@dimen/margin5"
                         android:src="@drawable/spinner_end"
                         android:background="@color/grey"
-                        android:contentDescription="@string/dropdownCD"/>
+                        android:contentDescription="@string/noCD"/>
                 </RelativeLayout>
 
                 <TextView
@@ -180,7 +180,7 @@
                         android:layout_marginEnd="@dimen/margin5"
                         android:src="@drawable/spinner_end"
                         android:background="@color/grey"
-                        android:contentDescription="@string/dropdownCD"/>
+                        android:contentDescription="@string/noCD"/>
                 </RelativeLayout>
 
                 <ImageButton
