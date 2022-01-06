@@ -2,6 +2,7 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -94,32 +95,52 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         String[] query_split = query.split(",");
         int numAttributes = 4;
         int numInstances = 1;
-        Attribute manufacturer = new Attribute("Make");
-        Attribute model = new Attribute("Model");
-        Attribute year = new Attribute("Year");
+//        Attribute manufacturer = new Attribute("Make");
+//        Attribute model = new Attribute("Model");
+//        Attribute year = new Attribute("Year");
+//        Attribute price = new Attribute("MSRP");
+        ArrayList<String> test = new ArrayList<>();
+        test.add(query_split[0]);
+        test.add(query_split[1]);
+        test.add(query_split[2]);
+        Attribute manufacturer = new Attribute("Make", test);
+        Attribute model = new Attribute("Model", test);
+        Attribute year = new Attribute("Year", test);
         Attribute price = new Attribute("MSRP");
+//        ArrayList<String> attribute = new ArrayList<>();
+//        attribute.add(query_split[0]);
+//        attribute.add(query_split[1]);
+//        attribute.add(query_split[2]);
+
+//        Attribute all = new Attribute("All", attribute);
 
         ArrayList<Attribute> attributes= new ArrayList<>();
         attributes.add(manufacturer);
         attributes.add(model);
         attributes.add(year);
         attributes.add(price);
+//        attributes.add(all);
 
         Instances instances = new Instances("Rel", attributes, numInstances);
         instances.setClassIndex(numAttributes - 1);
+//        instances.setClassIndex(0);
 
         double[] encodedVals = getEncodedVals(query);
 
         Instance user_query = new DenseInstance(numAttributes);
-        user_query.setValue(manufacturer, encodedVals[0]);
-        user_query.setValue(model, encodedVals[1]);
-        user_query.setValue(year, Double.parseDouble(query_split[2]));
+//        user_query.setValue(manufacturer, encodedVals[0]);
+//        user_query.setValue(model, encodedVals[1]);
+//        user_query.setValue(year, Double.parseDouble(query_split[2]));
+        user_query.setValue(manufacturer, String.valueOf(query_split[0]));
+        user_query.setValue(model, String.valueOf(query_split[1]));
+        user_query.setValue(year, String.valueOf(query_split[2]));
+//        user_query.setValue(all, "");
 
         instances.add(user_query);
 
         try {
             Classifier rf = (Classifier)
-                    weka.core.SerializationHelper.read(getAssets().open("carml.model"));
+                    weka.core.SerializationHelper.read(getAssets().open("carmlcat.model"));
             return rf.classifyInstance(instances.instance(0));
         } catch (Exception e) {
             e.printStackTrace();
