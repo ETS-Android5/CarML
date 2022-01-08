@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import weka.classifiers.Classifier;
 import weka.core.Attribute;
+import weka.core.BinarySparseInstance;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.core.SparseInstance;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +25,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Vector;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -95,52 +98,32 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         String[] query_split = query.split(",");
         int numAttributes = 4;
         int numInstances = 1;
-//        Attribute manufacturer = new Attribute("Make");
-//        Attribute model = new Attribute("Model");
-//        Attribute year = new Attribute("Year");
-//        Attribute price = new Attribute("MSRP");
-        ArrayList<String> test = new ArrayList<>();
-        test.add(query_split[0]);
-        test.add(query_split[1]);
-        test.add(query_split[2]);
-        Attribute manufacturer = new Attribute("Make", test);
-        Attribute model = new Attribute("Model", test);
-        Attribute year = new Attribute("Year", test);
+        Attribute manufacturer = new Attribute("Make");
+        Attribute model = new Attribute("Model");
+        Attribute year = new Attribute("Year");
         Attribute price = new Attribute("MSRP");
-//        ArrayList<String> attribute = new ArrayList<>();
-//        attribute.add(query_split[0]);
-//        attribute.add(query_split[1]);
-//        attribute.add(query_split[2]);
 
-//        Attribute all = new Attribute("All", attribute);
-
-        ArrayList<Attribute> attributes= new ArrayList<>();
+        ArrayList<Attribute> attributes= new ArrayList<>(numAttributes);
         attributes.add(manufacturer);
         attributes.add(model);
         attributes.add(year);
         attributes.add(price);
-//        attributes.add(all);
 
-        Instances instances = new Instances("Rel", attributes, numInstances);
+        Instances instances = new Instances("Query", attributes, numInstances);
         instances.setClassIndex(numAttributes - 1);
-//        instances.setClassIndex(0);
 
         double[] encodedVals = getEncodedVals(query);
 
         Instance user_query = new DenseInstance(numAttributes);
-//        user_query.setValue(manufacturer, encodedVals[0]);
-//        user_query.setValue(model, encodedVals[1]);
-//        user_query.setValue(year, Double.parseDouble(query_split[2]));
-        user_query.setValue(manufacturer, String.valueOf(query_split[0]));
-        user_query.setValue(model, String.valueOf(query_split[1]));
-        user_query.setValue(year, String.valueOf(query_split[2]));
-//        user_query.setValue(all, "");
+        user_query.setValue(manufacturer, encodedVals[0]);
+        user_query.setValue(model, encodedVals[1]);
+        user_query.setValue(year, Double.parseDouble(query_split[2]));
 
         instances.add(user_query);
 
         try {
             Classifier rf = (Classifier)
-                    weka.core.SerializationHelper.read(getAssets().open("carmlcat.model"));
+                    weka.core.SerializationHelper.read(getAssets().open("carml.model"));
             return rf.classifyInstance(instances.instance(0));
         } catch (Exception e) {
             e.printStackTrace();
