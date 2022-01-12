@@ -2,18 +2,15 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import weka.classifiers.Classifier;
 import weka.core.Attribute;
-import weka.core.BinarySparseInstance;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.SparseInstance;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +22,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Vector;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -61,6 +57,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         num_doors =  findViewById(R.id.result_num_doors);
         body_type = findViewById(R.id.result_body_type);
         price = findViewById(R.id.result_price);
+        // Display the result of the user's query
         displayResult();
     }
 
@@ -80,6 +77,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    // Displays all the details of the car entered by the user
     public void displayResult() {
         Intent result = getIntent();
         String user_car = result.getStringExtra("user_car");
@@ -90,37 +88,38 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         double prediction = predict(user_car);
         Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
         price.setText(String.format(currentLocale,"%.0f", prediction));
-
     }
 
+    // Predicts a price for the car entered
     public double predict(String query) {
         // query is manufacturer,model,year
         String[] query_split = query.split(",");
         int numAttributes = 4;
         int numInstances = 1;
+        // Create attributes for each feature for the model
         Attribute manufacturer = new Attribute("Make");
         Attribute model = new Attribute("Model");
         Attribute year = new Attribute("Year");
         Attribute price = new Attribute("MSRP");
-
+        // Put the attributes in an ArrayList
         ArrayList<Attribute> attributes= new ArrayList<>(numAttributes);
         attributes.add(manufacturer);
         attributes.add(model);
         attributes.add(year);
         attributes.add(price);
-
+        // Create an Instances object to hold the query instance
         Instances instances = new Instances("Query", attributes, numInstances);
         instances.setClassIndex(numAttributes - 1);
-
+        // Get the encoded values for the user's query
         double[] encodedVals = getEncodedVals(query);
-
+        // Create an Instance with the encoded values
         Instance user_query = new DenseInstance(numAttributes);
         user_query.setValue(manufacturer, encodedVals[0]);
         user_query.setValue(model, encodedVals[1]);
         user_query.setValue(year, Double.parseDouble(query_split[2]));
-
+        // Add the Instance to the Instances object
         instances.add(user_query);
-
+        // Classify the Instance
         try {
             Classifier rf = (Classifier)
                     weka.core.SerializationHelper.read(getAssets().open("carml.model"));
@@ -173,6 +172,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     displayCarDetails(car_details);
                     break;
                 }
+                // Else, move on
                 else {
                     eReader.readLine();
                 }
