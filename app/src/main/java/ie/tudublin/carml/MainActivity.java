@@ -1,3 +1,9 @@
+/* This is the Main Activity. It starts on the home screen and displays options to the user
+* Author: Sean Coll
+* Date Created: 12/12/21
+* Last Modified: 21/1/22
+*/
+
 package ie.tudublin.carml;
 
 import androidx.appcompat.app.AppCompatActivity;

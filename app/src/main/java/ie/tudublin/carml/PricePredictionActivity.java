@@ -1,3 +1,8 @@
+/* In this activity the user enters detail for a car they wish to see a predicted price for.
+ * Author: Sean Coll
+ * Date Created: 23/12/21
+ * Last Modified: 03/1/22
+ */
 package ie.tudublin.carml;
 
 import android.content.Intent;
