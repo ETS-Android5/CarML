@@ -28,40 +28,24 @@ import java.util.concurrent.Future;
 
 public class ImageLoader {
 
-    Bitmap image;
     String url;
     ImageView imgView;
 
     public ImageLoader(ImageView iV) {
-        this.image = null;
         this.imgView = iV;
-    }
-
-    public void setImage(Bitmap image) {
-        this.image = image;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     // Manages threads and their execution
     ExecutorService execServ = Executors.newFixedThreadPool(2);
 
-    public Bitmap getBitmapImage(String query) {
+    public void getBitmapImage(String query) {
 
         // Thread to get an image URL
         Runnable bgGetUrl = new Runnable() {
             @Override
             public void run() {
-                Log.i("CarML bgGetUrl", "Starting bgGetUrl");
-                String url = getImageUrl(query);
-                setUrl(url);
-                Log.i("CarML bgGetUrl", "Finished bgGetUrl");
+                // Get an image url for the car entered
+                url = getImageUrl(query);
             }
         };
 
@@ -77,19 +61,22 @@ public class ImageLoader {
         Runnable bgGetImage = new Runnable() {
             @Override
             public void run() {
-                Log.i("CarML bgGetImage", "Starting bgGetImage");
                 Bitmap image;
                 try {
-                    String url = getUrl();
+                    // If no image was found, end
+                    if (url.equals("No Image Found")) {
+                        return;
+                    }
+                    // Open a stream to the URL
                     InputStream inStream = new java.net.URL(url).openStream();
-                    Log.i("CarML URL to Stream", getUrl());
+                    // Decode the stream into a BitMap
                     image = BitmapFactory.decodeStream(inStream);
-                    setImage(image);
+                    // Update the UI
+                    imgView.setImageBitmap(image);
                 }
                 catch (Exception e) {
                     e.printStackTrace();
                 }
-                Log.i("CarML bgGetImage", "Finished bgGetImage");
             }
         };
 
@@ -101,7 +88,6 @@ public class ImageLoader {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        return this.image;
     }
 
     public String getImageUrl(String query) {
@@ -139,7 +125,7 @@ public class ImageLoader {
             ioe.printStackTrace();
         }
         // Return a string the will lead to the default image being displayed
-        return "https://forums.galaxy-of-heroes.starwars.ea.com/themes/swgh/design/images/logo-starwars-galaxy-of-heroes.png";
+        return "No Image Found";
     }
 
 }

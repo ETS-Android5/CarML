@@ -6,9 +6,7 @@
 package ie.tudublin.carml;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,10 +19,6 @@ import weka.core.Instance;
 import weka.core.Instances;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,7 +44,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     TextView num_doors;
     TextView body_type;
     TextView price;
-    Bitmap image;
     ImageLoader imgLoad;
 
     @Override
@@ -103,9 +96,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         year.setText(user_car_split[2]);
         // Get the image for the car
         imgLoad = new ImageLoader(result_image);
-        image = imgLoad.getBitmapImage(user_car);
-        Log.i("CarML Setting Image", "Going to set Image now");
-        result_image.setImageBitmap(image);
+        imgLoad.getBitmapImage(user_car);
         double prediction = predict(user_car);
         Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
         price.setText(String.format(currentLocale,"%.0f", prediction));
