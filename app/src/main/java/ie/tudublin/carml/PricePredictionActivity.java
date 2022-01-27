@@ -65,6 +65,13 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        submit.setAlpha(1F);
+        submit.setOnClickListener(this);
+    }
+
+    @Override
     public void onClick(View view) {
         switch(view.getId()) {
             case(R.id.back_arrow): {
@@ -72,6 +79,8 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.submit_button): {
+                submit.setAlpha(0.5F);
+                submit.setOnClickListener(null);
                 String user_car =   manufacturerDD.getSelectedItem() + "," +
                                     modelDD.getSelectedItem() + "," +
                                     yearDD.getSelectedItem();
