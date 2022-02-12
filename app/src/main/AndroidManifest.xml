@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/carmlsquare"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CarML">
+        android:theme="@style/Theme.CarML"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:screenOrientation="fullSensor"

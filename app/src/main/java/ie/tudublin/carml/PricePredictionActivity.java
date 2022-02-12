@@ -7,6 +7,7 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -99,6 +100,10 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         // Add in the first value for the dropdown menus
         manufacturers.add("Select One");
         models.add("Select One");
+
+        DatabaseAccess DBA = new DatabaseAccess();
+
+        String manufacturersData = DBA.runThread("manufacturers", "Acura,CL,2001");
 
         // Add in values for years
         for (int i = 1990; i <= 2017; i++) {
