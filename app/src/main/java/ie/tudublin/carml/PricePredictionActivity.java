@@ -69,6 +69,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 new ArrayAdapter<>(this, R.layout.spinner_item, models);
         modAdapter.setDropDownViewResource(R.layout.spinner_item);
         modelDD.setAdapter(modAdapter);
+        modelDD.setOnItemSelectedListener(this);
 
         ArrayAdapter<String> yearAdapter =
                 new ArrayAdapter<>(this, R.layout.spinner_item, years);
@@ -119,9 +120,11 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.model): {
-                break;
-            }
-            case(R.id.year): {
+                if(!adapterView.getSelectedItem().toString().equals("Select One"))
+                {
+                    Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
+                    loadYears(manufacturerDD.getSelectedItem() + "," + adapterView.getSelectedItem().toString());
+                }
                 break;
             }
         }
@@ -130,91 +133,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
-    }
-
-    public void prepSpinners() {
-        // Add in the first value for the dropdown menus
-//        manufacturers.add("Select One");
-//        models.add("Select One");
-
-//        ExecutorService execServ = Executors.newSingleThreadExecutor();
-
-//        DatabaseAccess DBA = new DatabaseAccess();
-//        String manufacturersData = DBA.runThread("manufacturers", "");
-//        String[] parsedManufacturers = parseData(manufacturersData);
-//        manufacturers.addAll(Arrays.asList(parsedManufacturers));
-//        manufacturers.add("DONE");
-//        String manufacturersData = " ";
-        // Thread to get data from the database
-//        Runnable bgGetData = new Runnable() {
-//            @Override
-//            public void run() {
-//                String manufacturersData = DBA.runThread("manufacturers", "");
-////                Log.i("CarML DBA", "Received from thread: " + manufacturersData);
-//                String[] parsedManufacturers = parseData(manufacturersData);
-//                for (String parsedManufacturer : parsedManufacturers) {
-//                    Log.i("CarML Parsed Data", parsedManufacturer + "\n");
-//                }
-//                manufacturers.addAll(Arrays.asList(parsedManufacturers));
-//            }
-//        };
-//        try {
-//            // Execute the thread
-//            Log.i("CarML DBA", "About to add manufacturers using thread");
-//            Future<?> futureGetData = execServ.submit(bgGetData);
-//            // Wait for the thread's completion
-//            futureGetData.get();
-//        } catch (InterruptedException | ExecutionException e) {
-//            e.printStackTrace();
-//        }
-
-//        String manufacturersData = DBA.runThread("manufacturers", "Acura,CL,2001");
-//        String[] parsedManufacturers = parseData(manufacturersData);
-
-//        if( parsedManufacturers != null) manufacturers.addAll(Arrays.asList(parsedManufacturers));
-
-        // Add in values for years
-//        for (int i = 1990; i <= 2017; i++) {
-//            years.add(String.valueOf(i));
-//        }
-
-        // Get InputStream for data
-//        InputStream inStream = getResources().openRawResource(R.raw.descriptive_data);
-        // Create Buffered Reader for stream
-//        BufferedReader reader = new BufferedReader(
-//                new InputStreamReader(inStream, StandardCharsets.UTF_8));
-
-        // i is used to check if the previous item in the list is the same as the current
-//        int ma = 1;
-//        int mo = 1;
-//        String row;
-//        // Read each row and parse the correct parts into the correct lists
-//        try {
-//            // Skip over the column headers
-//            reader.readLine();
-//            while((row = reader.readLine()) != null)
-//            {
-//                // Split each row on the commas
-//                String[] splits = row.split(",");
-//
-//                if (ma > 0) {
-//                    if (!manufacturers.get(ma-1).equals(splits[0])) {
-//                        manufacturers.add(splits[0]);
-//                        ma++;
-//                    }
-//                }
-//
-//                if (mo > 0) {
-//                    if (!models.get(mo-1).equals(splits[1])) {
-//                        models.add(splits[1]);
-//                        mo++;
-//                    }
-//                }
-//            }
-//        }
-//        catch (IOException ioe) {
-//            ioe.printStackTrace();
-//        }
     }
 
     public void loadManufacturers() {
@@ -242,6 +160,24 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 new ArrayAdapter<>(this, R.layout.spinner_item, models);
         modAdapter.setDropDownViewResource(R.layout.spinner_item);
         modelDD.setAdapter(modAdapter);
+        modAdapter.notifyDataSetChanged();
+    }
+
+    public void loadYears(String car) {
+        // Empty the list
+        years.clear();
+        Log.i("CarML Spinners", "Loading years");
+        DatabaseAccess DBA = new DatabaseAccess();
+        String yearsData = DBA.runThread("years", car +", ");
+        String[] parsedYears = parseData(yearsData,"Year");
+        years.addAll(Arrays.asList(parsedYears));
+        Log.i("CarML Spinners", "Finished years");
+
+        ArrayAdapter<String> yearAdapter =
+                new ArrayAdapter<>(this, R.layout.spinner_item, years);
+        yearAdapter.setDropDownViewResource(R.layout.spinner_item);
+        yearDD.setAdapter(yearAdapter);
+        yearAdapter.notifyDataSetChanged();
     }
 
     public String[] parseData (String raw, String name) {
