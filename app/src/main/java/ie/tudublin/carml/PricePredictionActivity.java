@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,6 +42,10 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     Spinner manufacturerDD;
     Spinner modelDD;
     Spinner yearDD;
+    TextView modelLabel;
+    TextView yearLabel;
+    RelativeLayout modelSpinner;
+    RelativeLayout yearSpinner;
     // Create ArrayLists that hold Manufacturer and Model
     private final List<String> manufacturers = new ArrayList<>();
     private final List<String> models = new ArrayList<>();
@@ -50,31 +56,38 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.price_prediction_activity);
 
+        setUpViews();
+        loadManufacturers();
+
+//        ArrayAdapter<String> modAdapter =
+//                new ArrayAdapter<>(this, R.layout.spinner_item, models);
+//        modAdapter.setDropDownViewResource(R.layout.spinner_item);
+//        modelDD.setAdapter(modAdapter);
+//        modelDD.setOnItemSelectedListener(this);
+//
+//        ArrayAdapter<String> yearAdapter =
+//                new ArrayAdapter<>(this, R.layout.spinner_item, years);
+//        modAdapter.setDropDownViewResource(R.layout.spinner_item);
+//        yearDD.setAdapter(yearAdapter);
+    }
+
+    public void setUpViews() {
         back_arrow = findViewById(R.id.back_arrow);
         back_arrow.setOnClickListener(this);
         submit = findViewById(R.id.submit_button);
         submit.setOnClickListener(this);
-        loadManufacturers();
         manufacturerDD = findViewById(R.id.manufacturer);
         modelDD = findViewById(R.id.model);
+        modelLabel = findViewById(R.id.model_label);
+        modelLabel.setAlpha(0);
+        modelSpinner = findViewById(R.id.model_layout);
+        modelSpinner.setAlpha(0);
         yearDD = findViewById(R.id.year);
-
-        ArrayAdapter<String> manAdapter =
-                new ArrayAdapter<>(this, R.layout.spinner_item, manufacturers);
-        manAdapter.setDropDownViewResource(R.layout.spinner_item);
-        manufacturerDD.setAdapter(manAdapter);
-        manufacturerDD.setOnItemSelectedListener(this);
-
-        ArrayAdapter<String> modAdapter =
-                new ArrayAdapter<>(this, R.layout.spinner_item, models);
-        modAdapter.setDropDownViewResource(R.layout.spinner_item);
-        modelDD.setAdapter(modAdapter);
-        modelDD.setOnItemSelectedListener(this);
-
-        ArrayAdapter<String> yearAdapter =
-                new ArrayAdapter<>(this, R.layout.spinner_item, years);
-        modAdapter.setDropDownViewResource(R.layout.spinner_item);
-        yearDD.setAdapter(yearAdapter);
+        yearLabel = findViewById(R.id.year_label);
+        yearLabel.setAlpha(0);
+        yearSpinner = findViewById(R.id.year_layout);
+        yearSpinner.setAlpha(0);
+        submit.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -116,6 +129,8 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     loadModels(adapterView.getSelectedItem().toString());
+                    modelLabel.setAlpha(1);
+                    modelSpinner.setAlpha(1);
                 }
                 break;
             }
@@ -124,6 +139,9 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     loadYears(manufacturerDD.getSelectedItem() + "," + adapterView.getSelectedItem().toString());
+                    yearLabel.setAlpha(1);
+                    yearSpinner.setAlpha(1);
+                    submit.setVisibility(View.VISIBLE);
                 }
                 break;
             }
@@ -143,6 +161,13 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         String[] parsedManufacturers = parseData(manufacturersData,"Make");
         manufacturers.addAll(Arrays.asList(parsedManufacturers));
         Log.i("CarML Spinners", "Finished manufacturers");
+
+        ArrayAdapter<String> manAdapter =
+                new ArrayAdapter<>(this, R.layout.spinner_item, manufacturers);
+        manAdapter.setDropDownViewResource(R.layout.spinner_item);
+        manufacturerDD.setAdapter(manAdapter);
+        manufacturerDD.setOnItemSelectedListener(this);
+        manAdapter.notifyDataSetChanged();
     }
 
     public void loadModels(String man) {
@@ -160,6 +185,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 new ArrayAdapter<>(this, R.layout.spinner_item, models);
         modAdapter.setDropDownViewResource(R.layout.spinner_item);
         modelDD.setAdapter(modAdapter);
+        modelDD.setOnItemSelectedListener(this);
         modAdapter.notifyDataSetChanged();
     }
 
@@ -177,6 +203,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 new ArrayAdapter<>(this, R.layout.spinner_item, years);
         yearAdapter.setDropDownViewResource(R.layout.spinner_item);
         yearDD.setAdapter(yearAdapter);
+        yearDD.setOnItemSelectedListener(this);
         yearAdapter.notifyDataSetChanged();
     }
 
