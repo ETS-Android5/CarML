@@ -1,7 +1,7 @@
 /* In this activity the user enters detail for a car they wish to see a predicted price for.
  * Author: Sean Coll
  * Date Created: 23/12/21
- * Last Modified: 03/1/22
+ * Last Modified: 14/02/22
  */
 package ie.tudublin.carml;
 
@@ -22,18 +22,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class PricePredictionActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -46,7 +37,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     TextView yearLabel;
     RelativeLayout modelSpinner;
     RelativeLayout yearSpinner;
-    // Create ArrayLists that hold Manufacturer and Model
+    // Create ArrayLists that hold Manufacturer, Model and Year
     private final List<String> manufacturers = new ArrayList<>();
     private final List<String> models = new ArrayList<>();
     private final List<String> years = new ArrayList<>();
@@ -56,21 +47,13 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.price_prediction_activity);
 
+        // Set up the views
         setUpViews();
+        // Load the manufacturers to start
         loadManufacturers();
-
-//        ArrayAdapter<String> modAdapter =
-//                new ArrayAdapter<>(this, R.layout.spinner_item, models);
-//        modAdapter.setDropDownViewResource(R.layout.spinner_item);
-//        modelDD.setAdapter(modAdapter);
-//        modelDD.setOnItemSelectedListener(this);
-//
-//        ArrayAdapter<String> yearAdapter =
-//                new ArrayAdapter<>(this, R.layout.spinner_item, years);
-//        modAdapter.setDropDownViewResource(R.layout.spinner_item);
-//        yearDD.setAdapter(yearAdapter);
     }
 
+    // Sets up the views and makes the relevant ones hidden to start
     public void setUpViews() {
         back_arrow = findViewById(R.id.back_arrow);
         back_arrow.setOnClickListener(this);
@@ -79,14 +62,14 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         manufacturerDD = findViewById(R.id.manufacturer);
         modelDD = findViewById(R.id.model);
         modelLabel = findViewById(R.id.model_label);
-        modelLabel.setAlpha(0);
+        modelLabel.setVisibility(View.GONE);
         modelSpinner = findViewById(R.id.model_layout);
-        modelSpinner.setAlpha(0);
+        modelSpinner.setVisibility(View.GONE);
         yearDD = findViewById(R.id.year);
         yearLabel = findViewById(R.id.year_label);
-        yearLabel.setAlpha(0);
+        yearLabel.setVisibility(View.GONE);
         yearSpinner = findViewById(R.id.year_layout);
-        yearSpinner.setAlpha(0);
+        yearSpinner.setVisibility(View.GONE);
         submit.setVisibility(View.INVISIBLE);
     }
 
@@ -129,8 +112,10 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     loadModels(adapterView.getSelectedItem().toString());
-                    modelLabel.setAlpha(1);
-                    modelSpinner.setAlpha(1);
+                    modelLabel.setVisibility(View.VISIBLE);
+                    modelSpinner.setVisibility(View.VISIBLE);
+                    yearLabel.setVisibility(View.GONE);
+                    yearSpinner.setVisibility(View.GONE);
                 }
                 break;
             }
@@ -139,8 +124,8 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     loadYears(manufacturerDD.getSelectedItem() + "," + adapterView.getSelectedItem().toString());
-                    yearLabel.setAlpha(1);
-                    yearSpinner.setAlpha(1);
+                    yearLabel.setVisibility(View.VISIBLE);
+                    yearSpinner.setVisibility(View.VISIBLE);
                     submit.setVisibility(View.VISIBLE);
                 }
                 break;
