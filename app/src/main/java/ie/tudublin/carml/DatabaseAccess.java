@@ -33,7 +33,7 @@ public class DatabaseAccess {
     // Create execServ to manage the thread
     ExecutorService execServ = Executors.newSingleThreadExecutor();
 
-    String DBURL = "http://192.168.1.9/CarML/";
+    String DBURL = "http://192.168.1.6/CarML/";
     String data = " ";
 
     public String runThread(String option, String user_query) {
@@ -127,43 +127,28 @@ public class DatabaseAccess {
 
     public String runQuery(URL url, String[] car) {
         HttpURLConnection httpURLConnection = null;
-//        OutputStream OS = null;
         try {
-            Log.i("CarML DBA", "Going to create HttpURLConnection");
             // Create a URL connection
-//            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection = (HttpURLConnection) url.openConnection();
-            Log.i("CarML DBA", "Created HttpURLConnection");
             // Specify the type of request
-            Log.i("CarML DBA", "Going to specify request method");
             httpURLConnection.setRequestMethod("POST");
-            Log.i("CarML DBA", "Set request method");
             // Allow output (Sending data from client)
-            Log.i("CarML DBA", "Going to allow output");
             httpURLConnection.setDoOutput(true);
-            Log.i("CarML DBA", "Output allowed");
             httpURLConnection.setConnectTimeout(3000);
             // Accept the output through the OutputStream
-            Log.i("CarML DBA", "Going to getOutputStream");
             OutputStream OS = httpURLConnection.getOutputStream();
             if(OS == null) {
-                Log.i("CarML DBA Error", "Unable to getOutputStream");
                 return "ERROR. Unable to getOutputStream";
             }
-            Log.i("CarML DBA", "Got outputStream");
             // Buffered Writer used to apply parameters (none in this method)
-            Log.i("CarML DBA", "Going to create BufferedWriter");
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, StandardCharsets.UTF_8));
-            Log.i("CarML DBA", "Create BufferedWriter");
             // Encode the data to be sent
-            Log.i("CarML DBA", "Going to encode data");
             String data = URLEncoder.encode("manufacturer","UTF-8")+"="+
                     URLEncoder.encode(car[0], "UTF-8")+"&"+
                     URLEncoder.encode("model","UTF-8")+"="+
                     URLEncoder.encode(car[1],"UTF-8")+"&"+
                     URLEncoder.encode("year","UTF-8")+"="+
                     URLEncoder.encode(car[2], "UTF-8");
-            Log.i("CarML DBA", "Data encoded");
             // Write the data to the BufferedWriter
             bufferedWriter.write(data);
             // Flush the BufferedWriter

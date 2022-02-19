@@ -7,6 +7,7 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +33,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -71,7 +76,10 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         body_type = findViewById(R.id.result_body_type);
         price = findViewById(R.id.result_price);
         // Display the result of the user's query
-        displayResult();
+        Intent result = getIntent();
+        String user_car = result.getStringExtra("user_car");
+        displayCarDetailsFromDB(user_car);
+        displayResult(user_car);
     }
 
     @Override
@@ -91,14 +99,11 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     // Displays all the details of the car entered by the user
-    public void displayResult() {
-        Intent result = getIntent();
-        String user_car = result.getStringExtra("user_car");
+    public void displayResult(String user_car) {
         String[] user_car_split = user_car.split(",");
         manufacturer.setText(user_car_split[0]);
         model.setText(user_car_split[1]);
         year.setText(user_car_split[2]);
-        displayCarDetailsFromDB(user_car);
         // Get the image for the car
         imgLoad = new ImageLoader(result_image);
         imgLoad.getBitmapImage(user_car);
@@ -185,8 +190,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     String[] eSplits = eRow.split(",");
                     result[0] = Double.parseDouble(eSplits[0]);
                     result[1] = Double.parseDouble(eSplits[1]);
-                    String[] car_details = Arrays.copyOfRange(splits, 3, splits.length);
-//                    displayCarDetails(car_details);
                     break;
                 }
                 // Else, move on
@@ -203,23 +206,13 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     // Display the details of the car to the correct views
-    public void displayCarDetails(String[] details) {
-        // details is Engine Fuel Type,Engine HP,Transmission Type,
-        // Driven_Wheels,Number of Doors,Vehicle Style,MSRP
-        fuel_type.setText(formatString(details[0]));
-        horsepower.setText(formatString(details[1]));
-        transmission.setText(formatString(details[2]));
-        drivetrain.setText(formatString(details[3]));
-        num_doors.setText(formatString(details[4]));
-        body_type.setText(formatString(details[5]));
-    }
-
-    // Display the details of the car to the correct views
     public void displayCarDetailsFromDB(String car) {
         DatabaseAccess DBA = new DatabaseAccess();
-        String carDetails = DBA.runThread("details", car);
+        String carDetails = DBA.runThread("details", car + "");
         try {
-            JSONObject obj = new JSONObject(carDetails);
+            JSONArray ary = new JSONArray(carDetails);
+            JSONObject obj = ary.getJSONObject(0);
+
             fuel_type.setText(formatString(obj.getString("Engine Fuel Type")));
             horsepower.setText(formatString(obj.getString("Engine HP")));
             transmission.setText(formatString(obj.getString("Transmission")));
@@ -229,6 +222,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         }
         catch (JSONException e) {
             e.printStackTrace();
+            Log.i("CarML JSON ERROR", e.getMessage());
         }
     }
 
