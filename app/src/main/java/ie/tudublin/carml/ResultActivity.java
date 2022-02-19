@@ -20,6 +20,10 @@ import weka.core.Instances;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -94,7 +98,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         manufacturer.setText(user_car_split[0]);
         model.setText(user_car_split[1]);
         year.setText(user_car_split[2]);
-        displayCarDetailsFromDB(user_car_split);
+        displayCarDetailsFromDB(user_car);
         // Get the image for the car
         imgLoad = new ImageLoader(result_image);
         imgLoad.getBitmapImage(user_car);
@@ -182,7 +186,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     result[0] = Double.parseDouble(eSplits[0]);
                     result[1] = Double.parseDouble(eSplits[1]);
                     String[] car_details = Arrays.copyOfRange(splits, 3, splits.length);
-                    displayCarDetails(car_details);
+//                    displayCarDetails(car_details);
                     break;
                 }
                 // Else, move on
@@ -211,8 +215,21 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     // Display the details of the car to the correct views
-    public void displayCarDetailsFromDB(String[] car) {
-
+    public void displayCarDetailsFromDB(String car) {
+        DatabaseAccess DBA = new DatabaseAccess();
+        String carDetails = DBA.runThread("details", car);
+        try {
+            JSONObject obj = new JSONObject(carDetails);
+            fuel_type.setText(formatString(obj.getString("Engine Fuel Type")));
+            horsepower.setText(formatString(obj.getString("Engine HP")));
+            transmission.setText(formatString(obj.getString("Transmission")));
+            drivetrain.setText(formatString(obj.getString("Driven_Wheels")));
+            num_doors.setText(formatString(obj.getString("Number of Doors")));
+            body_type.setText(formatString(obj.getString("Vehicle Style")));
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     // Take a string and format is so only the first character is uppercase

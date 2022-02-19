@@ -140,13 +140,14 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     }
 
     public void loadManufacturers() {
+        JSONParser parser = new JSONParser();
         manufacturers.add("Select One");
         Log.i("CarML Spinners", "Loading manufacturers");
         DatabaseAccess DBA = new DatabaseAccess();
         String manufacturersData = DBA.runThread("manufacturers", "");
         Log.i("CarML Spinners", "Received from thread: " + manufacturersData);
         if(!manufacturersData.substring(0,1).equals("S")) {
-            String[] parsedManufacturers = parseData(manufacturersData,"Make");
+            String[] parsedManufacturers = parser.parseData(manufacturersData,"Make");
             manufacturers.addAll(Arrays.asList(parsedManufacturers));
             Log.i("CarML Spinners", "Finished manufacturers");
         }
@@ -164,13 +165,14 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     }
 
     public void loadModels(String man) {
+        JSONParser parser = new JSONParser();
         // Empty the list
         models.clear();
         models.add("Select One");
         Log.i("CarML Spinners", "Loading models");
         DatabaseAccess DBA = new DatabaseAccess();
         String modelsData = DBA.runThread("models", man +", , ");
-        String[] parsedModels = parseData(modelsData,"Model");
+        String[] parsedModels = parser.parseData(modelsData,"Model");
         models.addAll(Arrays.asList(parsedModels));
         Log.i("CarML Spinners", "Finished models");
 
@@ -183,12 +185,13 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     }
 
     public void loadYears(String car) {
+        JSONParser parser = new JSONParser();
         // Empty the list
         years.clear();
         Log.i("CarML Spinners", "Loading years");
         DatabaseAccess DBA = new DatabaseAccess();
         String yearsData = DBA.runThread("years", car +", ");
-        String[] parsedYears = parseData(yearsData,"Year");
+        String[] parsedYears = parser.parseData(yearsData,"Year");
         years.addAll(Arrays.asList(parsedYears));
         Log.i("CarML Spinners", "Finished years");
 
@@ -198,22 +201,5 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         yearDD.setAdapter(yearAdapter);
         yearDD.setOnItemSelectedListener(this);
         yearAdapter.notifyDataSetChanged();
-    }
-
-    public String[] parseData (String raw, String name) {
-        try {
-            JSONArray jsonArray = new JSONArray(raw);
-            String[] data = new String[jsonArray.length()];
-            for(int i = 0; i < jsonArray.length(); i++) {
-                // Create a new StringBuilder each time so it is clear
-                JSONObject obj = jsonArray.getJSONObject(i);
-                data[i] = obj.getString(name);
-            }
-            return data;
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

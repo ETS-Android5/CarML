@@ -59,6 +59,10 @@ public class DatabaseAccess {
                         data = getYears(user_query);
                         break;
                     }
+                    case "ping": {
+                        pingServer();
+                        break;
+                    }
                 }
             }
         };
@@ -72,7 +76,7 @@ public class DatabaseAccess {
             e.printStackTrace();
         }
 
-        return "Unable to run thread";
+        return "ERROR. Unable to run thread";
     }
 
     public String getCarDetails(String query) {
@@ -83,7 +87,7 @@ public class DatabaseAccess {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return "Unable to retrieve details";
+        return "ERROR. Unable to retrieve details";
     }
 
     public String getManufacturers() {
@@ -96,7 +100,7 @@ public class DatabaseAccess {
             e.printStackTrace();
             Log.i("CarML DBA", "Unable to retrieve manufacturers");
         }
-        return "Unable to retrieve manufacturers";
+        return "ERROR. Unable to retrieve manufacturers";
     }
 
     public String getModels(String query) {
@@ -107,7 +111,7 @@ public class DatabaseAccess {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return "Unable to retrieve models";
+        return "ERROR. Unable to retrieve models";
     }
 
     public String getYears(String query) {
@@ -118,7 +122,7 @@ public class DatabaseAccess {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return "Unable to retrieve years";
+        return "ERROR. Unable to retrieve years";
     }
 
     public String runQuery(URL url, String[] car) {
@@ -144,7 +148,7 @@ public class DatabaseAccess {
 //            OutputStream OS = null;
             if(httpURLConnection.getOutputStream() == null) {
                 Log.i("CarML DBA Error", "Unable to getOutputStream");
-                return "Unable to getOutputStream";
+                return "ERROR. Unable to getOutputStream";
             }
             Log.i("CarML DBA", "Got outputStream");
             // Buffered Writer used to apply parameters (none in this method)
@@ -188,7 +192,18 @@ public class DatabaseAccess {
 //            ioe.printStackTrace();
             httpURLConnection.disconnect();
             Log.i("CarML DBA Error", "Error: " + ioe.getMessage());
-            return "Server is unavailable";
+            return "ERROR. Server unavailable.";
         }
+    }
+
+    public String pingServer() {
+        String[] car = {",",",",","};
+        try {
+            URL url = new URL(DBURL + "pingServer.php");
+            return runQuery(url, car);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return "ERROR. Server unavailable.";
     }
 }
