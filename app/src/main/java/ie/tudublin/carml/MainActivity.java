@@ -11,8 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,13 +38,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()) {
             case(R.id.price_prediction_button): {
-                Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);
-                startActivity(price_prediction);
+                testServerConnection();
                 break;
             }
             default: {
                 break;
             }
         }
+    }
+
+    public void testServerConnection() {
+        DatabaseAccess DBA = new DatabaseAccess();
+        String response = DBA.runThread("ping","");
+        if(response.contains("ERROR")) {
+            // The server is unavailable
+            displayPopup();
+        }
+        else {
+            Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);
+            startActivity(price_prediction);
+        }
+    }
+
+    public void displayPopup() {
+        // Inflate the layout
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popup = inflater.inflate(R.layout.rectangle2, null);
+
+        // Create the popup
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        PopupWindow popupWindow = new PopupWindow(popup, width, height, true);
+
+        // Display the popup
+        RelativeLayout parent = findViewById(R.id.main);
+        popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
+
+        // Make the popup disappear when tapped
+        popup.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
     }
 }

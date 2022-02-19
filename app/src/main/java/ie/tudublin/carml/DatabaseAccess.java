@@ -60,7 +60,7 @@ public class DatabaseAccess {
                         break;
                     }
                     case "ping": {
-                        pingServer();
+                        data = pingServer();
                         break;
                     }
                 }
@@ -127,7 +127,7 @@ public class DatabaseAccess {
 
     public String runQuery(URL url, String[] car) {
         HttpURLConnection httpURLConnection = null;
-        OutputStream OS = null;
+//        OutputStream OS = null;
         try {
             Log.i("CarML DBA", "Going to create HttpURLConnection");
             // Create a URL connection
@@ -145,8 +145,8 @@ public class DatabaseAccess {
             httpURLConnection.setConnectTimeout(3000);
             // Accept the output through the OutputStream
             Log.i("CarML DBA", "Going to getOutputStream");
-//            OutputStream OS = null;
-            if(httpURLConnection.getOutputStream() == null) {
+            OutputStream OS = httpURLConnection.getOutputStream();
+            if(OS == null) {
                 Log.i("CarML DBA Error", "Unable to getOutputStream");
                 return "ERROR. Unable to getOutputStream";
             }
