@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -143,9 +144,16 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         Log.i("CarML Spinners", "Loading manufacturers");
         DatabaseAccess DBA = new DatabaseAccess();
         String manufacturersData = DBA.runThread("manufacturers", "");
-        String[] parsedManufacturers = parseData(manufacturersData,"Make");
-        manufacturers.addAll(Arrays.asList(parsedManufacturers));
-        Log.i("CarML Spinners", "Finished manufacturers");
+        Log.i("CarML Spinners", "Received from thread: " + manufacturersData);
+        if(!manufacturersData.substring(0,1).equals("S")) {
+            String[] parsedManufacturers = parseData(manufacturersData,"Make");
+            manufacturers.addAll(Arrays.asList(parsedManufacturers));
+            Log.i("CarML Spinners", "Finished manufacturers");
+        }
+        else {
+            Toast.makeText(this, "Server Unavailable",Toast.LENGTH_LONG);
+        }
+
 
         ArrayAdapter<String> manAdapter =
                 new ArrayAdapter<>(this, R.layout.spinner_item, manufacturers);

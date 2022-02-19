@@ -94,6 +94,7 @@ public class DatabaseAccess {
             return runQuery(url, car);
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            Log.i("CarML DBA", "Unable to retrieve manufacturers");
         }
         return "Unable to retrieve manufacturers";
     }
@@ -121,24 +122,44 @@ public class DatabaseAccess {
     }
 
     public String runQuery(URL url, String[] car) {
+        HttpURLConnection httpURLConnection = null;
+        OutputStream OS = null;
         try {
+            Log.i("CarML DBA", "Going to create HttpURLConnection");
             // Create a URL connection
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+//            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            Log.i("CarML DBA", "Created HttpURLConnection");
             // Specify the type of request
+            Log.i("CarML DBA", "Going to specify request method");
             httpURLConnection.setRequestMethod("POST");
+            Log.i("CarML DBA", "Set request method");
             // Allow output (Sending data from client)
+            Log.i("CarML DBA", "Going to allow output");
             httpURLConnection.setDoOutput(true);
+            Log.i("CarML DBA", "Output allowed");
+            httpURLConnection.setConnectTimeout(3000);
             // Accept the output through the OutputStream
-            OutputStream OS = httpURLConnection.getOutputStream();
+            Log.i("CarML DBA", "Going to getOutputStream");
+//            OutputStream OS = null;
+            if(httpURLConnection.getOutputStream() == null) {
+                Log.i("CarML DBA Error", "Unable to getOutputStream");
+                return "Unable to getOutputStream";
+            }
+            Log.i("CarML DBA", "Got outputStream");
             // Buffered Writer used to apply parameters (none in this method)
+            Log.i("CarML DBA", "Going to create BufferedWriter");
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, StandardCharsets.UTF_8));
+            Log.i("CarML DBA", "Create BufferedWriter");
             // Encode the data to be sent
+            Log.i("CarML DBA", "Going to encode data");
             String data = URLEncoder.encode("manufacturer","UTF-8")+"="+
                     URLEncoder.encode(car[0], "UTF-8")+"&"+
                     URLEncoder.encode("model","UTF-8")+"="+
                     URLEncoder.encode(car[1],"UTF-8")+"&"+
                     URLEncoder.encode("year","UTF-8")+"="+
                     URLEncoder.encode(car[2], "UTF-8");
+            Log.i("CarML DBA", "Data encoded");
             // Write the data to the BufferedWriter
             bufferedWriter.write(data);
             // Flush the BufferedWriter
@@ -163,9 +184,10 @@ public class DatabaseAccess {
             Log.i("CarML DBA", "Data retrieved: " + sb.toString().trim());
             // Return the JSON string
             return sb.toString().trim();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.i("CarML DBA Error", e.getMessage());
+        } catch (Exception ioe) {
+//            ioe.printStackTrace();
+            httpURLConnection.disconnect();
+            Log.i("CarML DBA Error", "Error: " + ioe.getMessage());
             return "Server is unavailable";
         }
     }

@@ -94,6 +94,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         manufacturer.setText(user_car_split[0]);
         model.setText(user_car_split[1]);
         year.setText(user_car_split[2]);
+        displayCarDetailsFromDB(user_car_split);
         // Get the image for the car
         imgLoad = new ImageLoader(result_image);
         imgLoad.getBitmapImage(user_car);
@@ -207,6 +208,11 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         drivetrain.setText(formatString(details[3]));
         num_doors.setText(formatString(details[4]));
         body_type.setText(formatString(details[5]));
+    }
+
+    // Display the details of the car to the correct views
+    public void displayCarDetailsFromDB(String[] car) {
+
     }
 
     // Take a string and format is so only the first character is uppercase
