@@ -1,7 +1,7 @@
 /* This activity displays the result to the user.
  * Author: Sean Coll
  * Date Created: 23/12/21
- * Last Modified: 12/1/22
+ * Last Modified: 20/02/22
  */
 package ie.tudublin.carml;
 
@@ -25,18 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -77,6 +67,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         price = findViewById(R.id.result_price);
         // Display the result of the user's query
         Intent result = getIntent();
+        // user_car is manufacturer,model,year
         String user_car = result.getStringExtra("user_car");
         displayCarDetailsFromDB(user_car);
         displayResult(user_car);
@@ -155,64 +146,39 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
     // Get the encoded values so they can be passed to the model
     public double[] getEncodedVals(String query) {
-        // query is manufacturer,model,year
-        double[] result = {0,0};
-        String[] query_split = query.split(",");
-        String man = query_split[0];
-        String mod = query_split[1];
-
-        // Get InputStream for String data
-        InputStream sInStream = getResources().openRawResource(R.raw.descriptive_data);
-        // Create Buffered Reader for String data stream
-        BufferedReader sReader = new BufferedReader(
-                new InputStreamReader(sInStream, StandardCharsets.UTF_8));
-
-        // Get InputStream for encoded data
-        InputStream eInStream = getResources().openRawResource(R.raw.model_data);
-        // Create Buffered Reader for encoded data stream
-        BufferedReader eReader = new BufferedReader(
-                new InputStreamReader(eInStream, StandardCharsets.UTF_8));
-
-        String row;
-        // Read each row and check if it is the same as the user's query
+        DatabaseAccess DBA = new DatabaseAccess();
+        // Get the encoded values from the database
+        String encodedVals = DBA.runThread("encodedVals",query);
+        double[] eValues = {0, 0};
+        // Parse the JSON string
         try {
-            // Skip over the column headers
-            sReader.readLine();
-            eReader.readLine();
-            // While there is a row to read
-            while((row = sReader.readLine()) != null)
-            {
-                // Split each row on the commas
-                String[] splits = row.split(",");
-                // If the manufacturer and model match the query
-                if(splits[0].equals(man) && splits[1].equals(mod)) {
-                    String eRow = eReader.readLine();
-                    String[] eSplits = eRow.split(",");
-                    result[0] = Double.parseDouble(eSplits[0]);
-                    result[1] = Double.parseDouble(eSplits[1]);
-                    break;
-                }
-                // Else, move on
-                else {
-                    eReader.readLine();
-                }
-            }
+            // Convert the string to an array
+            JSONArray ary = new JSONArray(encodedVals);
+            // Get the first object
+            JSONObject obj = ary.getJSONObject(0);
+            // Extract the values and put them in the eValues array
+            eValues[0] = Double.parseDouble(obj.getString("EncodedMake"));
+            eValues[1] = Double.parseDouble(obj.getString("EncodedModel"));
         }
-        catch (IOException ioe) {
-            ioe.printStackTrace();
+        catch (JSONException e) {
+            e.printStackTrace();
+            Log.i("CarML EncVals JSON ERROR", e.getMessage());
         }
-
-        return result;
+        return eValues;
     }
 
     // Display the details of the car to the correct views
     public void displayCarDetailsFromDB(String car) {
         DatabaseAccess DBA = new DatabaseAccess();
+        // Get the details from the database
         String carDetails = DBA.runThread("details", car + "");
+        // Parse the JSON string
         try {
+            // Convert the string to an array
             JSONArray ary = new JSONArray(carDetails);
+            // Get the first object
             JSONObject obj = ary.getJSONObject(0);
-
+            // Extract the values and display them
             fuel_type.setText(formatString(obj.getString("Engine Fuel Type")));
             horsepower.setText(formatString(obj.getString("Engine HP")));
             transmission.setText(formatString(obj.getString("Transmission")));

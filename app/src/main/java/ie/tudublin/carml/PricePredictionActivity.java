@@ -1,7 +1,7 @@
 /* In this activity the user enters detail for a car they wish to see a predicted price for.
  * Author: Sean Coll
  * Date Created: 23/12/21
- * Last Modified: 14/02/22
+ * Last Modified: 20/02/22
  */
 package ie.tudublin.carml;
 
@@ -15,13 +15,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -95,6 +90,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                                     modelDD.getSelectedItem() + "," +
                                     yearDD.getSelectedItem();
                 Intent result = new Intent(PricePredictionActivity.this, ResultActivity.class);
+                // user_car is manufacturer,model,year
                 result.putExtra("user_car", user_car);
                 startActivity(result);
                 break;
@@ -146,15 +142,11 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         DatabaseAccess DBA = new DatabaseAccess();
         String manufacturersData = DBA.runThread("manufacturers", "");
         Log.i("CarML Spinners", "Received from thread: " + manufacturersData);
-        if(!manufacturersData.substring(0,1).equals("S")) {
+        if(!manufacturersData.startsWith("ERROR")) {
             String[] parsedManufacturers = parser.parseData(manufacturersData,"Make");
             manufacturers.addAll(Arrays.asList(parsedManufacturers));
             Log.i("CarML Spinners", "Finished manufacturers");
         }
-        else {
-            Toast.makeText(this, "Server Unavailable",Toast.LENGTH_LONG);
-        }
-
 
         ArrayAdapter<String> manAdapter =
                 new ArrayAdapter<>(this, R.layout.spinner_item, manufacturers);

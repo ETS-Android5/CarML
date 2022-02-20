@@ -2,8 +2,8 @@
 * - Retrieve additional details about a car.
 * - Retrieve the lists of manufacturers and models to populate the drop down menus.
 * Author: Seán Coll
-* Date Created: 7/2/22
-* Last Modified: 7/2/22
+* Date Created: 7/02/22
+* Last Modified: 20/02/22
 */
 
 package ie.tudublin.carml;
@@ -12,7 +12,6 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -62,6 +61,9 @@ public class DatabaseAccess {
                     case "ping": {
                         data = pingServer();
                         break;
+                    }
+                    case "encodedVals": {
+                        data = getEncodedVals(user_query);
                     }
                 }
             }
@@ -125,6 +127,28 @@ public class DatabaseAccess {
         return "ERROR. Unable to retrieve years";
     }
 
+    public String pingServer() {
+        String[] car = {",",",",","};
+        try {
+            URL url = new URL(DBURL + "pingServer.php");
+            return runQuery(url, car);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return "ERROR. Server unavailable.";
+    }
+
+    public String getEncodedVals(String query) {
+        String[] car = query.split(",");
+        try {
+            URL url = new URL(DBURL + "getEncodedValues.php");
+            return runQuery(url, car);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return "ERROR. Unable to retrieve encoded values";
+    }
+
     public String runQuery(URL url, String[] car) {
         HttpURLConnection httpURLConnection = null;
         try {
@@ -179,16 +203,5 @@ public class DatabaseAccess {
             Log.i("CarML DBA Error", "Error: " + ioe.getMessage());
             return "ERROR. Server unavailable.";
         }
-    }
-
-    public String pingServer() {
-        String[] car = {",",",",","};
-        try {
-            URL url = new URL(DBURL + "pingServer.php");
-            return runQuery(url, car);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return "ERROR. Server unavailable.";
     }
 }
