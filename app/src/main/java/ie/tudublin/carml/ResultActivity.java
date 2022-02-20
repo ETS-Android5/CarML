@@ -98,9 +98,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         // Get the image for the car
         imgLoad = new ImageLoader(result_image);
         imgLoad.getBitmapImage(user_car);
-        double prediction = predict(user_car);
-        Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
-        price.setText(String.format(currentLocale,"%.0f", prediction));
     }
 
     // Predicts a price for the car entered
@@ -149,6 +146,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         DatabaseAccess DBA = new DatabaseAccess();
         // Get the encoded values from the database
         String encodedVals = DBA.runThread("encodedVals",query);
+        Log.i("CarML EncVals", "Values: " + encodedVals);
         double[] eValues = {0, 0};
         // Parse the JSON string
         try {
@@ -171,7 +169,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     public void displayCarDetailsFromDB(String car) {
         DatabaseAccess DBA = new DatabaseAccess();
         // Get the details from the database
-        String carDetails = DBA.runThread("details", car + "");
+        String carDetails = DBA.runThread("details", car);
         // Parse the JSON string
         try {
             // Convert the string to an array
@@ -185,6 +183,19 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             drivetrain.setText(formatString(obj.getString("Driven_Wheels")));
             num_doors.setText(formatString(obj.getString("Number of Doors")));
             body_type.setText(formatString(obj.getString("Vehicle Style")));
+            if(!obj.getString("Prediction").equals("0")) {
+                price.setText(obj.getString("Prediction"));
+            }
+            else {
+                double prediction = predict(car);
+                Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
+                price.setText(String.format(currentLocale,"%.0f", prediction));
+                String car2 = car + "," + String.format(currentLocale,"%.0f", prediction);
+                Log.i("CarML Add Car", "Car: " + car);
+                Log.i("CarML Add Car", "Car 2: " + car2);
+                String result = DBA.runThread("addPrediction",car2);
+                Log.i("CarML Add Car Result", "Result: " + result);
+            }
         }
         catch (JSONException e) {
             e.printStackTrace();

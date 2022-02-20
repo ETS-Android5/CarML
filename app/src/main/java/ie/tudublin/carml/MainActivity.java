@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void testServerConnection() {
         DatabaseAccess DBA = new DatabaseAccess();
+        pleaseWait(true);
         String response = DBA.runThread("ping","");
+        pleaseWait(false);
         if(response.contains("ERROR")) {
             // The server is unavailable
             displayPopup();
@@ -82,5 +84,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
+    }
+
+    public void pleaseWait(Boolean state) {
+        // Inflate the layout
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View pleaseWait = inflater.inflate(R.layout.please_wait_popup, null);
+
+        // Create the popup
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        PopupWindow pleaseWaitWindow = new PopupWindow(pleaseWait, width, height, false);
+        if (state) {
+            // Display the popup
+            RelativeLayout parent = findViewById(R.id.main);
+            pleaseWaitWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
+        }
+        else
+        {
+            pleaseWaitWindow.dismiss();
+        }
+
+
+        // Make the popup disappear when tapped
+//        pleaseWait.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                pleaseWaitWindow.dismiss();
+//                return true;
+//            }
+//        });
     }
 }

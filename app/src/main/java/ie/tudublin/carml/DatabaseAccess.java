@@ -64,6 +64,11 @@ public class DatabaseAccess {
                     }
                     case "encodedVals": {
                         data = getEncodedVals(user_query);
+                        break;
+                    }
+                    case "addPrediction": {
+                        data = addPrediction(user_query);
+                        break;
                     }
                 }
             }
@@ -149,6 +154,17 @@ public class DatabaseAccess {
         return "ERROR. Unable to retrieve encoded values";
     }
 
+    public String addPrediction(String query) {
+        String[] car = query.split(",");
+        try {
+            URL url = new URL(DBURL + "addPrediction.php");
+            return runQuery(url, car);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return "ERROR. Unable to retrieve encoded values";
+    }
+
     public String runQuery(URL url, String[] car) {
         HttpURLConnection httpURLConnection = null;
         try {
@@ -164,44 +180,94 @@ public class DatabaseAccess {
             if(OS == null) {
                 return "ERROR. Unable to getOutputStream";
             }
-            // Buffered Writer used to apply parameters (none in this method)
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, StandardCharsets.UTF_8));
-            // Encode the data to be sent
-            String data = URLEncoder.encode("manufacturer","UTF-8")+"="+
-                    URLEncoder.encode(car[0], "UTF-8")+"&"+
-                    URLEncoder.encode("model","UTF-8")+"="+
-                    URLEncoder.encode(car[1],"UTF-8")+"&"+
-                    URLEncoder.encode("year","UTF-8")+"="+
-                    URLEncoder.encode(car[2], "UTF-8");
-            // Write the data to the BufferedWriter
-            bufferedWriter.write(data);
-            // Flush the BufferedWriter
-            bufferedWriter.flush();
-            // Close the BufferedWriter
-            bufferedWriter.close();
-            // Close the OutputStream
-            OS.close();
-            // Create InputStream to receive data from server
-            InputStream IS = httpURLConnection.getInputStream();
-            // Capture the data return from server
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(IS, StandardCharsets.ISO_8859_1));
-            // Create StringBuilder to format the data
-            StringBuilder sb = new StringBuilder();
-            String json;
-            // Append each line of data to a single string which will form the JSON string
-            while ((json = bufferedReader.readLine()) != null) {
-                sb.append(json).append("\n");
+            Log.i("CarML DBA URL", "URL: " + url);
+            // If data is being retrieved from the database
+            if(url.toString().contains("get") || url.toString().contains("ping")) {
+                Log.i("CarML DBA URL", "Inside get or ping");
+                // Buffered Writer used to apply parameters
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, StandardCharsets.UTF_8));
+                // Encode the data to be sent
+                String data = URLEncoder.encode("manufacturer","UTF-8")+"="+
+                        URLEncoder.encode(car[0], "UTF-8")+"&"+
+                        URLEncoder.encode("model","UTF-8")+"="+
+                        URLEncoder.encode(car[1],"UTF-8")+"&"+
+                        URLEncoder.encode("year","UTF-8")+"="+
+                        URLEncoder.encode(car[2], "UTF-8");
+                // Write the data to the BufferedWriter
+                bufferedWriter.write(data);
+                // Flush the BufferedWriter
+                bufferedWriter.flush();
+                // Close the BufferedWriter
+                bufferedWriter.close();
+                // Close the OutputStream
+                OS.close();
+                // Create InputStream to receive data from server
+                InputStream IS = httpURLConnection.getInputStream();
+                // Capture the data return from server
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(IS, StandardCharsets.ISO_8859_1));
+                // Create StringBuilder to format the data
+                StringBuilder sb = new StringBuilder();
+                String json;
+                // Append each line of data to a single string which will form the JSON string
+                while ((json = bufferedReader.readLine()) != null) {
+                    sb.append(json).append("\n");
+                }
+                // Close the InputStream
+                IS.close();
+                Log.i("CarML DBA", "Data retrieved: " + sb.toString().trim());
+                // Return the JSON string
+                return sb.toString().trim();
             }
-            // Close the InputStream
-            IS.close();
-            Log.i("CarML DBA", "Data retrieved: " + sb.toString().trim());
-            // Return the JSON string
-            return sb.toString().trim();
+            // Otherwise an insertion is being made
+            else if (url.toString().contains("add")) {
+                Log.i("CarML DBA URL", "Inside other");
+                for (String s : car) {
+                    Log.i("CarML Query", "Item: " + s);
+                }
+                // Buffered Writer used to apply parameters
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, StandardCharsets.UTF_8));
+                // Encode the data to be sent
+                String data = URLEncoder.encode("manufacturer","UTF-8")+"="+
+                        URLEncoder.encode(car[0], "UTF-8")+"&"+
+                        URLEncoder.encode("model","UTF-8")+"="+
+                        URLEncoder.encode(car[1],"UTF-8")+"&"+
+                        URLEncoder.encode("year","UTF-8")+"="+
+                        URLEncoder.encode(car[2], "UTF-8")+"&"+
+                        URLEncoder.encode("prediction","UTF-8")+"="+
+                        URLEncoder.encode(car[3],"UTF-8");
+                Log.i("CarML DBA Encoded Data", "Data: " + data);
+                // Write the data to the BufferedWriter
+                bufferedWriter.write(data);
+                // Flush the BufferedWriter
+                bufferedWriter.flush();
+                // Close the BufferedWriter
+                bufferedWriter.close();
+                // Close the OutputStream
+                OS.close();
+
+                // Create InputStream to receive data from server
+                InputStream IS = httpURLConnection.getInputStream();
+                // Capture the data return from server
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(IS, StandardCharsets.ISO_8859_1));
+                // Create StringBuilder to format the data
+                StringBuilder sb = new StringBuilder();
+                String json;
+                // Append each line of data to a single string which will form the JSON string
+                while ((json = bufferedReader.readLine()) != null) {
+                    sb.append(json).append("\n");
+                }
+                // Close the InputStream
+                IS.close();
+                Log.i("CarML DBA", "Data retrieved: " + sb.toString().trim());
+
+                return "Insertion successful";
+            }
         } catch (Exception ioe) {
 //            ioe.printStackTrace();
             httpURLConnection.disconnect();
             Log.i("CarML DBA Error", "Error: " + ioe.getMessage());
             return "ERROR. Server unavailable.";
         }
+        return "ERROR. Unknown URL used";
     }
 }
