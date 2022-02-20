@@ -49,6 +49,13 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         loadManufacturers();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        submit.setAlpha(1F);
+        submit.setOnClickListener(this);
+    }
+
     // Sets up the views and makes the relevant ones hidden to start
     public void setUpViews() {
         back_arrow = findViewById(R.id.back_arrow);
@@ -67,13 +74,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         yearSpinner = findViewById(R.id.year_layout);
         yearSpinner.setVisibility(View.GONE);
         submit.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        submit.setAlpha(1F);
-        submit.setOnClickListener(this);
     }
 
     @Override
@@ -157,6 +157,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     }
 
     public void loadModels(String man) {
+        submit.setVisibility(View.INVISIBLE);
         JSONParser parser = new JSONParser();
         // Empty the list
         models.clear();
