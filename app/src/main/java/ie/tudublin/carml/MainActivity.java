@@ -47,21 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void testServerConnection() {
-        DatabaseAccess DBA = new DatabaseAccess();
-        pleaseWait(true);
-        String response = DBA.runThread("ping","");
-        pleaseWait(false);
-        if(response.contains("ERROR")) {
-            // The server is unavailable
-            displayPopup();
-        }
-        else {
-            Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);
-            startActivity(price_prediction);
-        }
-    }
-
     public void displayPopup() {
         // Inflate the layout
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -86,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    public void pleaseWait(Boolean state) {
+    public void testServerConnection() {
         // Inflate the layout
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View pleaseWait = inflater.inflate(R.layout.please_wait_popup, null);
@@ -95,24 +80,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         PopupWindow pleaseWaitWindow = new PopupWindow(pleaseWait, width, height, false);
-        if (state) {
-            // Display the popup
-            RelativeLayout parent = findViewById(R.id.main);
-            pleaseWaitWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
-        }
-        else
-        {
-            pleaseWaitWindow.dismiss();
-        }
+        // Display the popup
+        RelativeLayout parent = findViewById(R.id.main);
+        pleaseWaitWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
 
-
-        // Make the popup disappear when tapped
-//        pleaseWait.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View view, MotionEvent motionEvent) {
-//                pleaseWaitWindow.dismiss();
-//                return true;
-//            }
-//        });
+        DatabaseAccess DBA = new DatabaseAccess();
+        String response = DBA.runThread("ping","");
+        pleaseWaitWindow.dismiss();
+        if(response.contains("ERROR")) {
+            // The server is unavailable
+            displayPopup();
+        }
+        else {
+            Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);
+            startActivity(price_prediction);
+        }
     }
 }
