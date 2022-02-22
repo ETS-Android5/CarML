@@ -8,10 +8,15 @@ package ie.tudublin.carml;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,6 +34,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     Spinner manufacturerDD;
     Spinner modelDD;
     Spinner yearDD;
+    TextView infoButton;
     TextView modelLabel;
     TextView yearLabel;
     RelativeLayout modelSpinner;
@@ -64,6 +70,8 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         submit.setOnClickListener(this);
         manufacturerDD = findViewById(R.id.manufacturer);
         modelDD = findViewById(R.id.model);
+        infoButton = findViewById(R.id.information_button);
+        infoButton.setOnClickListener(this);
         modelLabel = findViewById(R.id.model_label);
         modelLabel.setVisibility(View.GONE);
         modelSpinner = findViewById(R.id.model_layout);
@@ -94,6 +102,29 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 result.putExtra("user_car", user_car);
                 startActivity(result);
                 break;
+            }
+            case(R.id.information_button): {
+                // Inflate the layout
+                LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+                View info = inflater.inflate(R.layout.information_button_popup, null);
+
+                // Create the popup
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                PopupWindow infoWindow = new PopupWindow(info, width, height, true);
+
+                // Display the popup
+                RelativeLayout parent = findViewById(R.id.main);
+                infoWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
+
+                // Make the popup disappear when tapped
+                info.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        infoWindow.dismiss();
+                        return true;
+                    }
+                });
             }
             default: {
                 break;

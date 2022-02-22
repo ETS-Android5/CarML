@@ -15,6 +15,7 @@
 
         <!-- Main RelativeLayout -->
         <RelativeLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -57,6 +58,18 @@
                 android:layout_below="@id/arrow_layout"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/rectangle">
+
+                <TextView
+                    android:id="@+id/information_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/information_button"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/margin10"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:text="@string/information_button_text"
+                    android:textSize="26sp"
+                    android:gravity="center"/>
 
                 <TextView
                     android:id="@+id/manufacturer_label"
