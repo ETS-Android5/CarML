@@ -68,7 +68,7 @@
                     android:layout_marginEnd="@dimen/margin10"
                     android:layout_marginTop="@dimen/margin10"
                     android:text="@string/information_button_text"
-                    android:textSize="26sp"
+                    android:textSize="@dimen/heading_size"
                     android:gravity="center"/>
 
                 <TextView

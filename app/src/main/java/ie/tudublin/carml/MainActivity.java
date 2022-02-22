@@ -19,7 +19,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,7 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()) {
             case(R.id.price_prediction_button): {
+                price_prediction.setAlpha(0.5f);
                 testServerConnection();
+                price_prediction.setAlpha(1f);
                 break;
             }
             default: {
@@ -47,10 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        price_prediction.setAlpha(1f);
+    }
+
     public void displayPopup() {
         // Inflate the layout
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popup = inflater.inflate(R.layout.rectangle2, null);
+        View popup = inflater.inflate(R.layout.server_unavailable_popup, null);
 
         // Create the popup
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -86,10 +93,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         DatabaseAccess DBA = new DatabaseAccess();
         String response = DBA.runThread("ping","");
-        pleaseWaitWindow.dismiss();
         if(response.contains("ERROR")) {
             // The server is unavailable
             displayPopup();
+            pleaseWaitWindow.dismiss();
         }
         else {
             Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);

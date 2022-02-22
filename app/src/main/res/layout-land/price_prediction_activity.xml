@@ -59,6 +59,18 @@
                 android:background="@drawable/rectangle">
 
                 <TextView
+                    android:id="@+id/information_button"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/information_button"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/margin10"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:text="@string/information_button_text"
+                    android:textSize="@dimen/land_head_size"
+                    android:gravity="center"/>
+
+                <TextView
                     android:id="@+id/manufacturer_label"
                     style="@style/LandHeadText"
                     android:layout_width="wrap_content"

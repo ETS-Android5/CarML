@@ -25,11 +25,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <TextView
                     android:id="@+id/carml_banner"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/banner_height"
-                    android:background="@drawable/carml"
+                    android:background="@drawable/banner"
+                    android:text="@string/home_banner"
+                    android:gravity="center"
+                    android:textSize="@dimen/banner_text_size"
                     android:contentDescription="@string/noCD"/>
             </RelativeLayout>
 

@@ -25,4 +25,5 @@
     <string name="please_wait">Please wait…</string>
     <string name="information_button_text">i</string>
     <string name="information_button_description">Use the dropdowns to enter details. When you are ready, tap the submit button to continue. (tap to dismiss)</string>
+    <string name="home_banner">CarML</string>
 </resources>
