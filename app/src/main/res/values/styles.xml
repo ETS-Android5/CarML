@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Banner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/banner_height</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/banner_text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/banner</item>
+    </style>
+    <style name="Land_Banner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/land_banner_height</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/land_banner_text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/banner</item>
+    </style>
     <style name="HeaderText">
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>

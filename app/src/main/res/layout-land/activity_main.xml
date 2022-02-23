@@ -27,12 +27,8 @@
 
                 <TextView
                     android:id="@+id/carml_banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/land_banner_height"
-                    android:background="@drawable/banner"
-                    android:gravity="center"
+                    style="@style/Land_Banner"
                     android:text="@string/home_banner"
-                    android:textSize="@dimen/land_banner_text_size"
                     android:contentDescription="@string/noCD"/>
             </RelativeLayout>
 
