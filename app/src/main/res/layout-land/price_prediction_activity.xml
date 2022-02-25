@@ -15,6 +15,7 @@
 
         <!-- Main RelativeLayout -->
         <RelativeLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -24,10 +25,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/banner_height"
-                    android:background="@drawable/price_prediction_banner"
+                <TextView
+                    style="@style/LandBanner"
+                    android:text="@string/price_prediction"
                     android:contentDescription="@string/noCD"/>
             </RelativeLayout>
 
@@ -195,16 +195,19 @@
                         android:contentDescription="@string/noCD"/>
                 </RelativeLayout>
 
-                <ImageButton
+                <TextView
                     android:id="@+id/submit_button"
                     android:layout_width="150dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/submit"
+                    android:background="@drawable/menu_button"
+                    android:text="@string/submit"
+                    android:gravity="center"
+                    android:textSize="@dimen/land_head_size"
                     android:layout_below="@id/year_layout"
                     android:layout_marginStart="@dimen/margin30"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:contentDescription="@string/submit"/>
-
+                    android:layout_marginTop="@dimen/margin20"
+                    android:layout_marginBottom="@dimen/margin20"
+                    android:contentDescription="@string/submitCD"/>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

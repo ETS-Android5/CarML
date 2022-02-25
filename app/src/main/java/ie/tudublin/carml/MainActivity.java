@@ -19,10 +19,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton price_prediction;
+    TextView price_prediction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             pleaseWaitWindow.dismiss();
         }
         else {
+            pleaseWaitWindow.dismiss();
             Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);
             startActivity(price_prediction);
         }

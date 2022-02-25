@@ -33,7 +33,7 @@ public class DatabaseAccess {
     // Create execServ to manage the thread
     ExecutorService execServ = Executors.newSingleThreadExecutor();
 
-    String DBURL = "http://192.168.1.6/CarML/";
+    String DBURL = "http://192.168.1.8/CarML/";
     String data = " ";
 
     public String runThread(String option, String user_query) {

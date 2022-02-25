@@ -30,7 +30,7 @@ import java.util.List;
 public class PricePredictionActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     ImageButton back_arrow;
-    ImageButton submit;
+    TextView submit;
     Spinner manufacturerDD;
     Spinner modelDD;
     Spinner yearDD;

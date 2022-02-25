@@ -31,7 +31,7 @@ import java.util.Locale;
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton back_arrow;
-    ImageButton done;
+    TextView done;
     ImageView result_image;
     TextView manufacturer;
     TextView model;

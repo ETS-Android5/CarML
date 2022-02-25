@@ -27,7 +27,7 @@
 
                 <TextView
                     android:id="@+id/carml_banner"
-                    style="@style/Land_Banner"
+                    style="@style/LandBanner"
                     android:text="@string/home_banner"
                     android:contentDescription="@string/noCD"/>
             </RelativeLayout>
@@ -40,12 +40,25 @@
                 android:layout_below="@id/banner_layout"
                 android:layout_marginTop="50dp">
 
-                <ImageButton
+                <TextView
                     android:id="@+id/price_prediction_button"
-                    android:layout_width="250dp"
-                    android:layout_height="200dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/price_prediction"
+                    style="@style/LandMenuButton"
+                    android:text="@string/price_prediction"
+                    android:contentDescription="@string/price_prediction_buttonCD"/>
+            </RelativeLayout>
+
+            <!-- Layout for Fuel Information Button -->
+            <RelativeLayout
+                android:id="@+id/fuel_information_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price_prediction_layout"
+                android:layout_marginTop="100dp">
+
+                <TextView
+                    android:id="@+id/fuel_information_button"
+                    style="@style/LandMenuButton"
+                    android:text="@string/fuel_information"
                     android:contentDescription="@string/price_prediction_buttonCD"/>
             </RelativeLayout>
         </RelativeLayout>

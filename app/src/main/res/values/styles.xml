@@ -9,7 +9,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/banner</item>
     </style>
-    <style name="Land_Banner">
+    <style name="LandBanner">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/land_banner_height</item>
         <item name="android:textColor">@color/white</item>
@@ -21,22 +21,40 @@
     <style name="HeaderText">
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
-    </style>
-    <style name="RegularText">
-        <item name="android:textColor">@color/white</item>
-    </style>
-    <style name="LandRegText">
-        <item name="android:textSize">@dimen/land_text_size</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/heading_size</item>
     </style>
     <style name="LandHeadText">
         <item name="android:textSize">@dimen/land_text_size</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="RegularText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/regular_text_size</item>
+    </style>
+    <style name="LandRegText">
+        <item name="android:textSize">@dimen/land_text_size</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style name="SpinnerEnd">
         <item name="android:dropDownListViewStyle">@drawable/spinner_end</item>
         <item name="android:listSelector">@drawable/spinner_end</item>
         <item name="android:dropDownSelector">@drawable/spinner_end</item>
+    </style>
+    <style name="MenuButton">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:background">@drawable/menu_button</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">@dimen/menu_button_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="LandMenuButton">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">225dp</item>
+        <item name="android:background">@drawable/menu_button</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">@dimen/land_menu_button_text_size</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

@@ -9,7 +9,7 @@
     <string name="year">Year:</string>
     <string name="engine_size">Engine Size (Litres):</string>
     <string name="fuel_type">Fuel Type:</string>
-    <string name="submit">Tap to submit and go to result.</string>
+    <string name="submitCD">Tap to submit and go to result.</string>
     <string name="price">Price:</string>
     <string name="horsepower">Horsepower:</string>
     <string name="transmission">Transmission:</string>
@@ -26,4 +26,9 @@
     <string name="information_button_text">i</string>
     <string name="information_button_description">Use the dropdowns to enter details. When you are ready, tap the submit button to continue. (tap to dismiss)</string>
     <string name="home_banner">CarML</string>
+    <string name="price_prediction">Price Prediction</string>
+    <string name="submit">Submit</string>
+    <string name="result">Result</string>
+    <string name="done">Done</string>
+    <string name="fuel_information">Fuel Information</string>
 </resources>

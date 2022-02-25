@@ -24,10 +24,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/banner_height"
-                    android:background="@drawable/result_banner"
+                <TextView
+                    style="@style/Banner"
+                    android:text="@string/result"
                     android:contentDescription="@string/noCD"/>
             </RelativeLayout>
 
@@ -82,12 +81,13 @@
 
                 <TextView
                     android:id="@+id/result_price"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/price_label"
                     android:layout_below="@id/result_image"
                     android:layout_marginStart="@dimen/margin5"
-                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_marginTop="10dp"
                     android:text="@string/unknown" />
 
                 <TextView
@@ -102,6 +102,7 @@
 
                 <TextView
                     android:id="@+id/result_manufacturer"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/manufacturer_label"
@@ -122,6 +123,7 @@
 
                 <TextView
                     android:id="@+id/result_model"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/model_label"
@@ -142,6 +144,7 @@
 
                 <TextView
                     android:id="@+id/result_year"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/year_label"
@@ -162,6 +165,7 @@
 
                 <TextView
                     android:id="@+id/result_fuel_type"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/fuel_type_label"
@@ -182,6 +186,7 @@
 
                 <TextView
                     android:id="@+id/result_horsepower"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/horsepower_label"
@@ -202,6 +207,7 @@
 
                 <TextView
                     android:id="@+id/result_transmission"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/transmission_label"
@@ -222,6 +228,7 @@
 
                 <TextView
                     android:id="@+id/result_drivetrain"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/drivetrain_label"
@@ -242,6 +249,7 @@
 
                 <TextView
                     android:id="@+id/result_num_doors"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/num_doors_label"
@@ -262,6 +270,7 @@
 
                 <TextView
                     android:id="@+id/result_body_type"
+                    style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/body_type_label"
@@ -270,14 +279,15 @@
                     android:layout_marginTop="@dimen/margin10"
                     android:text="@string/unknown" />
 
-                <ImageButton
+                <TextView
                     android:id="@+id/done_button"
+                    style="@style/MenuButton"
+                    android:text="@string/done"
                     android:layout_width="150dp"
                     android:layout_height="75dp"
-                    android:layout_centerHorizontal="true"
                     android:layout_below="@id/result_body_type"
                     android:layout_marginTop="@dimen/margin30"
-                    android:background="@drawable/done"
+                    android:layout_marginBottom="@dimen/margin20"
                     android:contentDescription="@string/done_buttonCD"/>
             </RelativeLayout>
         </RelativeLayout>
