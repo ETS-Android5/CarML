@@ -24,6 +24,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView price_prediction;
+    PopupWindow pleaseWaitWindow = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
 //        price_prediction.setAlpha(1f);
+        if(pleaseWaitWindow != null && pleaseWaitWindow.isShowing())
+            pleaseWaitWindow.dismiss();
     }
 
     public void displayPopup() {
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Create the popup
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        PopupWindow pleaseWaitWindow = new PopupWindow(pleaseWait, width, height, false);
+        pleaseWaitWindow = new PopupWindow(pleaseWait, width, height, false);
         // Display the popup
         RelativeLayout parent = findViewById(R.id.main);
         pleaseWaitWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
@@ -100,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             pleaseWaitWindow.dismiss();
         }
         else {
-            pleaseWaitWindow.dismiss();
             Intent price_prediction = new Intent(MainActivity.this, PricePredictionActivity.class);
             startActivity(price_prediction);
         }

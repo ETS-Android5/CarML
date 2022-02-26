@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import weka.classifiers.Classifier;
@@ -69,6 +70,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         Intent result = getIntent();
         // user_car is manufacturer,model,year
         String user_car = result.getStringExtra("user_car");
+//        PopupWindow pleaseWaitWindow = result.getParcelableExtra("popup");
+//        pleaseWaitWindow.dismiss();
         displayCarDetailsFromDB(user_car);
         displayResult(user_car);
     }

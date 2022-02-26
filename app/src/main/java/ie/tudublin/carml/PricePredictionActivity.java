@@ -7,6 +7,7 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     TextView yearLabel;
     RelativeLayout modelSpinner;
     RelativeLayout yearSpinner;
+    PopupWindow pleaseWaitWindow = null;
     // Create ArrayLists that hold Manufacturer, Model and Year
     private final List<String> manufacturers = new ArrayList<>();
     private final List<String> models = new ArrayList<>();
@@ -60,6 +62,8 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         super.onResume();
         submit.setAlpha(1F);
         submit.setOnClickListener(this);
+        if(pleaseWaitWindow != null && pleaseWaitWindow.isShowing())
+            pleaseWaitWindow.dismiss();
     }
 
     // Sets up the views and makes the relevant ones hidden to start
@@ -92,6 +96,18 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.submit_button): {
+                // Inflate the layout
+                LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+                View pleaseWait = inflater.inflate(R.layout.please_wait_popup, null);
+
+                // Create the popup
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                pleaseWaitWindow = new PopupWindow(pleaseWait, width, height, false);
+                // Display the popup
+                RelativeLayout parent = findViewById(R.id.main);
+                pleaseWaitWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
+
                 submit.setAlpha(0.5F);
                 submit.setOnClickListener(null);
                 String user_car =   manufacturerDD.getSelectedItem() + "," +
