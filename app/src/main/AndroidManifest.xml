@@ -30,6 +30,22 @@
             android:name=".ResultActivity"
             android:screenOrientation="fullSensor">
         </activity>
+        <activity
+            android:name=".FuelInformationActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
+        <activity
+            android:name=".PetrolActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
+        <activity
+            android:name=".DieselActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
+        <activity
+            android:name=".ElectricActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
     </application>
 
 </manifest>

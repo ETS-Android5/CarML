@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PetrolActivity"
+    android:background="@drawable/tarmac"
+    android:orientation="vertical">
+
+    <!-- Main View -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Main RelativeLayout -->
+        <RelativeLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Layout for banner -->
+            <RelativeLayout
+                android:id="@+id/banner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/diesel_banner"
+                    style="@style/Banner"
+                    android:text="@string/diesel"
+                    android:contentDescription="@string/noCD"/>
+            </RelativeLayout>
+
+            <!-- Layout for back arrow -->
+            <RelativeLayout
+                android:id="@+id/arrow_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/banner_layout"
+                android:layout_marginStart="@dimen/margin10"
+                android:layout_marginTop="@dimen/margin10">
+
+                <ImageButton
+                    android:id="@+id/back_arrow"
+                    android:layout_width="75dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/back_arrow"
+                    android:contentDescription="@string/back_arrowCD"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

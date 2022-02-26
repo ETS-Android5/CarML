@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">CarML</string>
+    <string name="app_name" translatable="false">CarML</string>
     <string name="price_prediction_buttonCD">Price Prediction. Tap to begin predicting a price.
     </string>
-    <string name="noCD"> </string>
+    <string name="noCD" translatable="false"> </string>
     <string name="back_arrowCD">Tap to go back.</string>
     <string name="manufacturer">Manufacturer:</string>
     <string name="model">Model:</string>
@@ -25,10 +25,13 @@
     <string name="please_wait">Please wait…</string>
     <string name="information_button_text">i</string>
     <string name="information_button_description">Use the dropdowns to enter details. When you are ready, tap the submit button to continue. (tap to dismiss)</string>
-    <string name="home_banner">CarML</string>
+    <string name="home_banner" translatable="false">CarML</string>
     <string name="price_prediction">Price Prediction</string>
     <string name="submit">Submit</string>
     <string name="result">Result</string>
     <string name="done">Done</string>
     <string name="fuel_information">Fuel Information</string>
+    <string name="petrol">Petrol</string>
+    <string name="diesel">Diesel</string>
+    <string name="electric">Electric</string>
 </resources>

@@ -24,15 +24,14 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView price_prediction;
+    TextView fuel_information;
     PopupWindow pleaseWaitWindow = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        price_prediction = findViewById(R.id.price_prediction_button);
-        price_prediction.setOnClickListener(this);
+        setUpViews();
     }
 
     @Override
@@ -43,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 testServerConnection();
                 price_prediction.setAlpha(1f);
                 break;
+            }
+            case(R.id.fuel_information_button): {
+                Intent fuel_info = new Intent(MainActivity.this, FuelInformationActivity.class);
+                startActivity(fuel_info);
             }
             default: {
                 break;
@@ -56,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        price_prediction.setAlpha(1f);
         if(pleaseWaitWindow != null && pleaseWaitWindow.isShowing())
             pleaseWaitWindow.dismiss();
+    }
+
+    public void setUpViews() {
+        price_prediction = findViewById(R.id.price_prediction_button);
+        price_prediction.setOnClickListener(this);
+        fuel_information = findViewById(R.id.fuel_information_button);
+        fuel_information.setOnClickListener(this);
     }
 
     public void displayPopup() {
