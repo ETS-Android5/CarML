@@ -51,15 +51,31 @@
 
             <!-- Layout for Line Chart -->
             <RelativeLayout
+                android:id="@+id/petrol_layout"
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:layout_below="@id/arrow_layout">
 
+                <!-- TextView for XAxis Title -->
+                <TextView
+                    android:id="@+id/x_axis_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:background="@drawable/rectangle"
+                    android:rotation="270"
+                    android:textSize="@dimen/heading_size"
+                    android:text="@string/x_axis_title"/>
+
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/petrol_chart"
                     android:layout_width="match_parent"
+                    android:layout_toEndOf="@id/x_axis_title"
                     android:layout_height="match_parent"/>
+
             </RelativeLayout>
+
         </RelativeLayout>
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
