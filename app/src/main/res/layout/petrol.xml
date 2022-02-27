@@ -48,6 +48,18 @@
                     android:background="@drawable/back_arrow"
                     android:contentDescription="@string/back_arrowCD"/>
             </RelativeLayout>
+
+            <!-- Layout for Line Chart -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_below="@id/arrow_layout">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/petrol_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
