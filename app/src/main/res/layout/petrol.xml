@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PetrolActivity"
-    android:background="@drawable/tarmac"
+    android:background="@drawable/tarmac_wallpaper"
     android:orientation="vertical">
 
     <!-- Main View -->
@@ -49,30 +49,40 @@
                     android:contentDescription="@string/back_arrowCD"/>
             </RelativeLayout>
 
+            <!-- Layout for the Chart Title -->
+            <RelativeLayout
+                android:id="@+id/title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/arrow_layout"
+                android:layout_marginTop="@dimen/margin20">
+
+                <TextView
+                    android:id="@+id/chart_title"
+                    style="@style/HeaderText"
+                    android:background="@drawable/rectangle"
+                    android:padding="@dimen/margin5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin20"
+                    android:layout_marginEnd="@dimen/margin20"
+                    android:gravity="center"
+                    android:text="@string/petrol_chart_title"/>
+            </RelativeLayout>
             <!-- Layout for Line Chart -->
             <RelativeLayout
                 android:id="@+id/petrol_layout"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:layout_below="@id/arrow_layout">
-
-                <!-- TextView for XAxis Title -->
-                <TextView
-                    android:id="@+id/x_axis_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:padding="5dp"
-                    android:background="@drawable/rectangle"
-                    android:rotation="270"
-                    android:textSize="@dimen/heading_size"
-                    android:text="@string/x_axis_title"/>
+                android:layout_height="450dp"
+                android:layout_below="@id/title_layout"
+                android:layout_marginTop="@dimen/margin20">
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/petrol_chart"
                     android:layout_width="match_parent"
-                    android:layout_toEndOf="@id/x_axis_title"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin10"
+                    android:layout_marginEnd="@dimen/margin10"/>
 
             </RelativeLayout>
 

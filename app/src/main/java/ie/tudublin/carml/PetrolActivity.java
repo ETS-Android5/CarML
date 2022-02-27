@@ -9,13 +9,11 @@ import android.widget.ImageButton;
 import androidx.annotation.Nullable;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.BufferedReader;
@@ -35,75 +33,7 @@ public class PetrolActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.petrol);
         setUpViews();
-
-        petrolChart = findViewById(R.id.petrol_chart);
-        petrolChart.setDragEnabled(true);
-        petrolChart.setScaleEnabled(true);
-
-        // Values for x axis
-        ArrayList<String> xVals = new ArrayList<>();
-        //Values for y axis
-        ArrayList<Entry> yVals = new ArrayList<>();
-
-        // Get InputStream for String data
-        InputStream sInStream = getResources().openRawResource(R.raw.petrol_prices);
-        // Create Buffered Reader for String data stream
-        BufferedReader sReader = new BufferedReader(
-                new InputStreamReader(sInStream, StandardCharsets.UTF_8));
-        String row;
-        String[] rowSplit;
-        int i = 0;
-        // Read each row and check if it is the same as the user's query
-        // Each row consist of Month,Price
-        try {
-            // Skip over the column headers
-            sReader.readLine();
-            // While there is a row to read
-            while((row = sReader.readLine()) != null)
-            {
-                rowSplit = row.split(",");
-                xVals.add(rowSplit[0]);
-                yVals.add(new Entry(i, Float.parseFloat(rowSplit[1])));
-                i++;
-            }
-        }
-        catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        LineDataSet ySet = new LineDataSet(yVals, "Y Data Set");
-        ySet.setFillAlpha(100);
-        ySet.setColor(Color.BLACK);
-        ySet.setLineWidth(1f);
-        ySet.setValueTextSize(10f);
-        ySet.setValueTextColor(Color.RED);
-        ySet.setDrawValues(false);
-//        ySet.setCircleRadius(0f);
-        ySet.setDrawCircles(false);
-        ySet.setCircleColor(Color.GREEN);
-
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(ySet);
-
-        LineData data = new LineData(dataSets);
-
-        petrolChart.setData(data);
-        petrolChart.setBackgroundColor(Color.WHITE);
-        petrolChart.getAxisRight().setEnabled(false);
-        petrolChart.setDrawGridBackground(false);
-
-        XAxis xAxis = petrolChart.getXAxis();
-        YAxis yAxis = petrolChart.getAxisLeft();
-        yAxis.setDrawLabels(true);
-        yAxis.setCenterAxisLabels(true);
-        String[] xValues = new String[xVals.size()];
-        xValues = xVals.toArray(xValues);
-        xAxis.setValueFormatter(new XAxisStringFormater(xValues));
-//        xAxis.setGranularity(2f);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawLabels(true);
-        petrolChart.getDescription().setEnabled(false);
-        petrolChart.getLegend().setEnabled(false);
+        setUpChart();
     }
 
     @Override
@@ -121,17 +51,77 @@ public class PetrolActivity extends Activity implements View.OnClickListener {
         back_arrow = findViewById(R.id.back_arrow);
         back_arrow.setOnClickListener(this);
     }
+
+    public void setUpChart() {
+        // Set up and configure the chart
+        petrolChart = findViewById(R.id.petrol_chart);
+        petrolChart.setDragEnabled(true);
+        petrolChart.setScaleEnabled(true);
+        petrolChart.setBackgroundColor(Color.WHITE);
+        petrolChart.getAxisRight().setEnabled(false);
+        petrolChart.setDrawGridBackground(false);
+        petrolChart.getDescription().setEnabled(false);
+        petrolChart.getLegend().setEnabled(false);
+
+        // Values for x axis
+        ArrayList<String> xVals = new ArrayList<>();
+        //Values for y axis
+        ArrayList<Entry> yVals = new ArrayList<>();
+
+        // Get InputStream for petrol data
+        InputStream inStream = getResources().openRawResource(R.raw.petrol_prices);
+        // Create Buffered Reader for data stream
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(inStream, StandardCharsets.UTF_8));
+
+        String row;
+        String[] rowSplit;
+        int i = 0;
+        // Read each row and check if it is the same as the user's query
+        // Each row consist of Month,Price
+        try {
+            // Skip over the column headers
+            reader.readLine();
+            // While there is a row to read
+            while((row = reader.readLine()) != null)
+            {
+                rowSplit = row.split(",");
+                xVals.add(rowSplit[0]);
+                yVals.add(new Entry(i, Float.parseFloat(rowSplit[1])));
+                i++;
+            }
+        }
+        catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        // Create the data set for the y axis
+        LineDataSet ySet = new LineDataSet(yVals, "Price in cent");
+        ySet.setFillAlpha(100);
+        ySet.setColor(Color.BLACK);
+        ySet.setLineWidth(1f);
+        ySet.setDrawValues(false);
+        ySet.setDrawCircles(false);
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(ySet);
+
+        // Assign the data to the chart
+        LineData data = new LineData(dataSets);
+        petrolChart.setData(data);
+
+        // Configure the x axis
+        XAxis xAxis = petrolChart.getXAxis();
+        String[] xValsArray = new String[xVals.size()];
+        xValsArray = xVals.toArray(xValsArray);
+        xAxis.setValueFormatter(new XAxisStringFormater(xValsArray));
+        xAxis.setGranularity(1f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawLabels(true);
+        // Configure the x axis
+        YAxis yAxis = petrolChart.getAxisLeft();
+        yAxis.setDrawLabels(true);
+        yAxis.setCenterAxisLabels(true);
+    }
 }
 
-class XAxisStringFormater implements IAxisValueFormatter {
-    private String[] values;
-
-    public XAxisStringFormater(String[] vals) {
-        this.values = vals;
-    }
-
-    @Override
-    public String getFormattedValue(float value, AxisBase axis) {
-        return values[(int)value];
-    }
-}

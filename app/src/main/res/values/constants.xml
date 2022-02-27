@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="banner_height">100dp</dimen>
+    <dimen name="banner_height">80dp</dimen>
     <dimen name="land_banner_height">150dp</dimen>
     <dimen name="margin5">5dp</dimen>
     <dimen name="margin10">10dp</dimen>
@@ -10,8 +10,8 @@
     <dimen name="regular_text_size">22sp</dimen>
     <dimen name="land_head_size">36sp</dimen>
     <dimen name="land_text_size">32sp</dimen>
-    <dimen name="banner_text_size">50sp</dimen>
+    <dimen name="banner_text_size">45sp</dimen>
     <dimen name="land_banner_text_size">75sp</dimen>
-    <dimen name="menu_button_text_size">34sp</dimen>
+    <dimen name="menu_button_text_size">30sp</dimen>
     <dimen name="land_menu_button_text_size">50sp</dimen>
 </resources>
