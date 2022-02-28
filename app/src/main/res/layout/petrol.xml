@@ -83,9 +83,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/margin10"
                     android:layout_marginEnd="@dimen/margin10"/>
-
             </RelativeLayout>
-
         </RelativeLayout>
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

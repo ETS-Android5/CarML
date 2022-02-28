@@ -36,4 +36,5 @@
     <string name="electric">Electric</string>
     <string name="x_axis_title">Price (€)</string>
     <string name="petrol_chart_title">Price of Petrol per Litre in cent (€) between 2001 and 2021</string>
+    <string name="diesel_chart_title">Price of Diesel per Litre in cent (€) between 2001 and 2021</string>
 </resources>
