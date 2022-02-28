@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PetrolActivity"
-    android:background="@drawable/tarmac"
+    android:background="@drawable/tarmac_wallpaper"
     android:orientation="vertical">
 
     <!-- Main View -->
@@ -48,6 +48,27 @@
                     android:background="@drawable/back_arrow"
                     android:contentDescription="@string/back_arrowCD"/>
             </RelativeLayout>
+
+            <!-- Test Link Layout-->
+            <RelativeLayout
+                android:id="@+id/easygo_layout"
+                style="@style/ElectricLinkLayout"
+                android:layout_below="@id/arrow_layout"
+                android:background="@drawable/menu_button">
+
+                <ImageView
+                    android:id="@+id/easygo_image"
+                    style="@style/ElectricLinkImage"
+                    android:background="@drawable/easygo_logo"
+                    android:contentDescription="@string/noCD"/>
+
+                <TextView
+                    android:id="@+id/easygo_text"
+                    style="@style/ElectricLinkText"
+                    android:layout_toEndOf="@id/easygo_image"
+                    android:text="EasyGo Home Chargers"/>
+
+                </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

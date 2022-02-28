@@ -57,4 +57,26 @@
         <item name="android:textSize">@dimen/land_menu_button_text_size</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="ElectricLinkLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin30</item>
+        <item name="android:layout_marginStart">@dimen/margin20</item>
+        <item name="android:layout_marginEnd">@dimen/margin20</item>
+        <item name="android:background">@drawable/menu_button</item>
+        <item name="android:padding">@dimen/margin10</item>
+    </style>
+    <style name="ElectricLinkImage">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginStart">@dimen/margin10</item>
+        <item name="android:contentDescription">@string/noCD</item>
+    </style>
+    <style name="ElectricLinkText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textSize">@dimen/heading_size</item>
+        <item name="android:layout_marginStart">@dimen/margin30</item>
+    </style>
 </resources>
