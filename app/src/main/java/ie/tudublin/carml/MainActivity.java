@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case(R.id.price_prediction_button): {
                 price_prediction.setAlpha(0.5f);
                 testServerConnection();
-                price_prediction.setAlpha(1f);
+//                price_prediction.setAlpha(1f);
                 break;
             }
             case(R.id.fuel_information_button): {
@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(response.contains("ERROR")) {
             // The server is unavailable
             displayPopup();
+            price_prediction.setAlpha(1f);
             pleaseWaitWindow.dismiss();
         }
         else {

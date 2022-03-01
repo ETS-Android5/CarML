@@ -37,4 +37,12 @@
     <string name="x_axis_title">Price (€)</string>
     <string name="petrol_chart_title">Price of Petrol per Litre in cent (€) between 2001 and 2021</string>
     <string name="diesel_chart_title">Price of Diesel per Litre in cent (€) between 2001 and 2021</string>
+    <string name="home_charger_heading">Home Charger Providers</string>
+    <string name="easygo">EasyGo</string>
+    <string name="ecar_infra">ECAR INFRA</string>
+    <string name="ev_charging_ireland">EV Charging Ireland</string>
+    <string name="wallbox">Wallbox</string>
+    <string name="seai">Sustainable Energy Authority of Ireland</string>
+    <string name="bord_gais_energy">Bord Gáis Energy</string>
+    <string name="government_information">Government Information</string>
 </resources>

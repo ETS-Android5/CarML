@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FuelInformationActivity"
-    android:background="@drawable/tarmac"
+    android:background="@drawable/tarmac_wallpaper"
     android:orientation="vertical">
 
     <!-- Main View -->
