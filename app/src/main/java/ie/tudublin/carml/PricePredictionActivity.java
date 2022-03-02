@@ -96,16 +96,16 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.submit_button): {
+                RelativeLayout parent = findViewById(R.id.main);
                 // Inflate the layout
                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-                View pleaseWait = inflater.inflate(R.layout.please_wait_popup, null);
+                View pleaseWait = inflater.inflate(R.layout.please_wait_popup, parent, false);
 
                 // Create the popup
                 int width = LinearLayout.LayoutParams.WRAP_CONTENT;
                 int height = LinearLayout.LayoutParams.WRAP_CONTENT;
                 pleaseWaitWindow = new PopupWindow(pleaseWait, width, height, false);
                 // Display the popup
-                RelativeLayout parent = findViewById(R.id.main);
                 pleaseWaitWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
 
                 submit.setAlpha(0.5F);
@@ -120,9 +120,10 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.information_button): {
+                RelativeLayout parent = findViewById(R.id.main);
                 // Inflate the layout
                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-                View info = inflater.inflate(R.layout.information_button_popup, null);
+                View info = inflater.inflate(R.layout.information_button_popup, parent, false);
 
                 // Create the popup
                 int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -130,7 +131,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 PopupWindow infoWindow = new PopupWindow(info, width, height, true);
 
                 // Display the popup
-                RelativeLayout parent = findViewById(R.id.main);
                 infoWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
 
                 // Make the popup disappear when tapped

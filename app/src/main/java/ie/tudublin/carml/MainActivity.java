@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-//        price_prediction.setAlpha(1f);
+        price_prediction.setAlpha(1f);
         if(pleaseWaitWindow != null && pleaseWaitWindow.isShowing())
             pleaseWaitWindow.dismiss();
     }
@@ -69,9 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void displayPopup() {
+        RelativeLayout parent = findViewById(R.id.main);
         // Inflate the layout
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popup = inflater.inflate(R.layout.server_unavailable_popup, null);
+        View popup = inflater.inflate(R.layout.server_unavailable_popup, parent, false);
 
         // Create the popup
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -79,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PopupWindow popupWindow = new PopupWindow(popup, width, height, true);
 
         // Display the popup
-        RelativeLayout parent = findViewById(R.id.main);
         popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
 
         // Make the popup disappear when tapped
@@ -93,16 +93,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void testServerConnection() {
+        RelativeLayout parent = findViewById(R.id.main);
         // Inflate the layout
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View pleaseWait = inflater.inflate(R.layout.please_wait_popup, null);
+        View pleaseWait = inflater.inflate(R.layout.please_wait_popup, parent, false);
 
         // Create the popup
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         pleaseWaitWindow = new PopupWindow(pleaseWait, width, height, false);
         // Display the popup
-        RelativeLayout parent = findViewById(R.id.main);
         pleaseWaitWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
 
         DatabaseAccess DBA = new DatabaseAccess();

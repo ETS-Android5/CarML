@@ -6,6 +6,7 @@
 package ie.tudublin.carml;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,8 @@ import java.util.Locale;
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton back_arrow;
+    ImageButton done_deal;
+    ImageButton carzone;
     TextView done;
     ImageView result_image;
     TextView manufacturer;
@@ -50,22 +53,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_activity);
-
-        result_image = findViewById(R.id.result_image);
-        back_arrow = findViewById(R.id.back_arrow);
-        back_arrow.setOnClickListener(this);
-        done = findViewById(R.id.done_button);
-        done.setOnClickListener(this);
-        manufacturer = findViewById(R.id.result_manufacturer);
-        model = findViewById(R.id.result_model);
-        year = findViewById(R.id.result_year);
-        fuel_type = findViewById(R.id.result_fuel_type);
-        horsepower = findViewById(R.id.result_horsepower);
-        transmission = findViewById(R.id.result_transmission);
-        drivetrain = findViewById(R.id.result_drivetrain);
-        num_doors =  findViewById(R.id.result_num_doors);
-        body_type = findViewById(R.id.result_body_type);
-        price = findViewById(R.id.result_price);
+        setUpViews();
         // Display the result of the user's query
         Intent result = getIntent();
         // user_car is manufacturer,model,year
@@ -85,11 +73,72 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             }
             case(R.id.done_button): {
                 finish();
+                break;
+            }
+            case(R.id.done_deal_button): {
+//                String url = "https://www.donedeal.ie/cars/volkswagen/golf/2015";
+                String url =    "https://www.donedeal.ie/cars/" + manufacturer.getText() +
+                                "/" + model.getText() + "/" + year.getText();
+                Intent doneDealIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toLowerCase()));
+                startActivity(doneDealIntent);
+                break;
+            }
+            case(R.id.carzone_button): {
+                int yearNum = Integer.parseInt(year.getText().toString());
+                // If the year is 2012 or before, no formatting needs to be done
+                if (yearNum <= 2012) {
+//                    https://www.carzone.ie/search?make=Volkswagen&model=Golf&minYear=2012&maxYear=2012
+                    String url =    "https://www.carzone.ie/search?make=" + manufacturer.getText() +
+                                    "&model=" + model.getText() + "&minYear=" + yearNum +
+                                    "&maxYear=" + yearNum;
+                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toLowerCase()));
+                    startActivity(carZoneIntent);
+                }
+                // Format the url to suit the short form of the year for each half
+                else
+                {
+                    // Get the last two digits for the year
+                    String yearShort = String.valueOf(yearNum - 2000);
+                    // Append a 1 for the first half
+                    String yearShortMin = yearShort + "1";
+                    // Append a 2 for the second half
+                    String yearShortMax = yearShort + "2";
+//                    String url = "https://www.carzone.ie/search?make=Volkswagen&model=Golf&minYear=2015%20(151)&maxYear=2015%20(151)";
+                    String url =    "https://www.carzone.ie/search?make=" + manufacturer.getText() +
+                                    "&model=" + model.getText() + "&minYear=" + yearNum +
+                                    "%20(" + yearShortMin + ")&maxYear=" + yearNum + "%20(" +
+                                    yearShortMax + ")";
+                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toLowerCase()));
+                    startActivity(carZoneIntent);
+                }
+                break;
             }
             default: {
                 break;
             }
         }
+    }
+
+    public void setUpViews() {
+        result_image = findViewById(R.id.result_image);
+        back_arrow = findViewById(R.id.back_arrow);
+        back_arrow.setOnClickListener(this);
+        done = findViewById(R.id.done_button);
+        done.setOnClickListener(this);
+        manufacturer = findViewById(R.id.result_manufacturer);
+        model = findViewById(R.id.result_model);
+        year = findViewById(R.id.result_year);
+        fuel_type = findViewById(R.id.result_fuel_type);
+        horsepower = findViewById(R.id.result_horsepower);
+        transmission = findViewById(R.id.result_transmission);
+        drivetrain = findViewById(R.id.result_drivetrain);
+        num_doors =  findViewById(R.id.result_num_doors);
+        body_type = findViewById(R.id.result_body_type);
+        price = findViewById(R.id.result_price);
+        done_deal = findViewById(R.id.done_deal_button);
+        done_deal.setOnClickListener(this);
+        carzone = findViewById(R.id.carzone_button);
+        carzone.setOnClickListener(this);
     }
 
     // Displays all the details of the car entered by the user

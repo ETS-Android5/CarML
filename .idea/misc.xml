@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/banner.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/done_deal_logo.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/easygo_logo.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/information_button.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/menu_button.xml" value="0.192" />

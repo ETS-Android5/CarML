@@ -284,12 +284,33 @@
                     android:id="@+id/done_button"
                     style="@style/MenuButton"
                     android:text="@string/done"
-                    android:layout_width="150dp"
-                    android:layout_height="75dp"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
                     android:layout_below="@id/result_body_type"
                     android:layout_marginTop="@dimen/margin30"
                     android:layout_marginBottom="@dimen/margin20"
                     android:contentDescription="@string/done_buttonCD"/>
+
+                <ImageButton
+                    android:id="@+id/done_deal_button"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:contentDescription="@string/donedeal_search"
+                    android:layout_below="@id/result_body_type"
+                    android:layout_marginTop="@dimen/margin30"
+                    android:layout_marginStart="@dimen/margin20"
+                    android:background="@drawable/done_deal_logo"/>
+
+                <ImageButton
+                    android:id="@+id/carzone_button"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:contentDescription="@string/carzone_search"
+                    android:layout_below="@id/result_body_type"
+                    android:layout_marginTop="@dimen/margin30"
+                    android:layout_toEndOf="@id/done_button"
+                    android:layout_marginStart="@dimen/margin20"
+                    android:background="@drawable/carzone_logo"/>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

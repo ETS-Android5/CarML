@@ -45,4 +45,6 @@
     <string name="seai">Sustainable Energy Authority of Ireland</string>
     <string name="bord_gais_energy">Bord Gáis Energy</string>
     <string name="government_information">Government Information</string>
+    <string name="donedeal_search">Search on DoneDeal</string>
+    <string name="carzone_search">Search om Carzone</string>
 </resources>
