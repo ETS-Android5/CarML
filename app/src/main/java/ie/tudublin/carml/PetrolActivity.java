@@ -1,3 +1,9 @@
+/* This Activity displays the price history of Petrol between 2001 and 2021.
+ * Author: Sean Coll
+ * Date Created: 26/02/22
+ * Last Modified: 27/02/22
+ */
+
 package ie.tudublin.carml;
 
 import android.app.Activity;

@@ -1,3 +1,9 @@
+/* This Activity displays the price history of Diesel from 2001 to 2021
+ * Author: Sean Coll
+ * Date Created: 26/02/22
+ * Last Modified: 28/02/22
+ */
+
 package ie.tudublin.carml;
 
 import android.app.Activity;

@@ -1,3 +1,10 @@
+/* In this Activity, the user must choose between Petrol, Diesel and Electric fuel types to see
+ * information about.
+ * Author: Sean Coll
+ * Date Created: 26/02/22
+ * Last Modified: 26/02/22
+ */
+
 package ie.tudublin.carml;
 
 import android.app.Activity;
