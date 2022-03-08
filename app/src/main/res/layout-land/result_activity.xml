@@ -99,7 +99,7 @@
                     android:layout_below="@id/result_price"
                     android:layout_marginStart="@dimen/margin20"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/manufacturer"/>
+                    android:text="@string/manufacturer_bullet"/>
 
                 <TextView
                     android:id="@+id/result_manufacturer"
@@ -120,7 +120,7 @@
                     android:layout_below="@id/result_manufacturer"
                     android:layout_marginStart="@dimen/margin20"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/model" />
+                    android:text="@string/model_bullet" />
 
                 <TextView
                     android:id="@+id/result_model"
@@ -141,7 +141,7 @@
                     android:layout_below="@id/result_model"
                     android:layout_marginStart="@dimen/margin20"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/year" />
+                    android:text="@string/year_bullet" />
 
                 <TextView
                     android:id="@+id/result_year"

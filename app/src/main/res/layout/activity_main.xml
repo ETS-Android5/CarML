@@ -43,6 +43,7 @@
                 <TextView
                     android:id="@+id/price_prediction_button"
                     style="@style/MenuButton"
+                    android:layout_centerHorizontal="true"
                     android:text="@string/price_prediction"
                     android:contentDescription="@string/price_prediction_buttonCD"/>
             </RelativeLayout>
@@ -50,16 +51,52 @@
             <!-- Layout for Fuel Information Button -->
             <RelativeLayout
                 android:id="@+id/fuel_information_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@id/price_prediction_layout"
+                android:background="@drawable/rectangle"
                 android:layout_marginTop="100dp">
 
                 <TextView
                     android:id="@+id/fuel_information_button"
                     style="@style/MenuButton"
+                    android:layout_centerVertical="false"
                     android:text="@string/fuel_information"
                     android:contentDescription="@string/price_prediction_buttonCD"/>
+                <ImageView
+                    android:id="@+id/petrol_symbol"
+                    android:layout_width="70dp"
+                    android:layout_height="105dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/petrol_symbol"
+                    android:layout_below="@id/fuel_information_button"
+                    android:layout_alignStart="@id/fuel_information_button"
+                    android:layout_marginStart="@dimen/margin5"
+                    android:layout_marginEnd="@dimen/margin5"
+                    android:contentDescription="@string/noCD"/>
+                <ImageView
+                    android:id="@+id/diesel_symbol"
+                    android:layout_width="70dp"
+                    android:layout_height="105dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/diesel_symbol"
+                    android:layout_below="@id/fuel_information_button"
+                    android:layout_toEndOf="@id/petrol_symbol"
+                    android:layout_marginStart="@dimen/margin5"
+                    android:layout_marginEnd="@dimen/margin5"
+                    android:contentDescription="@string/noCD"/>
+                <ImageView
+                    android:id="@+id/electric_symbol"
+                    android:layout_width="70dp"
+                    android:layout_height="105dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/electric_symbol"
+                    android:layout_below="@id/fuel_information_button"
+                    android:layout_toEndOf="@id/diesel_symbol"
+                    android:layout_marginStart="@dimen/margin5"
+                    android:layout_marginEnd="@dimen/margin5"
+                    android:contentDescription="@string/noCD"/>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

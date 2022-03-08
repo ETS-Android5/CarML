@@ -1,7 +1,7 @@
 /* This is the Main Activity. It starts on the home screen and displays options to the user
 * Author: Sean Coll
 * Date Created: 12/12/21
-* Last Modified: 21/1/22
+* Last Modified: 08/03/22
 */
 
 package ie.tudublin.carml;
@@ -15,7 +15,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -24,7 +23,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView price_prediction;
-    TextView fuel_information;
+    RelativeLayout fuel_information;
     PopupWindow pleaseWaitWindow = null;
 
     @Override
@@ -40,10 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case(R.id.price_prediction_button): {
                 price_prediction.setAlpha(0.5f);
                 testServerConnection();
-//                price_prediction.setAlpha(1f);
                 break;
             }
-            case(R.id.fuel_information_button): {
+            case(R.id.fuel_information_layout): {
                 Intent fuel_info = new Intent(MainActivity.this, FuelInformationActivity.class);
                 startActivity(fuel_info);
             }
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void setUpViews() {
         price_prediction = findViewById(R.id.price_prediction_button);
         price_prediction.setOnClickListener(this);
-        fuel_information = findViewById(R.id.fuel_information_button);
+        fuel_information = findViewById(R.id.fuel_information_layout);
         fuel_information.setOnClickListener(this);
     }
 

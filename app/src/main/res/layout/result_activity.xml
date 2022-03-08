@@ -99,7 +99,7 @@
                     android:layout_below="@id/result_price"
                     android:layout_marginStart="@dimen/margin20"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/manufacturer"/>
+                    android:text="@string/manufacturer_bullet"/>
 
                 <TextView
                     android:id="@+id/result_manufacturer"
@@ -120,7 +120,7 @@
                     android:layout_below="@id/result_manufacturer"
                     android:layout_marginStart="@dimen/margin20"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/model" />
+                    android:text="@string/model_bullet" />
 
                 <TextView
                     android:id="@+id/result_model"
@@ -141,7 +141,7 @@
                     android:layout_below="@id/result_model"
                     android:layout_marginStart="@dimen/margin20"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/year" />
+                    android:text="@string/year_bullet" />
 
                 <TextView
                     android:id="@+id/result_year"
@@ -283,13 +283,30 @@
                 <TextView
                     android:id="@+id/done_button"
                     style="@style/MenuButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/done"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
+                    android:padding="@dimen/margin10"
                     android:layout_below="@id/result_body_type"
                     android:layout_marginTop="@dimen/margin30"
                     android:layout_marginBottom="@dimen/margin20"
                     android:contentDescription="@string/done_buttonCD"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/body_type_label"
+                    android:layout_alignStart="@id/done_deal_button"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:text="@string/search_on"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/body_type_label"
+                    android:layout_alignStart="@id/carzone_button"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:text="@string/search_on"/>
 
                 <ImageButton
                     android:id="@+id/done_deal_button"

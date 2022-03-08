@@ -2,7 +2,7 @@
  * information about.
  * Author: Sean Coll
  * Date Created: 26/02/22
- * Last Modified: 26/02/22
+ * Last Modified: 08/03/22
  */
 
 package ie.tudublin.carml;
@@ -12,15 +12,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
 public class FuelInformationActivity extends Activity implements View.OnClickListener {
 
-    TextView petrol;
-    TextView diesel;
-    TextView electric;
+    RelativeLayout petrol;
+    RelativeLayout diesel;
+    RelativeLayout electric;
     ImageButton back_arrow;
 
     @Override
@@ -39,17 +39,17 @@ public class FuelInformationActivity extends Activity implements View.OnClickLis
                 finish();
                 break;
             }
-            case(R.id.petrol_button): {
+            case(R.id.petrol_layout): {
                 Intent petrol = new Intent(FuelInformationActivity.this, PetrolActivity.class);
                 startActivity(petrol);
                 break;
             }
-            case(R.id.diesel_button): {
+            case(R.id.diesel_layout): {
                 Intent diesel = new Intent(FuelInformationActivity.this, DieselActivity.class);
                 startActivity(diesel);
                 break;
             }
-            case(R.id.electric_button): {
+            case(R.id.electric_layout): {
                 Intent electric = new Intent(FuelInformationActivity.this, ElectricActivity.class);
                 startActivity(electric);
                 break;
@@ -60,11 +60,11 @@ public class FuelInformationActivity extends Activity implements View.OnClickLis
     public void setUpViews() {
         back_arrow = findViewById(R.id.back_arrow);
         back_arrow.setOnClickListener(this);
-        petrol = findViewById(R.id.petrol_button);
+        petrol = findViewById(R.id.petrol_layout);
         petrol.setOnClickListener(this);
-        diesel = findViewById(R.id.diesel_button);
+        diesel = findViewById(R.id.diesel_layout);
         diesel.setOnClickListener(this);
-        electric = findViewById(R.id.electric_button);
+        electric = findViewById(R.id.electric_layout);
         electric.setOnClickListener(this);
     }
 }

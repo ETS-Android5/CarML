@@ -76,7 +76,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case(R.id.done_deal_button): {
-//                String url = "https://www.donedeal.ie/cars/volkswagen/golf/2015";
                 String url =    "https://www.donedeal.ie/cars/" + manufacturer.getText() +
                                 "/" + model.getText() + "/" + year.getText();
                 Intent doneDealIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toLowerCase()));
@@ -87,11 +86,10 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                 int yearNum = Integer.parseInt(year.getText().toString());
                 // If the year is 2012 or before, no formatting needs to be done
                 if (yearNum <= 2012) {
-//                    https://www.carzone.ie/search?make=Volkswagen&model=Golf&minYear=2012&maxYear=2012
                     String url =    "https://www.carzone.ie/search?make=" + manufacturer.getText() +
                                     "&model=" + model.getText() + "&minYear=" + yearNum +
                                     "&maxYear=" + yearNum;
-                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toLowerCase()));
+                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(carZoneIntent);
                 }
                 // Format the url to suit the short form of the year for each half
@@ -103,12 +101,11 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     String yearShortMin = yearShort + "1";
                     // Append a 2 for the second half
                     String yearShortMax = yearShort + "2";
-//                    String url = "https://www.carzone.ie/search?make=Volkswagen&model=Golf&minYear=2015%20(151)&maxYear=2015%20(151)";
                     String url =    "https://www.carzone.ie/search?make=" + manufacturer.getText() +
                                     "&model=" + model.getText() + "&minYear=" + yearNum +
-                                    "%20(" + yearShortMin + ")&maxYear=" + yearNum + "%20(" +
+                                    " (" + yearShortMin + ")&maxYear=" + yearNum + " (" +
                                     yearShortMax + ")";
-                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toLowerCase()));
+                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(carZoneIntent);
                 }
                 break;

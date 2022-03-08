@@ -69,6 +69,7 @@
                     android:layout_marginTop="@dimen/margin10"
                     android:text="@string/information_button_text"
                     android:textSize="@dimen/heading_size"
+                    android:textStyle="bold"
                     android:gravity="center"/>
 
                 <TextView
@@ -195,12 +196,13 @@
 
                 <TextView
                     android:id="@+id/submit_button"
-                    android:layout_width="150dp"
-                    android:layout_height="75dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/menu_button"
                     android:text="@string/submit"
                     android:gravity="center"
                     android:textSize="@dimen/land_text_size"
+                    android:padding="@dimen/margin10"
                     android:layout_below="@id/year_layout"
                     android:layout_marginStart="@dimen/margin30"
                     android:layout_marginTop="@dimen/margin20"
