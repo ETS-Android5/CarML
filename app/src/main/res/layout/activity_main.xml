@@ -22,13 +22,26 @@
             <!-- Layout for banner -->
             <RelativeLayout
                 android:id="@+id/banner_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/menu_button"
+                android:layout_marginTop="@dimen/margin20">
 
                 <TextView
                     android:id="@+id/carml_banner"
-                    style="@style/Banner"
+                    style="@style/Logo"
                     android:text="@string/home_banner"
+                    android:contentDescription="@string/noCD"/>
+
+                <ImageView
+                    android:id="@+id/carml_logo"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/carml_banner"
+                    android:src="@drawable/carml_logo"
+                    android:padding="12dp"
                     android:contentDescription="@string/noCD"/>
             </RelativeLayout>
 
@@ -38,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/banner_layout"
-                android:layout_marginTop="100dp">
+                android:layout_marginTop="80dp">
 
                 <TextView
                     android:id="@+id/price_prediction_button"
@@ -56,7 +69,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/price_prediction_layout"
                 android:background="@drawable/rectangle"
-                android:layout_marginTop="100dp">
+                android:layout_marginTop="80dp">
 
                 <TextView
                     android:id="@+id/fuel_information_button"

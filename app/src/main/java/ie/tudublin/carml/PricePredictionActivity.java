@@ -152,25 +152,38 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch(adapterView.getId()) {
             case(R.id.manufacturer): {
-                if(!adapterView.getSelectedItem().toString().equals("Select One"))
-                {
+                if(!adapterView.getSelectedItem().toString().equals("Select One")) {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
-                    loadModels(adapterView.getSelectedItem().toString());
+                    if(!adapterView.getSelectedItem().equals("Select One"))
+                        loadModels(adapterView.getSelectedItem().toString());
                     modelLabel.setVisibility(View.VISIBLE);
                     modelSpinner.setVisibility(View.VISIBLE);
+                    yearLabel.setVisibility(View.GONE);
+                    yearSpinner.setVisibility(View.GONE);
+                }
+                else {
+                    // Hide everything else
+                    submit.setVisibility(View.GONE);
+                    modelLabel.setVisibility(View.GONE);
+                    modelSpinner.setVisibility(View.GONE);
                     yearLabel.setVisibility(View.GONE);
                     yearSpinner.setVisibility(View.GONE);
                 }
                 break;
             }
             case(R.id.model): {
-                if(!adapterView.getSelectedItem().toString().equals("Select One"))
-                {
+                if(!adapterView.getSelectedItem().toString().equals("Select One")) {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
-                    loadYears(manufacturerDD.getSelectedItem() + "," + adapterView.getSelectedItem().toString());
+                    if(!adapterView.getSelectedItem().equals("Select One"))
+                        loadYears(manufacturerDD.getSelectedItem() + "," + adapterView.getSelectedItem().toString());
                     yearLabel.setVisibility(View.VISIBLE);
                     yearSpinner.setVisibility(View.VISIBLE);
                     submit.setVisibility(View.VISIBLE);
+                }
+                else {
+                    submit.setVisibility(View.GONE);
+                    yearLabel.setVisibility(View.GONE);
+                    yearSpinner.setVisibility(View.GONE);
                 }
                 break;
             }

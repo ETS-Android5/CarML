@@ -287,25 +287,28 @@
                     android:layout_height="wrap_content"
                     android:text="@string/done"
                     android:padding="@dimen/margin10"
+                    android:layout_centerHorizontal="true"
                     android:layout_below="@id/result_body_type"
                     android:layout_marginTop="@dimen/margin30"
                     android:layout_marginBottom="@dimen/margin20"
                     android:contentDescription="@string/done_buttonCD"/>
 
                 <TextView
+                    android:id="@+id/search_onDD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/body_type_label"
                     android:layout_alignStart="@id/done_deal_button"
-                    android:layout_marginTop="@dimen/margin5"
+                    android:layout_marginTop="@dimen/margin10"
                     android:text="@string/search_on"/>
 
                 <TextView
+                    android:id="@+id/search_onCZ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/body_type_label"
                     android:layout_alignStart="@id/carzone_button"
-                    android:layout_marginTop="@dimen/margin5"
+                    android:layout_marginTop="@dimen/margin10"
                     android:text="@string/search_on"/>
 
                 <ImageButton
@@ -313,8 +316,8 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:contentDescription="@string/donedeal_search"
-                    android:layout_below="@id/result_body_type"
-                    android:layout_marginTop="@dimen/margin30"
+                    android:layout_below="@id/search_onDD"
+                    android:layout_marginTop="@dimen/margin10"
                     android:layout_marginStart="@dimen/margin20"
                     android:background="@drawable/done_deal_logo"/>
 
@@ -323,8 +326,8 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:contentDescription="@string/carzone_search"
-                    android:layout_below="@id/result_body_type"
-                    android:layout_marginTop="@dimen/margin30"
+                    android:layout_below="@id/search_onCZ"
+                    android:layout_marginTop="@dimen/margin10"
                     android:layout_toEndOf="@id/done_button"
                     android:layout_marginStart="@dimen/margin20"
                     android:background="@drawable/carzone_logo"/>

@@ -65,8 +65,7 @@
             <RelativeLayout
                 android:id="@+id/easygo_layout"
                 style="@style/ElectricLinkLayout"
-                android:layout_below="@id/home_charger_heading"
-                android:background="@drawable/menu_button">
+                android:layout_below="@id/home_charger_heading">
 
                 <ImageView
                     android:id="@+id/easygo_image"
@@ -85,8 +84,7 @@
             <RelativeLayout
                 android:id="@+id/ecar_infra_layout"
                 style="@style/ElectricLinkLayout"
-                android:layout_below="@id/easygo_layout"
-                android:background="@drawable/menu_button">
+                android:layout_below="@id/easygo_layout">
 
                 <ImageView
                     android:id="@+id/ecar_infra_image"
@@ -105,8 +103,7 @@
             <RelativeLayout
                 android:id="@+id/ev_charging_ireland_layout"
                 style="@style/ElectricLinkLayout"
-                android:layout_below="@id/ecar_infra_layout"
-                android:background="@drawable/menu_button">
+                android:layout_below="@id/ecar_infra_layout">
 
                 <ImageView
                     android:id="@+id/ev_charging_ireland_image"
@@ -125,8 +122,7 @@
             <RelativeLayout
                 android:id="@+id/wallbox_layout"
                 style="@style/ElectricLinkLayout"
-                android:layout_below="@id/ev_charging_ireland_layout"
-                android:background="@drawable/menu_button">
+                android:layout_below="@id/ev_charging_ireland_layout">
 
                 <ImageView
                     android:id="@+id/wallbox_image"
@@ -157,8 +153,7 @@
             <RelativeLayout
                 android:id="@+id/seai_layout"
                 style="@style/ElectricLinkLayout"
-                android:layout_below="@id/government_information_heading"
-                android:background="@drawable/menu_button">
+                android:layout_below="@id/government_information_heading">
 
                 <ImageView
                     android:id="@+id/seai_image"
@@ -177,8 +172,7 @@
             <RelativeLayout
                 android:id="@+id/bord_gais_energy_layout"
                 style="@style/ElectricLinkLayout"
-                android:layout_below="@id/seai_layout"
-                android:background="@drawable/menu_button">
+                android:layout_below="@id/seai_layout">
 
                 <ImageView
                     android:id="@+id/bord_gais_energy_image"

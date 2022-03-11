@@ -57,6 +57,7 @@
                 android:layout_marginStart="@dimen/margin20"
                 android:layout_below="@id/arrow_layout"
                 android:layout_centerHorizontal="true"
+                android:padding="@dimen/margin10"
                 android:background="@drawable/rectangle">
 
                 <TextView

@@ -49,85 +49,83 @@
                     android:contentDescription="@string/back_arrowCD"/>
             </RelativeLayout>
 
-            <!-- Layout for Petrol Button -->
+            <!-- Layout for fuel type buttons and symbols -->
             <RelativeLayout
-                android:id="@+id/petrol_layout"
+                android:id="@+id/fuel_types_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/banner_layout"
-                android:layout_marginTop="100dp"
-                android:layout_centerHorizontal="true">
+                android:layout_below="@id/arrow_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:padding="@dimen/margin10"
+                android:background="@drawable/rectangle">
 
-                <TextView
-                    android:id="@+id/petrol_button"
-                    style="@style/MenuButton"
-                    android:text="@string/petrol"/>
+                <!-- Layout for Petrol Button -->
+                <RelativeLayout
+                    android:id="@+id/petrol_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
 
-                <ImageView
-                    android:id="@+id/petrol_symbol"
-                    android:layout_width="100dp"
-                    android:layout_height="120dp"
-                    android:layout_marginStart="@dimen/margin20"
-                    android:layout_toEndOf="@id/petrol_button"
-                    android:padding="6dp"
-                    android:src="@drawable/petrol_symbol"
-                    android:background="@drawable/rectangle"
-                    android:contentDescription="@string/noCD"/>
+                    <TextView
+                        android:id="@+id/petrol_button"
+                        style="@style/MenuButton"
+                        android:text="@string/petrol"/>
+
+                    <ImageView
+                        android:id="@+id/petrol_symbol"
+                        style="@style/FuelTypeIcon"
+                        android:layout_toEndOf="@id/petrol_button"
+                        android:src="@drawable/petrol_symbol"
+                        android:contentDescription="@string/noCD"/>
+                </RelativeLayout>
+
+                <!-- Layout for Diesel Button -->
+                <RelativeLayout
+                    android:id="@+id/diesel_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/petrol_layout"
+                    android:layout_marginTop="50dp"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/diesel_button"
+                        style="@style/MenuButton"
+                        android:text="@string/diesel"/>
+
+                    <ImageView
+                        android:id="@+id/diesel_symbol"
+                        style="@style/FuelTypeIcon"
+                        android:layout_toEndOf="@id/diesel_button"
+                        android:src="@drawable/diesel_symbol"
+                        android:contentDescription="@string/noCD"/>
+                </RelativeLayout>
+
+                <!-- Layout for Electric Button -->
+                <RelativeLayout
+                    android:id="@+id/electric_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diesel_layout"
+                    android:layout_marginTop="50dp"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/electric_button"
+                        style="@style/MenuButton"
+                        android:text="@string/electric"/>
+
+                    <ImageView
+                        android:id="@+id/electric_symbol"
+                        style="@style/FuelTypeIcon"
+                        android:layout_toEndOf="@id/electric_button"
+                        android:src="@drawable/electric_symbol"
+                        android:contentDescription="@string/noCD"/>
+                </RelativeLayout>
+
             </RelativeLayout>
 
-            <!-- Layout for Diesel Button -->
-            <RelativeLayout
-                android:id="@+id/diesel_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/petrol_layout"
-                android:layout_marginTop="50dp"
-                android:layout_centerHorizontal="true">
-
-                <TextView
-                    android:id="@+id/diesel_button"
-                    style="@style/MenuButton"
-                    android:text="@string/diesel"/>
-
-                <ImageView
-                    android:id="@+id/diesel_symbol"
-                    android:layout_width="100dp"
-                    android:layout_height="120dp"
-                    android:layout_marginStart="@dimen/margin20"
-
-                    android:layout_toEndOf="@id/diesel_button"
-                    android:padding="6dp"
-                    android:src="@drawable/diesel_symbol"
-                    android:background="@drawable/rectangle"
-                    android:contentDescription="@string/noCD"/>
-            </RelativeLayout>
-
-            <!-- Layout for Electric Button -->
-            <RelativeLayout
-                android:id="@+id/electric_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/diesel_layout"
-                android:layout_marginTop="50dp"
-                android:layout_centerHorizontal="true">
-
-                <TextView
-                    android:id="@+id/electric_button"
-                    style="@style/MenuButton"
-                    android:text="@string/electric"/>
-
-                <ImageView
-                    android:id="@+id/electric_symbol"
-                    android:layout_width="100dp"
-                    android:layout_height="120dp"
-                    android:layout_marginStart="@dimen/margin20"
-                    android:layout_centerHorizontal="true"
-                    android:layout_toEndOf="@id/electric_button"
-                    android:padding="6dp"
-                    android:src="@drawable/electric_symbol"
-                    android:background="@drawable/rectangle"
-                    android:contentDescription="@string/noCD"/>
-            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
