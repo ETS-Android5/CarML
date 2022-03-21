@@ -47,6 +47,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     TextView num_doors;
     TextView body_type;
     TextView price;
+    TextView engine;
     ImageLoader imgLoad;
 
     @Override
@@ -125,13 +126,14 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         manufacturer = findViewById(R.id.result_manufacturer);
         model = findViewById(R.id.result_model);
         year = findViewById(R.id.result_year);
-        fuel_type = findViewById(R.id.result_fuel_type);
-        horsepower = findViewById(R.id.result_horsepower);
-        transmission = findViewById(R.id.result_transmission);
-        drivetrain = findViewById(R.id.result_drivetrain);
-        num_doors =  findViewById(R.id.result_num_doors);
-        body_type = findViewById(R.id.result_body_type);
+//        fuel_type = findViewById(R.id.result_fuel_type);
+//        horsepower = findViewById(R.id.result_horsepower);
+//        transmission = findViewById(R.id.result_transmission);
+//        drivetrain = findViewById(R.id.result_drivetrain);
+//        num_doors =  findViewById(R.id.result_num_doors);
+//        body_type = findViewById(R.id.result_body_type);
         price = findViewById(R.id.result_price);
+        engine = findViewById(R.id.result_engine);
         done_deal = findViewById(R.id.done_deal_button);
         done_deal.setOnClickListener(this);
         carzone = findViewById(R.id.carzone_button);
@@ -159,7 +161,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         Attribute manufacturer = new Attribute("Make");
         Attribute model = new Attribute("Model");
         Attribute year = new Attribute("Year");
-        Attribute price = new Attribute("MSRP");
+//        Attribute price = new Attribute("MSRP");
+        Attribute price = new Attribute("Price");
         // Put the attributes in an ArrayList
         ArrayList<Attribute> attributes= new ArrayList<>(numAttributes);
         attributes.add(manufacturer);
@@ -181,7 +184,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         // Classify the Instance
         try {
             Classifier rf = (Classifier)
-                    weka.core.SerializationHelper.read(getAssets().open("carml.model"));
+                    weka.core.SerializationHelper.read(getAssets().open("DD_carml.model"));
             return rf.classifyInstance(instances.instance(0));
         } catch (Exception e) {
             e.printStackTrace();
@@ -226,12 +229,13 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             // Get the first object
             JSONObject obj = ary.getJSONObject(0);
             // Extract the values and display them
-            fuel_type.setText(formatString(obj.getString("Engine Fuel Type")));
-            horsepower.setText(formatString(obj.getString("Engine HP")));
-            transmission.setText(formatString(obj.getString("Transmission")));
-            drivetrain.setText(formatString(obj.getString("Driven_Wheels")));
-            num_doors.setText(formatString(obj.getString("Number of Doors")));
-            body_type.setText(formatString(obj.getString("Vehicle Style")));
+//            fuel_type.setText(formatString(obj.getString("Engine Fuel Type")));
+//            horsepower.setText(formatString(obj.getString("Engine HP")));
+//            transmission.setText(formatString(obj.getString("Transmission")));
+//            drivetrain.setText(formatString(obj.getString("Driven_Wheels")));
+//            num_doors.setText(formatString(obj.getString("Number of Doors")));
+//            body_type.setText(formatString(obj.getString("Vehicle Style")));
+            engine.setText(formatString(obj.getString("Engine Fuel Type")));
             if(!obj.getString("Prediction").equals("0")) {
                 price.setText(obj.getString("Prediction"));
             }

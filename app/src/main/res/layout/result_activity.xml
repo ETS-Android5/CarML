@@ -62,7 +62,7 @@
                 <ImageView
                     android:id="@+id/result_image"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/margin20"
                     android:layout_marginBottom="@dimen/margin20"
@@ -154,131 +154,152 @@
                     android:layout_marginTop="@dimen/margin10"
                     android:text="@string/unknown" />
 
+<!--                <TextView-->
+<!--                    android:id="@+id/fuel_type_label"-->
+<!--                    style="@style/HeaderText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/result_year"-->
+<!--                    android:layout_marginStart="@dimen/margin20"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/fuel_type" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/result_fuel_type"-->
+<!--                    style="@style/RegularText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/fuel_type_label"-->
+<!--                    android:layout_below="@id/result_year"-->
+<!--                    android:layout_marginStart="@dimen/margin5"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/unknown" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/horsepower_label"-->
+<!--                    style="@style/HeaderText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/result_fuel_type"-->
+<!--                    android:layout_marginStart="@dimen/margin20"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/horsepower" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/result_horsepower"-->
+<!--                    style="@style/RegularText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/horsepower_label"-->
+<!--                    android:layout_below="@id/result_fuel_type"-->
+<!--                    android:layout_marginStart="@dimen/margin5"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/unknown" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/transmission_label"-->
+<!--                    style="@style/HeaderText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/result_horsepower"-->
+<!--                    android:layout_marginStart="@dimen/margin20"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/transmission" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/result_transmission"-->
+<!--                    style="@style/RegularText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/transmission_label"-->
+<!--                    android:layout_below="@id/result_horsepower"-->
+<!--                    android:layout_marginStart="@dimen/margin5"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/unknown" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/drivetrain_label"-->
+<!--                    style="@style/HeaderText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/result_transmission"-->
+<!--                    android:layout_marginStart="@dimen/margin20"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/drivetrain" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/result_drivetrain"-->
+<!--                    style="@style/RegularText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/drivetrain_label"-->
+<!--                    android:layout_below="@id/result_transmission"-->
+<!--                    android:layout_marginStart="@dimen/margin5"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/unknown" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/num_doors_label"-->
+<!--                    style="@style/HeaderText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/result_drivetrain"-->
+<!--                    android:layout_marginStart="@dimen/margin20"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/no_of_doors" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/result_num_doors"-->
+<!--                    style="@style/RegularText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/num_doors_label"-->
+<!--                    android:layout_below="@id/result_drivetrain"-->
+<!--                    android:layout_marginStart="@dimen/margin5"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/unknown" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/body_type_label"-->
+<!--                    style="@style/HeaderText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/result_num_doors"-->
+<!--                    android:layout_marginStart="@dimen/margin20"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/body_type" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/result_body_type"-->
+<!--                    style="@style/RegularText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/body_type_label"-->
+<!--                    android:layout_below="@id/result_num_doors"-->
+<!--                    android:layout_marginStart="@dimen/margin5"-->
+<!--                    android:layout_marginTop="@dimen/margin10"-->
+<!--                    android:text="@string/unknown" />-->
+
                 <TextView
-                    android:id="@+id/fuel_type_label"
+                    android:id="@+id/engine_label"
                     style="@style/HeaderText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/result_year"
                     android:layout_marginStart="@dimen/margin20"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/fuel_type" />
+                    android:text="@string/engine" />
 
                 <TextView
-                    android:id="@+id/result_fuel_type"
+                    android:id="@+id/result_engine"
                     style="@style/RegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/fuel_type_label"
+                    android:layout_toEndOf="@id/engine_label"
                     android:layout_below="@id/result_year"
                     android:layout_marginStart="@dimen/margin5"
                     android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/unknown" />
-
-                <TextView
-                    android:id="@+id/horsepower_label"
-                    style="@style/HeaderText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/result_fuel_type"
-                    android:layout_marginStart="@dimen/margin20"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/horsepower" />
-
-                <TextView
-                    android:id="@+id/result_horsepower"
-                    style="@style/RegularText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/horsepower_label"
-                    android:layout_below="@id/result_fuel_type"
-                    android:layout_marginStart="@dimen/margin5"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/unknown" />
-
-                <TextView
-                    android:id="@+id/transmission_label"
-                    style="@style/HeaderText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/result_horsepower"
-                    android:layout_marginStart="@dimen/margin20"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/transmission" />
-
-                <TextView
-                    android:id="@+id/result_transmission"
-                    style="@style/RegularText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/transmission_label"
-                    android:layout_below="@id/result_horsepower"
-                    android:layout_marginStart="@dimen/margin5"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/unknown" />
-
-                <TextView
-                    android:id="@+id/drivetrain_label"
-                    style="@style/HeaderText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/result_transmission"
-                    android:layout_marginStart="@dimen/margin20"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/drivetrain" />
-
-                <TextView
-                    android:id="@+id/result_drivetrain"
-                    style="@style/RegularText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/drivetrain_label"
-                    android:layout_below="@id/result_transmission"
-                    android:layout_marginStart="@dimen/margin5"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/unknown" />
-
-                <TextView
-                    android:id="@+id/num_doors_label"
-                    style="@style/HeaderText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/result_drivetrain"
-                    android:layout_marginStart="@dimen/margin20"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/no_of_doors" />
-
-                <TextView
-                    android:id="@+id/result_num_doors"
-                    style="@style/RegularText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/num_doors_label"
-                    android:layout_below="@id/result_drivetrain"
-                    android:layout_marginStart="@dimen/margin5"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/unknown" />
-
-                <TextView
-                    android:id="@+id/body_type_label"
-                    style="@style/HeaderText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/result_num_doors"
-                    android:layout_marginStart="@dimen/margin20"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/body_type" />
-
-                <TextView
-                    android:id="@+id/result_body_type"
-                    style="@style/RegularText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/body_type_label"
-                    android:layout_below="@id/result_num_doors"
-                    android:layout_marginStart="@dimen/margin5"
-                    android:layout_marginTop="@dimen/margin10"
-                    android:text="@string/unknown" />
+                    android:text="@string/unknown"/>
 
                 <TextView
                     android:id="@+id/done_button"
@@ -288,7 +309,7 @@
                     android:text="@string/done"
                     android:padding="@dimen/margin10"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/result_body_type"
+                    android:layout_below="@id/result_engine"
                     android:layout_marginTop="@dimen/margin30"
                     android:layout_marginBottom="@dimen/margin20"
                     android:contentDescription="@string/done_buttonCD"/>
@@ -297,7 +318,7 @@
                     android:id="@+id/search_onDD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/body_type_label"
+                    android:layout_below="@id/result_engine"
                     android:layout_alignStart="@id/done_deal_button"
                     android:layout_marginTop="@dimen/margin10"
                     android:text="@string/search_on"/>
@@ -306,7 +327,7 @@
                     android:id="@+id/search_onCZ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/body_type_label"
+                    android:layout_below="@id/result_engine"
                     android:layout_alignStart="@id/carzone_button"
                     android:layout_marginTop="@dimen/margin10"
                     android:text="@string/search_on"/>

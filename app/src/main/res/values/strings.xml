@@ -13,12 +13,14 @@
     <string name="engine_size">Engine Size (Litres):</string>
     <string name="fuel_type">\u25CF Fuel Type:</string>
     <string name="submitCD">Tap to submit and go to result.</string>
-    <string name="price">\u25CF Price:</string>
+    <string name="price">\u25CF Price: €</string>
     <string name="horsepower">\u25CF Horsepower:</string>
     <string name="transmission">\u25CF Transmission:</string>
     <string name="drivetrain">\u25CF Drivetrain:</string>
     <string name="no_of_doors">\u25CF No. of Doors:</string>
     <string name="body_type">\u25CF Body Type:</string>
+    <string name="engine">\u25CF Engine:</string>
+    <string name="mileage">\u25CF Mileage:</string>
     <string name="unknown">Unknown</string>
     <string name="result_imageCD">An image of the car you entered</string>
     <string name="done_buttonCD">Done. Tap to return to the previous screen.</string>
