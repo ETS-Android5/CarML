@@ -183,8 +183,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         // Classify the Instance
         try {
             Classifier rf = (Classifier)
-//                    weka.core.SerializationHelper.read(getAssets().open("DD_carml.model"));
-                    weka.core.SerializationHelper.read(getAssets().open("DD_carml_new.model"));
+                    weka.core.SerializationHelper.read(getAssets().open("DD_carml.model"));
             return rf.classifyInstance(instances.instance(0));
         } catch (Exception e) {
             e.printStackTrace();
