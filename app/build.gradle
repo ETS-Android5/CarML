@@ -33,7 +33,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
-    implementation files('libs/weka.jar')
+//    implementation files('libs/weka.jar')
+    implementation files('libs/weka_new.jar')
     implementation files('libs/jsoup-1.14.3.jar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

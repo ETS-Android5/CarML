@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import weka.classifiers.Classifier;
@@ -184,7 +183,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         // Classify the Instance
         try {
             Classifier rf = (Classifier)
-                    weka.core.SerializationHelper.read(getAssets().open("DD_carml.model"));
+//                    weka.core.SerializationHelper.read(getAssets().open("DD_carml.model"));
+                    weka.core.SerializationHelper.read(getAssets().open("DD_carml_new.model"));
             return rf.classifyInstance(instances.instance(0));
         } catch (Exception e) {
             e.printStackTrace();
