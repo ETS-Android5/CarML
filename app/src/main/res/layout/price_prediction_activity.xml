@@ -58,7 +58,7 @@
                 android:layout_below="@id/arrow_layout"
                 android:layout_centerHorizontal="true"
                 android:padding="@dimen/margin10"
-                android:background="@drawable/rectangle">
+                android:background="@drawable/rectangle_round">
 
                 <TextView
                     android:id="@+id/information_button"

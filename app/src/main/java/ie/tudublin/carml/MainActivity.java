@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView price_prediction;
+    RelativeLayout price_prediction;
     RelativeLayout fuel_information;
     PopupWindow pleaseWaitWindow = null;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case(R.id.price_prediction_button): {
+            case(R.id.price_prediction_layout): {
                 price_prediction.setAlpha(0.5f);
                 testServerConnection();
                 break;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setUpViews() {
-        price_prediction = findViewById(R.id.price_prediction_button);
+        price_prediction = findViewById(R.id.price_prediction_layout);
         price_prediction.setOnClickListener(this);
         fuel_information = findViewById(R.id.fuel_information_layout);
         fuel_information.setOnClickListener(this);

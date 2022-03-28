@@ -57,7 +57,7 @@
                 android:layout_below="@id/arrow_layout"
                 android:layout_marginTop="@dimen/margin20"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/rectangle"
+                android:background="@drawable/rectangle_round"
                 android:padding="@dimen/margin10"
                 android:text="@string/home_charger_heading"/>
 
@@ -145,7 +145,7 @@
                 android:layout_below="@id/wallbox_layout"
                 android:layout_marginTop="@dimen/margin20"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/rectangle"
+                android:background="@drawable/rectangle_round"
                 android:padding="@dimen/margin10"
                 android:text="@string/government_information"/>
 

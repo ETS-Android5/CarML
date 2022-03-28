@@ -57,7 +57,7 @@
                 android:layout_below="@id/arrow_layout"
                 android:layout_marginStart="@dimen/margin20"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/rectangle">
+                android:background="@drawable/rectangle_round">
 
                 <ImageView
                     android:id="@+id/result_image"

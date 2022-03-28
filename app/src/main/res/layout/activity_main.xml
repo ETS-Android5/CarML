@@ -48,17 +48,27 @@
             <!-- Layout for Price Prediction Button -->
             <RelativeLayout
                 android:id="@+id/price_prediction_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@id/banner_layout"
+                android:background="@drawable/rectangle_round"
                 android:layout_marginTop="80dp">
 
                 <TextView
                     android:id="@+id/price_prediction_button"
                     style="@style/MenuButton"
-                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
                     android:text="@string/price_prediction"
                     android:contentDescription="@string/price_prediction_buttonCD"/>
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/price_prediction_button"
+                    android:src="@drawable/price_prediction_symbol"
+                    android:contentDescription="@string/noCD"/>
             </RelativeLayout>
 
             <!-- Layout for Fuel Information Button -->
@@ -68,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/price_prediction_layout"
-                android:background="@drawable/rectangle"
+                android:background="@drawable/rectangle_round"
                 android:layout_marginTop="80dp">
 
                 <TextView
