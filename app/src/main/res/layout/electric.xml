@@ -52,12 +52,13 @@
             <TextView
                 android:id="@+id/home_charger_heading"
                 style="@style/HeaderText"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/arrow_layout"
                 android:layout_marginTop="@dimen/margin20"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/rectangle_round"
+                android:background="@drawable/electric_link_header"
                 android:padding="@dimen/margin10"
                 android:text="@string/home_charger_heading"/>
 
@@ -70,7 +71,8 @@
                 <ImageView
                     android:id="@+id/easygo_image"
                     style="@style/ElectricLinkImage"
-                    android:background="@drawable/easygo_logo"
+                    android:background="@color/black"
+                    android:src="@drawable/easygo_logo"
                     android:contentDescription="@string/noCD"/>
 
                 <TextView
@@ -80,16 +82,37 @@
                     android:text="@string/easygo"/>
             </RelativeLayout>
 
-            <!-- ECAR INFRA Link Layout-->
+            <!-- Wallbox Link Layout-->
             <RelativeLayout
-                android:id="@+id/ecar_infra_layout"
+                android:id="@+id/wallbox_layout"
                 style="@style/ElectricLinkLayout"
                 android:layout_below="@id/easygo_layout">
 
                 <ImageView
+                    android:id="@+id/wallbox_image"
+                    style="@style/ElectricLinkImage"
+                    android:background="@color/white"
+                    android:src="@drawable/wallbox_logo"
+                    android:contentDescription="@string/noCD"/>
+
+                <TextView
+                    android:id="@+id/wallbox_text"
+                    style="@style/ElectricLinkText"
+                    android:layout_toEndOf="@id/wallbox_image"
+                    android:text="@string/wallbox"/>
+            </RelativeLayout>
+
+            <!-- ECAR INFRA Link Layout-->
+            <RelativeLayout
+                android:id="@+id/ecar_infra_layout"
+                style="@style/ElectricLinkLayout"
+                android:layout_below="@id/wallbox_layout">
+
+                <ImageView
                     android:id="@+id/ecar_infra_image"
                     style="@style/ElectricLinkImage"
-                    android:background="@drawable/ecarinfra_logo"
+                    android:background="@color/white"
+                    android:src="@drawable/ecarinfra_logo"
                     android:contentDescription="@string/noCD"/>
 
                 <TextView
@@ -108,7 +131,8 @@
                 <ImageView
                     android:id="@+id/ev_charging_ireland_image"
                     style="@style/ElectricLinkImage"
-                    android:background="@drawable/ev_charging_ireland_logo"
+                    android:background="@color/black"
+                    android:src="@drawable/ev_charging_ireland_logo"
                     android:contentDescription="@string/noCD"/>
 
                 <TextView
@@ -118,66 +142,30 @@
                     android:text="@string/ev_charging_ireland"/>
             </RelativeLayout>
 
-            <!-- Wallbox Link Layout-->
-            <RelativeLayout
-                android:id="@+id/wallbox_layout"
-                style="@style/ElectricLinkLayout"
-                android:layout_below="@id/ev_charging_ireland_layout">
-
-                <ImageView
-                    android:id="@+id/wallbox_image"
-                    style="@style/ElectricLinkImage"
-                    android:background="@drawable/wallbox_logo"
-                    android:contentDescription="@string/noCD"/>
-
-                <TextView
-                    android:id="@+id/wallbox_text"
-                    style="@style/ElectricLinkText"
-                    android:layout_toEndOf="@id/wallbox_image"
-                    android:text="@string/wallbox"/>
-            </RelativeLayout>
-
             <TextView
                 android:id="@+id/government_information_heading"
                 style="@style/HeaderText"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/wallbox_layout"
+                android:layout_below="@id/ev_charging_ireland_layout"
                 android:layout_marginTop="@dimen/margin20"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/rectangle_round"
+                android:background="@drawable/electric_link_header"
                 android:padding="@dimen/margin10"
                 android:text="@string/government_information"/>
-
-            <!-- SEAI Link Layout-->
-            <RelativeLayout
-                android:id="@+id/seai_layout"
-                style="@style/ElectricLinkLayout"
-                android:layout_below="@id/government_information_heading">
-
-                <ImageView
-                    android:id="@+id/seai_image"
-                    style="@style/ElectricLinkImage"
-                    android:background="@drawable/seai_logo"
-                    android:contentDescription="@string/noCD"/>
-
-                <TextView
-                    android:id="@+id/seai_text"
-                    style="@style/ElectricLinkText"
-                    android:layout_toEndOf="@id/seai_image"
-                    android:text="@string/seai"/>
-            </RelativeLayout>
 
             <!-- Bord Gáis Energy Link Layout-->
             <RelativeLayout
                 android:id="@+id/bord_gais_energy_layout"
                 style="@style/ElectricLinkLayout"
-                android:layout_below="@id/seai_layout">
+                android:layout_below="@id/government_information_heading">
 
                 <ImageView
                     android:id="@+id/bord_gais_energy_image"
                     style="@style/ElectricLinkImage"
-                    android:background="@drawable/bord_gais_energy_logo"
+                    android:background="@color/white"
+                    android:src="@drawable/bord_gais_energy_logo"
                     android:contentDescription="@string/noCD"/>
 
                 <TextView
@@ -185,6 +173,26 @@
                     style="@style/ElectricLinkText"
                     android:layout_toEndOf="@id/bord_gais_energy_image"
                     android:text="@string/bord_gais_energy"/>
+            </RelativeLayout>
+
+            <!-- SEAI Link Layout-->
+            <RelativeLayout
+                android:id="@+id/seai_layout"
+                style="@style/ElectricLinkLayout"
+                android:layout_below="@id/bord_gais_energy_layout">
+
+                <ImageView
+                    android:id="@+id/seai_image"
+                    style="@style/ElectricLinkImage"
+                    android:background="@color/white"
+                    android:src="@drawable/seai_logo"
+                    android:contentDescription="@string/noCD"/>
+
+                <TextView
+                    android:id="@+id/seai_text"
+                    style="@style/ElectricLinkText"
+                    android:layout_toEndOf="@id/seai_image"
+                    android:text="@string/seai" />
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
