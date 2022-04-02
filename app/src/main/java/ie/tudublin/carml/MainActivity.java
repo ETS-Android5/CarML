@@ -1,7 +1,7 @@
 /* This is the Main Activity. It starts on the home screen and displays options to the user
 * Author: Sean Coll
 * Date Created: 12/12/21
-* Last Modified: 08/03/22
+* Last Modified: 02/04/22
 */
 
 package ie.tudublin.carml;
@@ -15,6 +15,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -23,7 +24,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     RelativeLayout price_prediction;
-    RelativeLayout fuel_information;
+    TextView fuel_information_button;
+    ImageView petrol_symbol;
+    ImageView diesel_symbol;
+    ImageView electric_symbol;
     PopupWindow pleaseWaitWindow = null;
 
     @Override
@@ -41,9 +45,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 testServerConnection();
                 break;
             }
-            case(R.id.fuel_information_layout): {
+            case(R.id.fuel_information_button): {
                 Intent fuel_info = new Intent(MainActivity.this, FuelInformationActivity.class);
                 startActivity(fuel_info);
+                break;
+            }
+            case(R.id.petrol_symbol): {
+                Intent fuel_info = new Intent(MainActivity.this, PetrolActivity.class);
+                startActivity(fuel_info);
+                break;
+            }
+            case(R.id.diesel_symbol): {
+                Intent fuel_info = new Intent(MainActivity.this, DieselActivity.class);
+                startActivity(fuel_info);
+                break;
+            }
+            case(R.id.electric_symbol): {
+                Intent fuel_info = new Intent(MainActivity.this, ElectricActivity.class);
+                startActivity(fuel_info);
+                break;
             }
             default: {
                 break;
@@ -62,8 +82,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void setUpViews() {
         price_prediction = findViewById(R.id.price_prediction_layout);
         price_prediction.setOnClickListener(this);
-        fuel_information = findViewById(R.id.fuel_information_layout);
-        fuel_information.setOnClickListener(this);
+        fuel_information_button = findViewById(R.id.fuel_information_button);
+        fuel_information_button.setOnClickListener(this);
+        petrol_symbol = findViewById(R.id.petrol_symbol);
+        petrol_symbol.setOnClickListener(this);
+        diesel_symbol = findViewById(R.id.diesel_symbol);
+        diesel_symbol.setOnClickListener(this);
+        electric_symbol = findViewById(R.id.electric_symbol);
+        electric_symbol.setOnClickListener(this);
     }
 
     public void displayPopup() {
