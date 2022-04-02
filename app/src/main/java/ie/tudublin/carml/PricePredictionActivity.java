@@ -7,7 +7,6 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -200,9 +199,11 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         manufacturers.add("Select One");
         Log.i("CarML Spinners", "Loading manufacturers");
         DatabaseAccess DBA = new DatabaseAccess();
+        // Get the manufacturers
         String manufacturersData = DBA.runThread("manufacturers", "");
         Log.i("CarML Spinners", "Received from thread: " + manufacturersData);
         if(!manufacturersData.startsWith("ERROR")) {
+            // Parse the data and convert to a regular string array instead of a JSON string
             String[] parsedManufacturers = parser.parseData(manufacturersData,"Make");
             manufacturers.addAll(Arrays.asList(parsedManufacturers));
             Log.i("CarML Spinners", "Finished manufacturers");
@@ -224,7 +225,9 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         models.add("Select One");
         Log.i("CarML Spinners", "Loading models");
         DatabaseAccess DBA = new DatabaseAccess();
+        // Get the models for the specified manufacturer
         String modelsData = DBA.runThread("models", man +", , ");
+        // Parse the data and convert to a regular string array instead of a JSON string
         String[] parsedModels = parser.parseData(modelsData,"Model");
         models.addAll(Arrays.asList(parsedModels));
         Log.i("CarML Spinners", "Finished models");
@@ -243,7 +246,9 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         years.clear();
         Log.i("CarML Spinners", "Loading years");
         DatabaseAccess DBA = new DatabaseAccess();
+        // Get the years for the model specified
         String yearsData = DBA.runThread("years", car +", ");
+        // Parse the data and convert to a regular string array instead of a JSON string
         String[] parsedYears = parser.parseData(yearsData,"Year");
         years.addAll(Arrays.asList(parsedYears));
         Log.i("CarML Spinners", "Finished years");

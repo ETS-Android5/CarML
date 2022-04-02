@@ -1,4 +1,4 @@
-/* This Activity displays the price history of Diesel from 2001 to 2021
+/* This Activity displays the price history of Diesel between 2001 and 2021 as a line graph.
  * Author: Sean Coll
  * Date Created: 26/02/22
  * Last Modified: 28/02/22

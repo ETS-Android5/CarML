@@ -27,7 +27,6 @@ public class FuelInformationActivity extends Activity implements View.OnClickLis
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fuel_information);
-        // Set up views
         setUpViews();
     }
 

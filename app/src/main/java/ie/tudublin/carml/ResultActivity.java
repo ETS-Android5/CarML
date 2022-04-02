@@ -39,12 +39,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     TextView manufacturer;
     TextView model;
     TextView year;
-    TextView fuel_type;
-    TextView horsepower;
-    TextView transmission;
-    TextView drivetrain;
-    TextView num_doors;
-    TextView body_type;
     TextView price;
     TextView engine;
     ImageLoader imgLoad;
@@ -58,8 +52,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         Intent result = getIntent();
         // user_car is manufacturer,model,year
         String user_car = result.getStringExtra("user_car");
-//        PopupWindow pleaseWaitWindow = result.getParcelableExtra("popup");
-//        pleaseWaitWindow.dismiss();
         displayCarDetailsFromDB(user_car);
         displayResult(user_car);
     }
@@ -125,12 +117,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         manufacturer = findViewById(R.id.result_manufacturer);
         model = findViewById(R.id.result_model);
         year = findViewById(R.id.result_year);
-//        fuel_type = findViewById(R.id.result_fuel_type);
-//        horsepower = findViewById(R.id.result_horsepower);
-//        transmission = findViewById(R.id.result_transmission);
-//        drivetrain = findViewById(R.id.result_drivetrain);
-//        num_doors =  findViewById(R.id.result_num_doors);
-//        body_type = findViewById(R.id.result_body_type);
         price = findViewById(R.id.result_price);
         engine = findViewById(R.id.result_engine);
         done_deal = findViewById(R.id.done_deal_button);
@@ -228,12 +214,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             // Get the first object
             JSONObject obj = ary.getJSONObject(0);
             // Extract the values and display them
-//            fuel_type.setText(formatString(obj.getString("Engine Fuel Type")));
-//            horsepower.setText(formatString(obj.getString("Engine HP")));
-//            transmission.setText(formatString(obj.getString("Transmission")));
-//            drivetrain.setText(formatString(obj.getString("Driven_Wheels")));
-//            num_doors.setText(formatString(obj.getString("Number of Doors")));
-//            body_type.setText(formatString(obj.getString("Vehicle Style")));
             engine.setText(formatString(obj.getString("Engine Fuel Type")));
             if(!obj.getString("Prediction").equals("0")) {
                 price.setText(obj.getString("Prediction"));

@@ -17,11 +17,14 @@ public class JSONParser {
 
     public String[] parseData (String raw, String name) {
         try {
+            // Create a JSONArray using the raw JSON string
             JSONArray jsonArray = new JSONArray(raw);
+            // Create a String array with a length equal to the JSONArray's
             String[] data = new String[jsonArray.length()];
             for(int i = 0; i < jsonArray.length(); i++) {
-                // Create a new StringBuilder each time so it is clear
+                // Get the JSONObject
                 JSONObject obj = jsonArray.getJSONObject(i);
+                // Store the string value the object has in the string array
                 data[i] = obj.getString(name);
             }
             return data;

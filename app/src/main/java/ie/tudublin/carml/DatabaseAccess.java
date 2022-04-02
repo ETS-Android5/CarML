@@ -3,7 +3,7 @@
 * - Retrieve the lists of manufacturers and models to populate the drop down menus.
 * Author: Seán Coll
 * Date Created: 7/02/22
-* Last Modified: 20/02/22
+* Last Modified: 02/04/22
 */
 
 package ie.tudublin.carml;
@@ -209,13 +209,13 @@ public class DatabaseAccess {
             // Return the JSON string
             return sb.toString().trim();
         } catch (Exception ioe) {
-//            ioe.printStackTrace();
             httpURLConnection.disconnect();
             Log.i("CarML DBA Error", "Error: " + ioe.getMessage());
             return "ERROR. Server unavailable.";
         }
     }
 
+    // Encode the data to be sent as part of the query (parameters)
     public String encodeData(String[] details) {
         String encData = "";
         if(details.length == 3) {
