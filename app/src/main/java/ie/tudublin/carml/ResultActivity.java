@@ -6,8 +6,12 @@
 package ie.tudublin.carml;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -216,12 +220,12 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             // Extract the values and display them
             engine.setText(formatString(obj.getString("Engine Fuel Type")));
             if(!obj.getString("Prediction").equals("0")) {
-                price.setText(obj.getString("Prediction"));
+                price.setText(Html.fromHtml("<u>" + obj.getString("Prediction") + "</u>", 0));
             }
             else {
                 double prediction = predict(car);
                 Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
-                price.setText(String.format(currentLocale,"%.0f", prediction));
+                price.setText(Html.fromHtml("<u>" + String.format(currentLocale,"%.0f", prediction) + "</u>", 0));
                 String car2 = car + "," + String.format(currentLocale,"%.0f", prediction);
                 Log.i("CarML Add Car", "Car: " + car);
                 Log.i("CarML Add Car", "Car 2: " + car2);

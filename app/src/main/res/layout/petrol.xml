@@ -76,7 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
                 android:layout_below="@id/title_layout"
-                android:layout_marginTop="@dimen/margin20">
+                android:layout_marginTop="@dimen/margin20"
+                android:layout_marginBottom="@dimen/margin20">
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/petrol_chart"
