@@ -120,7 +120,7 @@ public class PetrolActivity extends Activity implements View.OnClickListener {
         XAxis xAxis = petrolChart.getXAxis();
         String[] xValsArray = new String[xVals.size()];
         xValsArray = xVals.toArray(xValsArray);
-        xAxis.setValueFormatter(new XAxisStringFormater(xValsArray));
+        xAxis.setValueFormatter(new XAxisStringFormatter(xValsArray));
         xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);

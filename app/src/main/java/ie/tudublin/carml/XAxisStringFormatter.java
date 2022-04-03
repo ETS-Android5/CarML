@@ -10,10 +10,10 @@ package ie.tudublin.carml;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
-class XAxisStringFormater implements IAxisValueFormatter {
+class XAxisStringFormatter implements IAxisValueFormatter {
     private final String[] values;
 
-    public XAxisStringFormater(String[] vals) {
+    public XAxisStringFormatter(String[] vals) {
         this.values = vals;
     }
 
