@@ -1,8 +1,8 @@
 /* This Activity presents links to different websites containing information about electric vehicles
  * and electric vehicle charger suppliers.
  * Author: Sean Coll
- * Date Created: 02/03/22
- * Last Modified: 26/02/22
+ * Date Created: 26/02/22
+ * Last Modified:02/03/22
  */
 
 package ie.tudublin.carml;

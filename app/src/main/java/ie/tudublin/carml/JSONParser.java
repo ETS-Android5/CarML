@@ -1,7 +1,7 @@
 /* This class parses JSON data and returns it as a string array.
  * Author: Sean Coll
  * Date Created: 19/02/22
- * Last Modified: 19/02/22
+ * Last Modified: 02/04/22
  */
 package ie.tudublin.carml;
 

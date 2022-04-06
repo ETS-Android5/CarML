@@ -124,9 +124,7 @@
                         android:src="@drawable/electric_symbol"
                         android:contentDescription="@string/noCD"/>
                 </RelativeLayout>
-
             </RelativeLayout>
-
         </RelativeLayout>
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

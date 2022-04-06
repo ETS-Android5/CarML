@@ -2,7 +2,7 @@
  * a chart.
  * Author: Sean Coll
  * Date Created: 27/02/22
- * Last Modified: 27/02/22
+ * Last Modified: 03/04/22
  */
 
 package ie.tudublin.carml;
@@ -19,6 +19,7 @@ class XAxisStringFormatter implements IAxisValueFormatter {
 
     @Override
     public String getFormattedValue(float value, AxisBase axis) {
+        // Convert the value passed into integers
         return values[(int) value];
     }
 }

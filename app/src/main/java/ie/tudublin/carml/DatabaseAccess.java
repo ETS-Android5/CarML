@@ -1,9 +1,10 @@
 /* This class provides access to the database. It can be used to
 * - Retrieve additional details about a car.
 * - Retrieve the lists of manufacturers and models to populate the drop down menus.
+* - Add a prediction to the database.
 * Author: Seán Coll
-* Date Created: 7/02/22
-* Last Modified: 02/04/22
+* Date Created: 12/02/22
+* Last Modified: 05/04/22
 */
 
 package ie.tudublin.carml;
@@ -181,7 +182,8 @@ public class DatabaseAccess {
                 return "ERROR. Unable to getOutputStream";
             }
             // Buffered Writer used to apply parameters
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, StandardCharsets.UTF_8));
+            BufferedWriter bufferedWriter = new BufferedWriter(
+                    new OutputStreamWriter(OS, StandardCharsets.UTF_8));
             // Encode the data to be sent
             String data = encodeData(car);
             // Write the data to the BufferedWriter
@@ -195,22 +197,26 @@ public class DatabaseAccess {
             // Create InputStream to receive data from server
             InputStream IS = httpURLConnection.getInputStream();
             // Capture the data return from server
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(IS, StandardCharsets.ISO_8859_1));
+            BufferedReader bufferedReader = new BufferedReader(
+                    new InputStreamReader(IS, StandardCharsets.ISO_8859_1));
             // Create StringBuilder to format the data
             StringBuilder sb = new StringBuilder();
             String json;
-            // Append each line of data to a single string which will form the JSON string
+            // Append each line of data to a single string which will
+            // form the JSON string
             while ((json = bufferedReader.readLine()) != null) {
                 sb.append(json).append("\n");
             }
+            //Close the BufferedReader
+            bufferedReader.close();
             // Close the InputStream
             IS.close();
-            Log.i("CarML DBA", "Data retrieved: " + sb.toString().trim());
             // Return the JSON string
             return sb.toString().trim();
         } catch (Exception ioe) {
-            httpURLConnection.disconnect();
-            Log.i("CarML DBA Error", "Error: " + ioe.getMessage());
+            if (httpURLConnection != null) {
+                httpURLConnection.disconnect();
+            }
             return "ERROR. Server unavailable.";
         }
     }

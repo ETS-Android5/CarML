@@ -1,7 +1,7 @@
 /* This Activity displays the price history of Petrol between 2001 and 2021 as a line graph.
  * Author: Sean Coll
  * Date Created: 26/02/22
- * Last Modified: 27/02/22
+ * Last Modified: 03/04/22
  */
 
 package ie.tudublin.carml;
@@ -124,7 +124,7 @@ public class PetrolActivity extends Activity implements View.OnClickListener {
         xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);
-        // Configure the x axis
+        // Configure the y axis
         YAxis yAxis = petrolChart.getAxisLeft();
         yAxis.setDrawLabels(true);
         yAxis.setCenterAxisLabels(true);

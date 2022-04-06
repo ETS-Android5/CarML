@@ -1,7 +1,11 @@
-/* This activity displays the result to the user.
+/* This activity displays the result to the user. It displays:
+ * - The details they entered
+ * - The price predicted
+ * - An image of the car they entered
+ * It also allows the user to search for the car they entered on DoneDeal and Carzone
  * Author: Sean Coll
  * Date Created: 23/12/21
- * Last Modified: 20/02/22
+ * Last Modified: 03/04/22
  */
 package ie.tudublin.carml;
 
@@ -69,9 +73,13 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case(R.id.done_deal_button): {
-                String url =    "https://www.donedeal.ie/cars/" + manufacturer.getText() +
-                                "/" + model.getText() + "/" + year.getText();
-                Intent doneDealIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.toLowerCase()));
+                // Build the URL for DoneDeal
+                String url =
+                        "https://www.donedeal.ie/cars/" +
+                        manufacturer.getText() + "/" + model.getText() +
+                        "/" + year.getText();
+                Intent doneDealIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(url.toLowerCase()));
                 startActivity(doneDealIntent);
                 break;
             }
@@ -79,10 +87,14 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                 int yearNum = Integer.parseInt(year.getText().toString());
                 // If the year is 2012 or before, no formatting needs to be done
                 if (yearNum <= 2012) {
-                    String url =    "https://www.carzone.ie/search?make=" + manufacturer.getText() +
-                                    "&model=" + model.getText() + "&minYear=" + yearNum +
-                                    "&maxYear=" + yearNum;
-                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    // Build the URL for Carzone
+                    String url =
+                            "https://www.carzone.ie/search?make=" +
+                            manufacturer.getText() + "&model=" +
+                            model.getText() + "&minYear=" +
+                            yearNum + "&maxYear=" + yearNum;
+                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(url));
                     startActivity(carZoneIntent);
                 }
                 // Format the url to suit the short form of the year for each half
@@ -94,11 +106,15 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     String yearShortMin = yearShort + "1";
                     // Append a 2 for the second half
                     String yearShortMax = yearShort + "2";
-                    String url =    "https://www.carzone.ie/search?make=" + manufacturer.getText() +
-                                    "&model=" + model.getText() + "&minYear=" + yearNum +
-                                    " (" + yearShortMin + ")&maxYear=" + yearNum + " (" +
-                                    yearShortMax + ")";
-                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    // Build the URL for Carzone
+                    String url =
+                            "https://www.carzone.ie/search?make=" +
+                            manufacturer.getText() +
+                            "&model=" + model.getText() + "&minYear=" + yearNum +
+                            " (" + yearShortMin + ")&maxYear=" + yearNum + " (" +
+                            yearShortMax + ")";
+                    Intent carZoneIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(url));
                     startActivity(carZoneIntent);
                 }
                 break;
@@ -132,7 +148,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         manufacturer.setText(user_car_split[0]);
         model.setText(user_car_split[1]);
         year.setText(user_car_split[2]);
-        // Get the image for the car
+        // Get an image for the car
         imgLoad = new ImageLoader(result_image);
         imgLoad.getBitmapImage(user_car);
     }
@@ -147,7 +163,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         Attribute manufacturer = new Attribute("Make");
         Attribute model = new Attribute("Model");
         Attribute year = new Attribute("Year");
-//        Attribute price = new Attribute("MSRP");
         Attribute price = new Attribute("Price");
         // Put the attributes in an ArrayList
         ArrayList<Attribute> attributes= new ArrayList<>(numAttributes);
@@ -156,7 +171,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         attributes.add(year);
         attributes.add(price);
         // Create an Instances object to hold the query instance
-        Instances instances = new Instances("Query", attributes, numInstances);
+        Instances instances = new Instances("Query", attributes,
+                numInstances);
         instances.setClassIndex(numAttributes - 1);
         // Get the encoded values for the user's query
         double[] encodedVals = getEncodedVals(query);
@@ -170,7 +186,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         // Classify the Instance
         try {
             Classifier rf = (Classifier)
-                    weka.core.SerializationHelper.read(getAssets().open("DD_carml.model"));
+                    weka.core.SerializationHelper.read(getAssets().
+                            open("DD_carml.model"));
             return rf.classifyInstance(instances.instance(0));
         } catch (Exception e) {
             e.printStackTrace();
@@ -193,8 +210,10 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             // Get the first object
             JSONObject obj = ary.getJSONObject(0);
             // Extract the values and put them in the eValues array
-            eValues[0] = Double.parseDouble(obj.getString("EncodedMake"));
-            eValues[1] = Double.parseDouble(obj.getString("EncodedModel"));
+            eValues[0] = Double.parseDouble(obj.
+                    getString("EncodedMake"));
+            eValues[1] = Double.parseDouble(obj.
+                    getString("EncodedModel"));
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -215,24 +234,33 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             // Get the first object
             JSONObject obj = ary.getJSONObject(0);
             // Extract the values and display them
-            engine.setText(formatString(obj.getString("Engine Fuel Type")));
+            engine.setText(formatString(obj.
+                    getString("Engine Fuel Type")));
             if(!obj.getString("Prediction").equals("0")) {
-                price.setText(Html.fromHtml("<u>" + obj.getString("Prediction") + "</u>", 0));
+                // Underline the price
+                price.setText(Html.fromHtml("<u>"
+                        + obj.getString("Prediction") +
+                        "</u>", 0));
             }
             else {
+                // Get a value for prediction
                 double prediction = predict(car);
-                Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
-                price.setText(Html.fromHtml("<u>" + String.format(currentLocale,"%.0f", prediction) + "</u>", 0));
-                String car2 = car + "," + String.format(currentLocale,"%.0f", prediction);
-                Log.i("CarML Add Car", "Car: " + car);
-                Log.i("CarML Add Car", "Car 2: " + car2);
+                // Get the Locale to display price correctly
+                Locale currentLocale = getResources().
+                        getConfiguration().getLocales().get(0);
+                // Display the price
+                price.setText(Html.fromHtml("<u>" +
+                        String.format(currentLocale,"%.0f",
+                        prediction) + "</u>", 0));
+                // Append the prediction to car2
+                String car2 = car + "," + String.format(currentLocale,
+                        "%.0f", prediction);
+                // Add the prediction to the database
                 String result = DBA.runThread("addPrediction",car2);
-                Log.i("CarML Add Car Result", "Result: " + result);
             }
         }
         catch (JSONException e) {
             e.printStackTrace();
-            Log.i("CarML JSON ERROR", e.getMessage());
         }
     }
 

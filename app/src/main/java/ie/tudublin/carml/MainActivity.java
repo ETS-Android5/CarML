@@ -1,4 +1,4 @@
-/* This is the Main Activity. It starts on the home screen and displays options to the user
+/* This is the Main Activity. It starts on the home screen and displays options to the user.
 * Author: Sean Coll
 * Date Created: 12/12/21
 * Last Modified: 02/04/22

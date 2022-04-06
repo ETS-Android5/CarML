@@ -1,7 +1,7 @@
-/* In this activity the user enters detail for a car they wish to see a predicted price for.
+/* In this activity the user enters details for a car they wish to see a predicted price for.
  * Author: Sean Coll
  * Date Created: 23/12/21
- * Last Modified: 20/02/22
+ * Last Modified: 02/04/22
  */
 package ie.tudublin.carml;
 
@@ -151,6 +151,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch(adapterView.getId()) {
             case(R.id.manufacturer): {
+                // If the user selects a manufacturer and not "Select One"
                 if(!adapterView.getSelectedItem().toString().equals("Select One")) {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     if(!adapterView.getSelectedItem().equals("Select One"))
@@ -171,6 +172,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
                 break;
             }
             case(R.id.model): {
+                // If the user selects a model and not "Select One"
                 if(!adapterView.getSelectedItem().toString().equals("Select One")) {
                     Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     if(!adapterView.getSelectedItem().equals("Select One"))
