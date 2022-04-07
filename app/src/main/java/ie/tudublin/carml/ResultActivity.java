@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -201,7 +200,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         DatabaseAccess DBA = new DatabaseAccess();
         // Get the encoded values from the database
         String encodedVals = DBA.runThread("encodedVals",query);
-        Log.i("CarML EncVals", "Values: " + encodedVals);
         double[] eValues = {0, 0};
         // Parse the JSON string
         try {
@@ -217,7 +215,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         }
         catch (JSONException e) {
             e.printStackTrace();
-            Log.i("CarML EncVals JSON ERROR", e.getMessage());
         }
         return eValues;
     }

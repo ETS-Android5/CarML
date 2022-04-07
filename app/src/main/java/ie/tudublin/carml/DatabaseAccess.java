@@ -9,8 +9,6 @@
 
 package ie.tudublin.carml;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStream;
@@ -106,7 +104,6 @@ public class DatabaseAccess {
             return runQuery(url, car);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            Log.i("CarML DBA", "Unable to retrieve manufacturers");
         }
         return "ERROR. Unable to retrieve manufacturers";
     }
@@ -233,7 +230,6 @@ public class DatabaseAccess {
                         URLEncoder.encode("year","UTF-8")+"="+
                         URLEncoder.encode(details[2], "UTF-8");
             } catch (UnsupportedEncodingException e) {
-                Log.i("CarML DBA Encoding", e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -248,7 +244,6 @@ public class DatabaseAccess {
                         URLEncoder.encode("prediction","UTF-8")+"="+
                         URLEncoder.encode(details[3],"UTF-8");
             } catch (UnsupportedEncodingException e) {
-                Log.i("CarML DBA Encoding", e.getMessage());
                 e.printStackTrace();
             }
         }

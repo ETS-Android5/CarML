@@ -13,7 +13,6 @@ package ie.tudublin.carml;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.widget.ImageView;
 
 import org.jsoup.Jsoup;

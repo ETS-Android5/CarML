@@ -7,7 +7,6 @@ package ie.tudublin.carml;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -153,7 +152,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
             case(R.id.manufacturer): {
                 // If the user selects a manufacturer and not "Select One"
                 if(!adapterView.getSelectedItem().toString().equals("Select One")) {
-                    Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     if(!adapterView.getSelectedItem().equals("Select One"))
                         loadModels(adapterView.getSelectedItem().toString());
                     modelLabel.setVisibility(View.VISIBLE);
@@ -174,7 +172,6 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
             case(R.id.model): {
                 // If the user selects a model and not "Select One"
                 if(!adapterView.getSelectedItem().toString().equals("Select One")) {
-                    Log.i("CarML Spinners", "Selected: " + adapterView.getSelectedItem().toString());
                     if(!adapterView.getSelectedItem().equals("Select One"))
                         loadYears(manufacturerDD.getSelectedItem() + "," + adapterView.getSelectedItem().toString());
                     yearLabel.setVisibility(View.VISIBLE);
@@ -199,16 +196,13 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
     public void loadManufacturers() {
         JSONParser parser = new JSONParser();
         manufacturers.add("Select One");
-        Log.i("CarML Spinners", "Loading manufacturers");
         DatabaseAccess DBA = new DatabaseAccess();
         // Get the manufacturers
         String manufacturersData = DBA.runThread("manufacturers", "");
-        Log.i("CarML Spinners", "Received from thread: " + manufacturersData);
         if(!manufacturersData.startsWith("ERROR")) {
             // Parse the data and convert to a regular string array instead of a JSON string
             String[] parsedManufacturers = parser.parseData(manufacturersData,"Make");
             manufacturers.addAll(Arrays.asList(parsedManufacturers));
-            Log.i("CarML Spinners", "Finished manufacturers");
         }
 
         ArrayAdapter<String> manAdapter =
@@ -225,14 +219,12 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         // Empty the list
         models.clear();
         models.add("Select One");
-        Log.i("CarML Spinners", "Loading models");
         DatabaseAccess DBA = new DatabaseAccess();
         // Get the models for the specified manufacturer
         String modelsData = DBA.runThread("models", man +", , ");
         // Parse the data and convert to a regular string array instead of a JSON string
         String[] parsedModels = parser.parseData(modelsData,"Model");
         models.addAll(Arrays.asList(parsedModels));
-        Log.i("CarML Spinners", "Finished models");
 
         ArrayAdapter<String> modAdapter =
                 new ArrayAdapter<>(this, R.layout.spinner_item, models);
@@ -246,14 +238,12 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
         JSONParser parser = new JSONParser();
         // Empty the list
         years.clear();
-        Log.i("CarML Spinners", "Loading years");
         DatabaseAccess DBA = new DatabaseAccess();
         // Get the years for the model specified
         String yearsData = DBA.runThread("years", car +", ");
         // Parse the data and convert to a regular string array instead of a JSON string
         String[] parsedYears = parser.parseData(yearsData,"Year");
         years.addAll(Arrays.asList(parsedYears));
-        Log.i("CarML Spinners", "Finished years");
 
         ArrayAdapter<String> yearAdapter =
                 new ArrayAdapter<>(this, R.layout.spinner_item, years);
