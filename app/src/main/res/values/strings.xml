@@ -25,11 +25,12 @@
     <string name="result_imageCD">An image of the car you entered</string>
     <string name="done_buttonCD">Done. Tap to return to the previous screen.</string>
     <string name="dropdownCD">Tap to expand dropdown menu.</string>
-    <string name="server_unavailable">The Server is currently unavailable. Please try again later.
-    (tap to dismiss)</string>
+    <string name="server_unavailable">The server is currently unavailable. Please try again later.
+    (Tap to dismiss)</string>
     <string name="please_wait">Please wait…</string>
     <string name="information_button_text">i</string>
-    <string name="information_button_description">Use the dropdowns to enter details. When you are ready, tap the submit button to continue. (tap to dismiss)</string>
+    <string name="information_button_description">Use the dropdowns to enter details. When you are
+    ready, tap the submit button to continue. (Tap to dismiss)</string>
     <string name="home_banner" translatable="false">CarML</string>
     <string name="price_prediction">Price Prediction</string>
     <string name="submit">Submit</string>
