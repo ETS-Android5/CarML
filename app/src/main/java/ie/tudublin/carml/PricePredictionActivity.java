@@ -152,8 +152,7 @@ public class PricePredictionActivity extends AppCompatActivity implements View.O
             case(R.id.manufacturer): {
                 // If the user selects a manufacturer and not "Select One"
                 if(!adapterView.getSelectedItem().toString().equals("Select One")) {
-                    if(!adapterView.getSelectedItem().equals("Select One"))
-                        loadModels(adapterView.getSelectedItem().toString());
+                    loadModels(adapterView.getSelectedItem().toString());
                     modelLabel.setVisibility(View.VISIBLE);
                     modelSpinner.setVisibility(View.VISIBLE);
                     yearLabel.setVisibility(View.GONE);
