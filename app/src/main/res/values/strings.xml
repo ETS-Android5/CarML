@@ -54,4 +54,6 @@
     <string name="donedeal_search">Search on DoneDeal</string>
     <string name="carzone_search">Search om Carzone</string>
     <string name="search_on">Search On:</string>
+    <string name="information_buttonCD">Tap for help</string>
+    <string name="fuel_information_buttonCD">Fuel Information. Tap for information on fuel types.</string>
 </resources>
